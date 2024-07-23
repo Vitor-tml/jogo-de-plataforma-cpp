@@ -12,7 +12,7 @@
 *.dylib
 
 # Diretórios de bibliotecas
-/lib/SFML-2.6.1/
+/libs/SFML-2.6.1/
 
 # Diretórios de configuração do CMake
 /CMakeFiles/

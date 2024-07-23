@@ -12,7 +12,7 @@ include_directories(include)
 include_directories(${CMAKE_SOURCE_DIR}/lib/SFML-2.6.1/include)
 
 # Definir o diretório onde o SFML está instalado
-set(SFML_DIR "${CMAKE_SOURCE_DIR}/lib/SFML-2.6.1/lib/cmake/SFML")
+set(SFML_DIR "C:/Users/vitor/Programas/teste-sfml/SFML-2.6.1")
 
 # Encontrar e carregar o pacote SFML
 find_package(SFML 2.6.1 COMPONENTS system window graphics network audio REQUIRED)
@@ -37,10 +37,10 @@ target_link_libraries(game
 if (WIN32)
     add_custom_command(TARGET game POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${SFML_DIR}/../../../bin/sfml-system-2.dll"
-            "${SFML_DIR}/../../../bin/sfml-window-2.dll"
-            "${SFML_DIR}/../../../bin/sfml-graphics-2.dll"
-            "${SFML_DIR}/../../../bin/sfml-network-2.dll"
-            "${SFML_DIR}/../../../bin/sfml-audio-2.dll"
+            "${SFML_DIR}/bin/sfml-system-2.dll"
+            "${SFML_DIR}/bin/sfml-window-2.dll"
+            "${SFML_DIR}/bin/sfml-graphics-2.dll"
+            "${SFML_DIR}/bin/sfml-network-2.dll"
+            "${SFML_DIR}/bin/sfml-audio-2.dll"
             $<TARGET_FILE_DIR:game>)
 endif()
