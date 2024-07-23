@@ -1,6 +1,6 @@
 # Diretório de construção
 /build/
-
+/.vscode/
 # Arquivos binários
 *.exe
 *.out

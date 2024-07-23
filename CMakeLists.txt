@@ -9,10 +9,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 # Incluir diretórios de inclusão
 include_directories(include)
-include_directories(${CMAKE_SOURCE_DIR}/lib/SFML-2.6.1/include)
+include_directories(${CMAKE_SOURCE_DIR}/libs/SFML-2.6.1/include)
 
 # Definir o diretório onde o SFML está instalado
-set(SFML_DIR "C:/Users/vitor/Programas/teste-sfml/SFML-2.6.1")
+set(SFML_DIR "${CMAKE_SOURCE_DIR}/libs/SFML-2.6.1/lib/cmake/SFML")
 
 # Encontrar e carregar o pacote SFML
 find_package(SFML 2.6.1 COMPONENTS system window graphics network audio REQUIRED)
