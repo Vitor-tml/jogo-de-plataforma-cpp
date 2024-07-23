@@ -1,5 +1,46 @@
 # Jogo de Plataforma em CPP
-Componentes de uma engine de game
+Este é um projeto de um jogo de plataforma 2D desenvolvido em C++ com foco em criar uma game engine personalizada que suporte mecânicas complexas de jogos de plataforma.
+
+## Introdução
+
+O objetivo deste projeto é criar um jogo de plataforma com elementos clássicos como saltos, coleta de itens, inimigos, e fases desafiadoras. A engine é desenvolvida do zero, focando em modularidade e eficiência.
+
+## Estrutura do Projeto
+
+```plaintext
+JogoPlataforma/
+├── src/
+│   ├── main.cpp
+│   ├── engine/
+│   │   ├── Renderer/          # Sistema de Renderização
+│   │   ├── ResourceManager/   # Gerenciamento de Recursos
+│   │   ├── Input/             # Sistema de Entrada
+│   │   ├── Physics/           # Sistema de Física
+│   │   ├── Audio/             # Sistema de Áudio
+│   │   ├── ECS/               # Entidades e Componentes
+│   │   ├── AI/                # Inteligência Artificial
+│   │   ├── Scene/             # Gerenciamento de Cena
+│   │   ├── UI/                # Sistema de Interface do Usuário
+│   │   ├── SaveLoad/          # Sistema de Salvamento e Carregamento
+│   │   └── DevelopmentTools/  # Ferramentas de Desenvolvimento
+│   ├── game/
+│   │   ├── Player/            # Implementação do Jogador
+│   │   ├── Enemies/           # Implementação dos Inimigos
+│   │   ├── Obstacles/         # Implementação dos Obstáculos
+│   │   └── Levels/            # Implementação dos Níveis
+│   └── utils/                 # Utilitários e Funções Auxiliares
+├── assets/                    # Recursos do Jogo
+│   ├── textures/              # Texturas e Sprites
+│   ├── audio/                 # Sons e Músicas
+│   ├── fonts/                 # Fontes para Texto
+│   └── levels/                # Dados dos Níveis
+├── include/                   # Headers Externos (opcional)
+├── libs/                      # Bibliotecas Externas
+├── build/                     # Arquivos de Compilação
+└── CMakeLists.txt             # Configuração do CMake
+
+```
+## To Do List do Projeto
 
 1. Sistema de Renderização
     - [ ] Renderização de Sprites
