@@ -18,19 +18,16 @@ set(SFML_DIR "${CMAKE_SOURCE_DIR}/libs/SFML-2.6.1/lib/cmake/SFML")
 find_package(SFML 2.6.1 COMPONENTS system window graphics network audio REQUIRED)
 
 # Adicionar arquivos de origem e cabeçalhos
-file(GLOB_RECURSE SOURCES "src/**/**/*.cpp")  # Use o padrão '**/*.cpp' para capturar recursivamente
-file(GLOB_RECURSE HEADERS "include/**/**/*.h") # Use o padrão '**/*.h' para capturar recursivamente
+file(GLOB_RECURSE SOURCES "src/*.cpp")  # Use o padrão '**/*.cpp' para capturar recursivamente
+file(GLOB_RECURSE HEADERS "include/*.h") # Use o padrão '**/*.h' para capturar recursivamente
 
 # Nome e origem do executável
 add_executable(game ${SOURCES} ${HEADERS})
 
-# Definir o tipo de aplicativo como console (remover o WinMain)
-#set_target_properties(game PROPERTIES 
-#    WIN32_EXECUTABLE OFF  # Garante que seja um aplicativo de console
-#)
-
-# Define o uso de main
-set_target_properties(game PROPERTIES WINDOWS_ENTRY_POINT main)
+# Definir o tipo de aplicativo como console
+set_target_properties(game PROPERTIES 
+    WIN32_EXECUTABLE OFF  # Garante que seja um aplicativo de console
+)
 
 # Vincula as bibliotecas SFML estaticamente
 target_link_libraries(game 
