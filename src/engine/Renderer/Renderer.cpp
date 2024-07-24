@@ -3,7 +3,7 @@
 
 
 // Cria janela, e setta FPS em 60
-Renderer::Renderer(int altura, int largura, const std::string& titulo)
+Renderer::Renderer(int largura, int altura, const std::string& titulo)
 :janela(sf::VideoMode(largura, altura), titulo) 
 {
         janela.setFramerateLimit(60);
