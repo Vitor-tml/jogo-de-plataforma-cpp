@@ -1,7 +1,7 @@
 #include "Player.h"
-
 Player::Player(const sf::Texture& textura)
-    :  estaNoChao(false)
+    :  estaNoChao(false),
+       fisica() // Mudar os valores padroes para cada entidade
 {   
     sprite.setTexture(textura);
     sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
@@ -11,7 +11,7 @@ Player::Player(const sf::Texture& textura)
 void Player::update(float deltaTime)
 {
     userInput();
-    applyPhysics(deltaTime);
+    fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
 
 }
 void Player::userInput()

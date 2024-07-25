@@ -2,13 +2,14 @@
 #define _PLAYER_H
 
 #include <SFML/Graphics.hpp>
+#include "../../engine/PhysicsComponent/PhysicsComponent.h"
 
 class Player {
 private:
     sf::Sprite sprite;
     sf::Vector2f velocidade;
     bool estaNoChao;
-
+    PhysicsComponent fisica;
     // Constantes de movimento
     const float velocidadeHorizontal = 200.f;
     const float alturaPulo = 300.f; // Mudar depois para velocidade
