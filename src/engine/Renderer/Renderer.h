@@ -13,10 +13,10 @@ public:
     void render(); // Executa a renderização dos elementos
     Renderer(int largura, int altura, const std::string& titulo);
     ~Renderer(){};
-    void run(); // Método do loop de renderização
+    void run(); // Método do loop de renderização -> loop principal, testar outras implementações
     void addDrawable(const sf::Drawable& drawable, int camada = 0); // Adiciona um elemento para ser desenhado
     void clearDrawables(); // limpa todos os elementos
-    bool isOpen()const;
+    bool isOpen();
 };
 
 #endif

@@ -8,7 +8,8 @@ bool TextureManager::loadTexture(const std::string& id, const std::string& filen
         return true;
     }
     std::cerr << "Erro ao carregar textura: " << filename << std::endl;
-    return false;
+    exit(1);         // Fechar o programa se erro
+    // return false; // Tratar erro na main
 }
 
 sf::Texture& TextureManager::getTexture(const std::string& id){

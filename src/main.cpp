@@ -1,29 +1,30 @@
 #include <SFML/Graphics.hpp>
 #include "engine/Renderer/Renderer.h"
 #include "engine/Resourcemanager/TextureManager.h"
-#include "engine/Animation/Animation.h"
+#include "game/Player/Player.h"
 
 int main()
 {
-    Renderer janela(800, 600, "batata");
+    Renderer janela(800, 600, "Jogo de Plataforma");
 
-    TextureManager gerenciadorTextura;
-    gerenciadorTextura.loadTexture("player", "..\\assets\\textures\\knight.png");
+    TextureManager gerenciadorDeTextura;
 
-    Animation animacaoJogador(gerenciadorTextura.getTexture("player"), 32, 32, 4, 100000.f);
+    gerenciadorDeTextura.loadTexture("jogador", "../assets/textures/knight.png");
+    gerenciadorDeTextura.loadTexture("fundo", "../assets/textures/knight.png");
 
-    sf::Clock clock;
-    float deltaTime;
-    
+    Player jogador(gerenciadorDeTextura.getTexture("jogador"));
+
+    sf::Clock tempo;
+    float deltaTempo;
+
     while(janela.isOpen())
     {
-        deltaTime = clock.restart().asSeconds();
+        deltaTempo = tempo.restart().asSeconds();
 
-        animacaoJogador.update(deltaTime);
+        jogador.update(deltaTempo);
         janela.clearDrawables();
-        janela.addDrawable(animacaoJogador.getCurrentFrame(), 1);
+        janela.addDrawable(jogador.getSprite(), 1);
         janela.render();
     }
-
     return 0;
 }
