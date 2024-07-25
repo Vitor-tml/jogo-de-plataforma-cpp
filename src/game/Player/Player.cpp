@@ -25,22 +25,10 @@ void Player::userInput()
         velocidade.x += velocidadeHorizontal;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && estaNoChao){
-        velocidade.y += -alturaPulo;
+        velocidade.y += -fisica.getPulo();
         estaNoChao = false;
     }
 
-}
-void Player::applyPhysics(float deltaTime)
-{
-    velocidade.y += gravidade * deltaTime;
-
-    sprite.move(velocidade * deltaTime);
-
-    if(sprite.getPosition().y >= 500){
-        sprite.setPosition(sprite.getPosition().x , 500);
-        velocidade.y = 0;
-        estaNoChao = true;
-    }
 }
 sf::Sprite& Player::getSprite()
 {
