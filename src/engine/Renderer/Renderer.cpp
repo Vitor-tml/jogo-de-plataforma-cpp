@@ -1,6 +1,6 @@
 #include "Renderer.h"
 #include <algorithm>
-
+#include <iostream>
 
 // Cria janela, e setta FPS em 60
 Renderer::Renderer(int largura, int altura, const std::string& titulo)
@@ -18,7 +18,6 @@ void Renderer::run(){
             if(evento.type == sf::Event::Closed)
                 janela.close();
         }
-    
         render();
     }
 
@@ -51,4 +50,9 @@ void Renderer::render()
     }
 
     janela.display();
+}
+
+bool Renderer::isOpen()const
+{
+    return janela.isOpen();
 }
