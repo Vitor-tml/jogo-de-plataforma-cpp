@@ -5,7 +5,7 @@
 
 int main()
 {
-    Renderer janela(800, 600, "Jogo de Plataforma");
+    Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
 
     TextureManager gerenciadorDeTextura;
 
@@ -19,15 +19,15 @@ int main()
     sf::Clock tempo;
     float deltaTempo;
 
-    while(janela.isOpen())
+    while(janela->isOpen())
     {
         deltaTempo = tempo.restart().asSeconds();
 
         jogador.update(deltaTempo);
-        janela.clearDrawables();
-        janela.addDrawable(fundo);
-        janela.addDrawable(jogador.getSprite(), 1);
-        janela.render();
+        janela->clearDrawables();
+        janela->addDrawable(fundo);
+        janela->addDrawable(jogador.getSprite(), 1);
+        janela->render();
     }
     return 0;
 }

@@ -1,35 +1,44 @@
 #include "Renderer.h"
 #include <algorithm>
 
-// Cria janela, e setta FPS em 60
-Renderer::Renderer(int largura, int altura, const std::string& titulo)
-:janela(sf::VideoMode(largura, altura), titulo) 
+// Inicia o ponteiro do singleton para todas os fins
+Renderer* Renderer::singleton = nullptr;
+
+// Construtora (chamada apenas uma vez)
+Renderer::Renderer(int largura, int altura, const std::string &titulo)
+    : janela(sf::VideoMode(largura, altura), titulo)
 {
-        janela.setFramerateLimit(60);
+    janela.setFramerateLimit(60);
+}
+// Apaga instância do renderizador
+Renderer::~Renderer()
+{
+    delete singleton;
 }
 
-void Renderer::run(){
-
-    while(janela.isOpen()){
-
-        sf::Event evento;
-        while(janela.pollEvent(evento)){
-            if(evento.type == sf::Event::Closed)
-                janela.close();
-        }
-        render();
-    }
-
+// Retorna instância única do gerenciador gráfico
+Renderer* Renderer::getRenderer(int largura, int altura, const std::string& titulo)
+{
+    if(singleton == nullptr)
+        singleton = new Renderer(largura, altura, titulo);
+    
+    return singleton;
 }
 
-void Renderer::addDrawable(const sf::Drawable& drawable, int camada){
-        drawables.push_back(std::make_pair(&drawable, camada));
+
+// Adiciona elementos renderizáveis na pilha de renderização
+void Renderer::addDrawable(const sf::Drawable &drawable, int camada)
+{
+    drawables.push_back(std::make_pair(&drawable, camada));
 }
 
-void Renderer::clearDrawables(){
+// Limpa pilha de renderizaçõa
+void Renderer::clearDrawables()
+{
     drawables.clear();
 }
 
+// Ordena (por camadas) e renderiza os elementos da pilha
 void Renderer::render()
 {
     janela.clear(sf::Color::Black);
@@ -37,25 +46,28 @@ void Renderer::render()
     // Ordena os elementos com base na camada
     std::sort(drawables.begin(), // inicio do vetor
               drawables.end(),   // fim do vetor (iteradores para o sort())
-              [](const std::pair<const sf::Drawable*, int>& a, const std::pair<const sf::Drawable*, int>& b) 
-                {
-                    return a.second < b.second; // Função lambda que define como comparar dois elementos
-                }
+              [](const std::pair<const sf::Drawable *, int> &a, const std::pair<const sf::Drawable *, int> &b)
+              {
+                  return a.second < b.second; // Função lambda que define como comparar dois elementos
+              }
 
-                );
+    );
 
-    for(const auto& drawable : drawables){
+    for (const auto &drawable : drawables)
+    {
         janela.draw(*drawable.first);
     }
 
     janela.display();
 }
 
+// Verifica se a janela do jogo foi fechada
 bool Renderer::isOpen()
-{    
+{
     sf::Event evento;
-    while(janela.pollEvent(evento)){
-        if(evento.type == sf::Event::Closed)
+    while (janela.pollEvent(evento))
+    {
+        if (evento.type == sf::Event::Closed)
             janela.close();
     }
     return janela.isOpen();
