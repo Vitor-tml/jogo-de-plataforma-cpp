@@ -43,23 +43,24 @@ JogoPlataforma/
 ## To Do List do Projeto
 
 1. Sistema de Renderização
-    - [ ] Renderização de Sprites
-    - [ ] Animações
-    - [ ] Camadas
+    - [x] Renderização de Sprites
+    - [x] Animações
+    - [x] Camadas
 
 2. Gerenciamento de Recursos
     - [ ] Carregamento de:
-        - [ ]  Texturas
+        - [x]  Texturas
         - [ ]  Áudio
         - [ ]  Fontes
         
 3. Sistema de Entrada
-    - [ ] Mouse e teclado
+    - [x] Teclado
+    - [ ] Mouse
 4. Sistema de Física
     - [ ] Colisões
     - [ ] Resposta a colisões
-    - [ ] Gravidade
-    - [ ] Movimentação
+    - [x] Gravidade
+    - [x] Movimentação
 5. Sistema de Áudio
     - [ ] Efeitos
     - [ ] Música
@@ -76,7 +77,7 @@ JogoPlataforma/
     - [ ] Atacar player
 11. Sistema de UI (Interface do Usuário)
     - [ ] Botões
-    - [ ] Mesus
+    - [ ] Menus
 12. Sistema de Salvamento e Carregamento
     - [ ] Salvar pontuação 
     - [ ] Salvar jogada
