@@ -1,48 +1,38 @@
 #include "Animation.h"
 #include <iostream>
 
-Animation::Animation(sf::Texture& textura , int frameLargura, int frameAltura, int nFrames, float duracao)
-: sprite(textura), currentTime(0), frameDuration(duracao / nFrames), currentFrameIndex(0), looping(true), finalizada(false)
+Animation::Animation(sf::Texture& texture, std::vector<sf::IntRect> frames, float duration)
+    : textura(texture), frames(frames)
 {
-    // Calcula os sub-retângulos da textura (diferentes estados da animação)
-    for(int i = 0; i < nFrames; i++) // colocar variável para inicio do frame na textura
-        frames.emplace_back(i * frameLargura, 0, frameLargura, frameAltura);
-
-    sprite.setTextureRect(frames[0]);
-    sprite.setScale(3.f, 2.f);
+    duracao = duration;
+    tempoDecorrido = 0;
+    indexFrameAtual = 0;
+    finalizada = false;
 }
 
-void Animation::update(float deltaTempo)
+void Animation::update(float deltaTime)
 {
-    if(finalizada) return; // Animação finalizada não tem atualização
+    if(finalizada) return;
 
-    if(currentTime >= frameDuration){
-        currentFrameIndex = 0;
-        ++currentFrameIndex;
+    tempoDecorrido += deltaTime;
+    if(tempoDecorrido >= duracao){ // Duração do frame!
+        tempoDecorrido = 0;
+        indexFrameAtual = (indexFrameAtual + 1) % frames.size();
+    }
 
-        if(currentFrameIndex >= frames.size()){
-            if(looping)
-                currentFrameIndex = 0;
-            else {
-                currentFrameIndex = frames.size() - 1;
-                finalizada = true;
-            }
-        }
-        sprite.setTextureRect(frames[currentFrameIndex]);
+    if(indexFrameAtual == frames.size() - 1 && tempoDecorrido == 0)
+    {
+        // Mudar para true
+        finalizada = false;
     }
 }
 
-sf::Sprite& Animation::getCurrentFrame()
+sf::IntRect Animation::getFrameAtual()const
 {
-    return sprite;
+    return frames[indexFrameAtual];
 }
 
-void Animation::setLooping(bool loop)
-{
-    looping = loop;
-}
-
-bool Animation::isFinished() const
+bool Animation::isFinished()const
 {
     return finalizada;
 }

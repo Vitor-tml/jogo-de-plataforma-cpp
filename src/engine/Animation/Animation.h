@@ -6,20 +6,20 @@
 
 class Animation{
 private:
-    sf::Sprite sprite;
+    const sf::Texture& textura;
     std::vector<sf::IntRect> frames;
-    float currentTime;
-    float frameDuration;
-    int currentFrameIndex;
-    bool looping;
+    float duracao;
+    float tempoDecorrido;
+    size_t indexFrameAtual;
     bool finalizada;
 public:
-    Animation(sf::Texture& texture, int frameLargura, int frameAltura, int nFrames, float duracao);
-    ~Animation(){};
-    void update(float deltaTempo);
-    sf::Sprite& getCurrentFrame();
-    void setLooping(bool loop);
+    Animation(sf::Texture& texture, std::vector<sf::IntRect> frames, float duration);
+    void update(float deltaTime);
+    sf::IntRect getFrameAtual()const;
     bool isFinished()const;
+
+    Animation& operator=(const Animation& other) = delete;
 };
 
+void printIntRect(sf::IntRect& rect);
 #endif

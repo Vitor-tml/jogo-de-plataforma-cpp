@@ -10,10 +10,12 @@ int main()
     TextureManager gerenciadorDeTextura;
 
     gerenciadorDeTextura.loadTexture("jogador", "../assets/textures/knight.png");
-    gerenciadorDeTextura.loadTexture("fundo", "../assets/textures/knight.png");
-
+    gerenciadorDeTextura.loadTexture("fundo", "../assets/textures/background.png");
     Player jogador(gerenciadorDeTextura.getTexture("jogador"));
-
+    sf::Sprite fundo;
+    fundo.setTexture(gerenciadorDeTextura.getTexture("fundo"));
+    fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
+    
     sf::Clock tempo;
     float deltaTempo;
 
@@ -23,6 +25,7 @@ int main()
 
         jogador.update(deltaTempo);
         janela.clearDrawables();
+        janela.addDrawable(fundo);
         janela.addDrawable(jogador.getSprite(), 1);
         janela.render();
     }
