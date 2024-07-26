@@ -2,6 +2,7 @@
 #include "engine/Renderer/Renderer.h"
 #include "engine/Resourcemanager/TextureManager.h"
 #include "game/Player/Player.h"
+#include "engine/Scene/Menu/MenuScene.h"
 
 int main()
 {
@@ -17,17 +18,18 @@ int main()
     fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
     
     sf::Clock tempo;
-    float deltaTempo;
+    float deltaTime;
+
+    SceneManager gerenciadorDeCenas;
+    gerenciadorDeCenas.mudaCena(std::make_unique<MenuScene>(gerenciadorDeCenas));
 
     while(janela->isOpen())
     {
-        deltaTempo = tempo.restart().asSeconds();
-
-        jogador.update(deltaTempo);
-        janela->clearDrawables();
-        janela->addDrawable(fundo);
-        janela->addDrawable(jogador.getSprite(), 1);
-        janela->render();
+        deltaTime = tempo.restart().asSeconds();
+        sf::Event evento;
+        //gerenciadorDeCenas.userInputCenaAtual(evento);
+        gerenciadorDeCenas.updateCenaAtual(deltaTime);
+        gerenciadorDeCenas.renderizaCenaAtual();        
     }
     return 0;
 }
