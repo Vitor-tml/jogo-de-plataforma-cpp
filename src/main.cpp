@@ -2,8 +2,8 @@
 #include "engine/Renderer/Renderer.h"
 #include "engine/Resourcemanager/TextureManager.h"
 #include "game/Player/Player.h"
-#include "engine/Scene/Menu/MenuScene.h"
-
+#include "engine/SceneManager/SceneManager.h"
+#include "game/Scenes/Menu/MenuScene.h"
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
@@ -20,16 +20,14 @@ int main()
     sf::Clock tempo;
     float deltaTime;
 
-    SceneManager gerenciadorDeCenas;
-    gerenciadorDeCenas.mudaCena(std::make_unique<MenuScene>(gerenciadorDeCenas));
-
+    SceneManager::getInstance()->mudarCena(std::make_unique<MenuScene>());
     while(janela->isOpen())
     {
         deltaTime = tempo.restart().asSeconds();
         sf::Event evento;
-        //gerenciadorDeCenas.userInputCenaAtual(evento);
-        gerenciadorDeCenas.updateCenaAtual(deltaTime);
-        gerenciadorDeCenas.renderizaCenaAtual();        
+
+        SceneManager::getInstance()->renderizarCenaAtual();
     }
+        
     return 0;
 }
