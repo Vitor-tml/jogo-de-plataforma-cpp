@@ -13,11 +13,14 @@ int main()
 
     gerenciadorDeTextura.loadTexture("jogador", "../assets/textures/knight.png");
     gerenciadorDeTextura.loadTexture("fundo", "../assets/textures/background.png");
+    gerenciadorDeTextura.loadTexture("plataforma", "../assets/textures/plataforma.png");
     Player jogador(gerenciadorDeTextura.getTexture("jogador"));
     sf::Sprite fundo;
     fundo.setTexture(gerenciadorDeTextura.getTexture("fundo"));
     fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
-    
+    sf::Sprite plataforma;
+    plataforma.setTexture(gerenciadorDeTextura.getTexture("plataforma"));
+    plataforma.setPosition(300, 500);
     sf::Clock tempo;
     float deltaTime;
 
@@ -27,8 +30,14 @@ int main()
     {
         deltaTime = tempo.restart().asSeconds();
         sf::Event evento;
-
-        SceneManager::getInstance()->renderizarCenaAtual();
+        Renderer::getRenderer()->addDrawable(fundo, 0);
+        Renderer::getRenderer()->addDrawable(plataforma, 1);
+        Renderer::getRenderer()->addDrawable(jogador.getSprite(), 2);
+        Renderer::getRenderer()->setTamanhoCamera(400, 400);
+        Renderer::getRenderer()->setCentroCamera(jogador.getSprite().getPosition().x,jogador.getSprite().getPosition().y);
+        jogador.update(deltaTime);
+        Renderer::getRenderer()->render();
+        // SceneManager::getInstance()->renderizarCenaAtual();
     }
         
     return 0;
