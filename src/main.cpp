@@ -4,6 +4,7 @@
 #include "game/Player/Player.h"
 #include "engine/SceneManager/SceneManager.h"
 #include "game/Scenes/Menu/MenuScene.h"
+#include "game/Scenes/Editor/EditorScene.h"
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
@@ -20,6 +21,7 @@ int main()
     sf::Clock tempo;
     float deltaTime;
 
+    SceneManager::getInstance()->mudarCena(std::make_unique<EditorScene>());
     SceneManager::getInstance()->mudarCena(std::make_unique<MenuScene>());
     while(janela->isOpen())
     {

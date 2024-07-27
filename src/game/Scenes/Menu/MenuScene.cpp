@@ -14,10 +14,10 @@ void MenuScene::inicializar()
     }
 
     texto.setFont(fonte);
-    texto.setString("Aoaoao Abaixo ao pastelao.");
-    texto.setCharacterSize(50);
-    texto.setFillColor(sf::Color::Blue);
-    texto.setPosition(sf::Vector2f(300, 500));
+    texto.setString("Menu");
+    texto.setCharacterSize(30);
+    texto.setFillColor(sf::Color (69, 60, 92));
+    texto.setPosition(sf::Vector2f(10, 10));
 }
 
 void MenuScene::finalizar()
