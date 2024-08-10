@@ -5,13 +5,17 @@
 #include <unordered_map>
 #include <string>
 
-class TextureManager{
+class ResourceManager{
 private:
     std::unordered_map<std::string, sf::Texture> texturas;
+    std::unordered_map<std::string, sf::Font> fontes;
 public:
-    TextureManager(){};
-    ~TextureManager(){};
+    ResourceManager(){};
+    ~ResourceManager(){};
     bool loadTexture(const std::string& id, const std::string& filename);
+    bool loadFont(const std::string& id, const std::string& filename);
     sf::Texture& getTexture(const std::string& id);
+    sf::Font& getFont(const std::string& id);
+
 };
 #endif

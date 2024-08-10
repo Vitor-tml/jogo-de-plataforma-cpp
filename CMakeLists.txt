@@ -42,7 +42,7 @@ target_link_libraries(game
 
 # Copiar as DLLs para o diretório de saída
 if (MSYS)
-    message(STATUS "Sistema Windows. Copiando DLLs")
+    message(STATUS "Detectado Sistema Windows. Copiando DLLs")
     add_custom_command(TARGET game POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
            "${CMAKE_SOURCE_DIR}/libs/SFML-2.6.1/bin/openal32.dll"

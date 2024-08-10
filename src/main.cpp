@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "engine/Renderer/Renderer.h"
-#include "engine/Resourcemanager/TextureManager.h"
+#include "engine/Resourcemanager/ResourceManager.h"
 #include "game/Player/Player.h"
 #include "engine/SceneManager/SceneManager.h"
 #include "game/Scenes/Menu/MenuScene.h"
@@ -9,7 +9,7 @@ int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
 
-    TextureManager gerenciadorDeTextura;
+    ResourceManager gerenciadorDeTextura;
 
     gerenciadorDeTextura.loadTexture("jogador", "../assets/textures/knight.png");
     gerenciadorDeTextura.loadTexture("fundo", "../assets/textures/background.png");
