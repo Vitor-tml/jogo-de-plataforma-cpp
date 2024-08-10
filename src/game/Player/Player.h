@@ -6,13 +6,18 @@
 #include "../../engine/Animation/Animation.h"
 #include <map>
 
+/**
+ * @class Player
+ * @brief A classe que representa o jogador dentro do programa
+ * 
+ * A classe player encapsula a lógica de controle, física e animação do personagem principal do jogo
+ * 
+ * @author Vitor-tml
+ */
 class Player {
 private:
-    // tinha um const antes de texture, testar se isso muda algo depois
     sf::Sprite sprite;
     // Constantes de movimento
-
-    // Física
     PhysicsComponent fisica;
     bool estaNoChao;
     const float velocidadeHorizontal = 200.f;

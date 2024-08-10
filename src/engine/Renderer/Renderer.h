@@ -18,8 +18,6 @@
  * sobre a cena renderizada.
  * 
  * @author Vitor-tml
- * @date 10/08/2024
- * @version 1.0
  */
 
 class Renderer {
