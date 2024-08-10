@@ -1,23 +1,20 @@
 #include "Renderer.h"
 #include <algorithm>
 
-// Inicia o ponteiro do singleton para todas os fins
 Renderer* Renderer::singleton = nullptr;
 
-// Construtora (chamada apenas uma vez)
 Renderer::Renderer(int largura, int altura, const std::string &titulo)
     : janela(sf::VideoMode(largura, altura), titulo),
       camera(sf::FloatRect(0, 0, largura, altura)) // Inicia câmera com tamanho da janela
 {
     janela.setFramerateLimit(60);
 }
-// Apaga instância do renderizador
+
 Renderer::~Renderer()
 {
     delete singleton;
 }
 
-// Retorna instância única do gerenciador gráfico
 Renderer* Renderer::getRenderer(int largura, int altura, const std::string& titulo)
 {
     if(singleton == nullptr)
@@ -26,14 +23,11 @@ Renderer* Renderer::getRenderer(int largura, int altura, const std::string& titu
     return singleton;
 }
 
-
-// Adiciona elementos renderizáveis na pilha de renderização
 void Renderer::addDrawable(const sf::Drawable &drawable, int camada)
 {
     drawables.push_back(std::make_pair(&drawable, camada));
 }
 
-// Limpa pilha de renderizaçõa
 void Renderer::clearDrawables()
 {
     drawables.clear();
@@ -54,7 +48,6 @@ void Renderer::setTamanhoCamera(float largura, float altura)
     camera.setSize(altura, largura);
 }
 
-// Ordena (por camadas) e renderiza os elementos da pilha
 void Renderer::render()
 {
     janela.clear(sf::Color::Black);
@@ -78,7 +71,6 @@ void Renderer::render()
     janela.display();
 }
 
-// Verifica se a janela do jogo foi fechada
 bool Renderer::isOpen()
 {
     sf::Event evento;
