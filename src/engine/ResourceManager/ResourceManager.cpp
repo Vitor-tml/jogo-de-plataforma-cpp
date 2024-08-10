@@ -1,6 +1,15 @@
 #include "ResourceManager.h"
 #include <iostream>
 
+ResourceManager* ResourceManager::singleton = nullptr;
+ResourceManager* ResourceManager::getInstance()
+{
+    if(singleton == nullptr)
+        singleton = new ResourceManager;
+
+    return singleton;
+}
+
 bool ResourceManager::loadTexture(const std::string& id, const std::string& filename){
     sf::Texture textura;
     if(textura.loadFromFile(filename)){
@@ -28,6 +37,7 @@ bool ResourceManager::loadFont(const std::string& id, const std::string& filenam
     exit(1);         // Fechar o programa se erro
     // return false; // Tratar erro na main
 }
+
 sf::Font& ResourceManager::getFont(const std::string& id)
 {
     return fontes.at(id);
