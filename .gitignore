@@ -14,6 +14,9 @@
 # Diretórios de bibliotecas
 /libs/SFML-2.6.1/
 
+# Diretório do vscode
+/.vs-code
+
 # Diretórios de configuração do CMake
 /CMakeFiles/
 /CMakeCache.txt
