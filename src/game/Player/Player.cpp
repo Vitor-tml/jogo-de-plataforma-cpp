@@ -25,6 +25,7 @@ Player::Player(sf::Texture& textura)
     sprite.setOrigin(sf::Vector2f(16, 16));
     sprite.setPosition(100, 100);
 }
+
 void Player::update(float deltaTime)
 {
     userInput();
@@ -35,8 +36,10 @@ void Player::update(float deltaTime)
     sprite.setTextureRect(animacaoAtual->getFrameAtual());
 
 }
+
 void Player::userInput()
 {
+    // Zera velocidade horizontal para não ter aceleração infinita
     velocidade.x = 0;
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
@@ -59,6 +62,7 @@ void Player::userInput()
         animacaoAtual = &parado;
     }
 }
+
 sf::Sprite& Player::getSprite()
 {
     return sprite;
