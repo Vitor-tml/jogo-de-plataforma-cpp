@@ -12,7 +12,6 @@ int main()
 
     ResourceManager* gerenciadorDeRecursos = ResourceManager::getInstance();
     
-    teste.loadFromFile("../assets/textures/knight.png");
     gerenciadorDeRecursos->loadTexture("jogador", "../assets/textures/knight.png");
     gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
