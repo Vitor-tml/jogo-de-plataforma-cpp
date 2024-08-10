@@ -9,17 +9,16 @@ int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
 
-    ResourceManager gerenciadorDeTextura;
-
-    gerenciadorDeTextura.loadTexture("jogador", "../assets/textures/knight.png");
-    gerenciadorDeTextura.loadTexture("fundo", "../assets/textures/background.png");
-    gerenciadorDeTextura.loadTexture("plataforma", "../assets/textures/plataforma.png");
-    Player jogador(gerenciadorDeTextura.getTexture("jogador"));
+    ResourceManager* gerenciadorDeRecursos = gerenciadorDeRecursos;
+    gerenciadorDeRecursos->loadTexture("jogador", "../assets/textures/knight.png");
+    gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
+    gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
+    Player jogador(gerenciadorDeRecursos->getTexture("jogador"));
     sf::Sprite fundo;
-    fundo.setTexture(gerenciadorDeTextura.getTexture("fundo"));
+    fundo.setTexture(gerenciadorDeRecursos->getTexture("fundo"));
     fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
     sf::Sprite plataforma;
-    plataforma.setTexture(gerenciadorDeTextura.getTexture("plataforma"));
+    plataforma.setTexture(gerenciadorDeRecursos->getTexture("plataforma"));
     plataforma.setPosition(300, 500);
     sf::Clock tempo;
     float deltaTime;

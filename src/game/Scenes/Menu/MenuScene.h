@@ -5,6 +5,7 @@
 #include "../../../engine/SceneManager/SceneManager.h"
 #include "../../../engine/SceneManager/Scene.h"
 #include "../../../engine/Renderer/Renderer.h"
+#include "../../../engine/ResourceManager/ResourceManager.h"
 
 class MenuScene : public Scene {
 private:

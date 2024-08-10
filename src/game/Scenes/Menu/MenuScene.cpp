@@ -2,18 +2,14 @@
 #include <iostream>
 MenuScene::MenuScene()
 {
-
+    ResourceManager::getInstance()->loadFont("Menu", "../assets/fonts/Revorioum.ttf");
 }
 
 void MenuScene::inicializar()
 {
-    if(!fonte.loadFromFile("../assets/fonts/Revorioum.ttf"))
-    {
-        std::cerr << "Problema ao carregar fontes! " << std::endl;
-        exit(1);
-    }
+    ResourceManager* gerenciadorDeRecursos = ResourceManager::getInstance();
 
-    texto.setFont(fonte);
+    texto.setFont(ResourceManager::getInstance()->getFont("Menu"));
     texto.setString("Menu");
     texto.setCharacterSize(30);
     texto.setFillColor(sf::Color (69, 60, 92));
@@ -22,7 +18,7 @@ void MenuScene::inicializar()
 
 void MenuScene::finalizar()
 {
-
+    
 }
 
 void MenuScene::atualizar(float deltaTime)
