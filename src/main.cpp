@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "engine/Renderer/Renderer.h"
 #include "engine/Resourcemanager/ResourceManager.h"
 #include "game/Player/Player.h"
@@ -9,10 +10,15 @@ int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
 
-    ResourceManager* gerenciadorDeRecursos = gerenciadorDeRecursos;
+    ResourceManager* gerenciadorDeRecursos = ResourceManager::getInstance();
+    
+    sf::Texture teste;
+    teste.loadFromFile("../assets/textures/knight.png");
     gerenciadorDeRecursos->loadTexture("jogador", "../assets/textures/knight.png");
     gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
+
+
     Player jogador(gerenciadorDeRecursos->getTexture("jogador"));
     sf::Sprite fundo;
     fundo.setTexture(gerenciadorDeRecursos->getTexture("fundo"));
