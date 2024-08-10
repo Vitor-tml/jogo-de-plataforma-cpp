@@ -18,7 +18,7 @@
  * sobre a cena renderizada.
  * 
  * @author Vitor-tml
- */
+     */
 
 class Renderer {
 private:
