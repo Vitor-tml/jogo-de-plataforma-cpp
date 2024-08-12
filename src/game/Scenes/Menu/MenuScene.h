@@ -16,7 +16,7 @@ public:
     ~MenuScene(){};
     void inicializar() override;
     void finalizar() override;
-    void atualizar(float deltaTime) override;
+    void atualizar() override;
     void renderizar() override;
     void processarEventos(const sf::Event& evento) override;
 };

@@ -46,7 +46,7 @@ private:
 
 public:
     /**
-     * @brief construtora do player, carrega o spritesheet do personagem
+     * @brief construtora do player, carrega o spritesheet do personagem.
      * @todo Valor padrão para ser também uma construtora sem parâmetros
      */
     Player(sf::Texture& textura);

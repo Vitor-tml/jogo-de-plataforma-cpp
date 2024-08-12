@@ -21,7 +21,7 @@ void MenuScene::finalizar()
     
 }
 
-void MenuScene::atualizar(float deltaTime)
+void MenuScene::atualizar()
 {
 
 }

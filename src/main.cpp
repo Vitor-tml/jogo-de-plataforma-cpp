@@ -1,22 +1,24 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "engine/Renderer/Renderer.h"
-#include "engine/Resourcemanager/ResourceManager.h"
-#include "game/Player/Player.h"
+
 #include "engine/SceneManager/SceneManager.h"
 #include "game/Scenes/Menu/MenuScene.h"
 #include "game/Scenes/Editor/EditorScene.h"
+#include "game/Scenes/Testes/TestScene.h"
+
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
 
     ResourceManager* gerenciadorDeRecursos = ResourceManager::getInstance();
     
+    // Carregamento de recursos -> usado em várias, deixar aqui
     gerenciadorDeRecursos->loadTexture("jogador", "../assets/textures/knight.png");
     gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
 
 
+    // Definição de elementos
     Player jogador(gerenciadorDeRecursos->getTexture("jogador"));
     sf::Sprite fundo;
     fundo.setTexture(gerenciadorDeRecursos->getTexture("fundo"));
@@ -24,23 +26,24 @@ int main()
     sf::Sprite plataforma;
     plataforma.setTexture(gerenciadorDeRecursos->getTexture("plataforma"));
     plataforma.setPosition(300, 500);
+
     sf::Clock tempo;
     float deltaTime;
 
-    SceneManager::getInstance()->mudarCena(std::make_unique<EditorScene>());
-    SceneManager::getInstance()->mudarCena(std::make_unique<MenuScene>());
+    // Declaração das cenas
+    SceneManager* gerenciadorDeCenas = SceneManager::getInstance();
+    gerenciadorDeCenas->mudarCena(std::make_unique<TestScene>());
+    gerenciadorDeCenas->mudarCena(std::make_unique<MenuScene>());
+    gerenciadorDeCenas->mudarCena(std::make_unique<EditorScene>());
+    
+    /**
+     * "Cena" atual
+     * @todo Implementar aqui gerenciador de cenas 
+    */    
     while(janela->isOpen())
     {
-        deltaTime = tempo.restart().asSeconds();
-        sf::Event evento;
-        Renderer::getRenderer()->addDrawable(fundo, 0);
-        Renderer::getRenderer()->addDrawable(plataforma, 1);
-        Renderer::getRenderer()->addDrawable(jogador.getSprite(), 2);
-        Renderer::getRenderer()->setTamanhoCamera(400, 400);
-        Renderer::getRenderer()->setCentroCamera(jogador.getSprite().getPosition().x,jogador.getSprite().getPosition().y);
-        jogador.update(deltaTime);
-        Renderer::getRenderer()->render();
-        // SceneManager::getInstance()->renderizarCenaAtual();
+        gerenciadorDeCenas->atualizarCenaAtual();
+        gerenciadorDeCenas->renderizarCenaAtual();
     }
         
     return 0;

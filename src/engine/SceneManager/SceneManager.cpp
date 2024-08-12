@@ -51,10 +51,10 @@ void SceneManager::desempilharCena()
 }
 
 // Atualiza cena atual de acondo com o tempo
-void SceneManager::atualizarCenaAtual(float deltaTime)
+void SceneManager::atualizarCenaAtual()
 {
     if(!cenas.empty()){
-        cenas.top()->atualizar(deltaTime);
+        cenas.top()->atualizar();
     }
 }
 

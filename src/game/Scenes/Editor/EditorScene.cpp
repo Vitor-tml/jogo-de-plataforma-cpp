@@ -25,7 +25,7 @@ void EditorScene::finalizar()
 
 }
 
-void EditorScene::atualizar(float deltaTime)
+void EditorScene::atualizar()
 {
 
 }

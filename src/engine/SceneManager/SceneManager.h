@@ -30,7 +30,7 @@ public:
     void mudarCena(std::unique_ptr<Scene> novaCena);
     void empilharCena(std::unique_ptr<Scene> novaCena);
     void desempilharCena();
-    void atualizarCenaAtual(float deltaTime);
+    void atualizarCenaAtual();
     void renderizarCenaAtual();
     void processarEventosCenaAtual(const sf::Event& evento);
 };
