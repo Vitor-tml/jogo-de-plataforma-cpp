@@ -7,7 +7,7 @@ TestScene::TestScene():
     fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
 
     // Settando movimento de câmera
-    Renderer::getRenderer()->setTamanhoCamera(400, 300); // mesma proporção da janela
+    //Renderer::getRenderer()->setTamanhoCamera(400, 300); // Colocar na inicialização
 }
 
 void TestScene::renderizar()
@@ -24,4 +24,9 @@ void TestScene::atualizar()
 {
     deltaTime = tempo.restart().asSeconds();
     jogador.update(deltaTime);
+}
+
+void TestScene::processarEventos(const sf::Event& evento)
+{
+    std::cout << "Cena: Teste" << std::endl;
 }

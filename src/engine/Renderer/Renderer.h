@@ -58,11 +58,14 @@ public:
      */
     void render();
     /**
-     * @brief Verifica se algum evento de fechar tela foi executado, se sim, muda o estado da janela para fechado
+     * @brief Retorna estado da janela
      * @return true para janela fechada false para aberta
      */
     bool isOpen();
-
+    /**
+     * @brief Fecha a janela de execução
+     */
+    void close();
     /**
      * @brief Move o que a janela mostra para o usuário
      * @param x coordenada x do centro da view/câmera
@@ -80,6 +83,12 @@ public:
      * @note Adequa a view à janela de renderização, pode distorcer a imagem.
      */
     void setTamanhoCamera(float largura, float altura);
+    /**
+     * @brief Lê os eventos do jogo (interações com a janela)
+     * @return True caso tenha ocorrido algum evento, false se todos os eventos já foram tratados
+     * @param evento objeto do tipo Event passado por parâmetro para receber os eventos não tratados
+     */
+    bool pollEvent(sf::Event &evento);
 };
 
 #endif

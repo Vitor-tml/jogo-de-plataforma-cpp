@@ -1,6 +1,7 @@
 #ifndef _MENU_H
 #define _MENU_H
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../../../engine/SceneManager/SceneManager.h"
 #include "../../../engine/SceneManager/Scene.h"
@@ -11,6 +12,7 @@ class MenuScene : public Scene {
 private:
     sf::Font fonte;
     sf::Text texto;
+    sf::Sprite fundo;
 public:
     MenuScene();
     ~MenuScene(){};

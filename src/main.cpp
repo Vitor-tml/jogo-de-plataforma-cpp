@@ -16,25 +16,13 @@ int main()
     gerenciadorDeRecursos->loadTexture("jogador", "../assets/textures/knight.png");
     gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
-
-
-    // Definição de elementos
-    Player jogador(gerenciadorDeRecursos->getTexture("jogador"));
-    sf::Sprite fundo;
-    fundo.setTexture(gerenciadorDeRecursos->getTexture("fundo"));
-    fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
-    sf::Sprite plataforma;
-    plataforma.setTexture(gerenciadorDeRecursos->getTexture("plataforma"));
-    plataforma.setPosition(300, 500);
-
-    sf::Clock tempo;
-    float deltaTime;
+    gerenciadorDeRecursos->loadTexture("menu", "../assets/textures/cenaMenu.png");
 
     // Declaração das cenas
     SceneManager* gerenciadorDeCenas = SceneManager::getInstance();
-    gerenciadorDeCenas->mudarCena(std::make_unique<TestScene>());
-    gerenciadorDeCenas->mudarCena(std::make_unique<MenuScene>());
-    gerenciadorDeCenas->mudarCena(std::make_unique<EditorScene>());
+    //gerenciadorDeCenas->mudarCena(std::make_unique<EditorScene>());
+    gerenciadorDeCenas->empilharCena(std::make_unique<TestScene>());
+    gerenciadorDeCenas->empilharCena(std::make_unique<MenuScene>());
     
     /**
      * "Cena" atual
@@ -42,6 +30,14 @@ int main()
     */    
     while(janela->isOpen())
     {
+        sf::Event evento;
+        while(janela->pollEvent(evento))
+        {
+            gerenciadorDeCenas->processarEventosCenaAtual(evento);
+            if(evento.type == sf::Event::Closed)
+                janela->close();            
+        }
+        
         gerenciadorDeCenas->atualizarCenaAtual();
         gerenciadorDeCenas->renderizarCenaAtual();
     }

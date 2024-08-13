@@ -1,5 +1,6 @@
 #ifndef _TEST_H
 #define _TEST_H
+#include <iostream>
 #include "../../../engine/SceneManager/Scene.h"
 #include "../../../engine/Renderer/Renderer.h"
 #include "../../../engine/ResourceManager/ResourceManager.h"
@@ -18,7 +19,7 @@ public:
     // temporário
     void inicializar(){}
     void finalizar(){}
-    void processarEventos(const sf::Event& evento){}
+    void processarEventos(const sf::Event& evento);
     void pausar() {}
     void retomar(){}
 };

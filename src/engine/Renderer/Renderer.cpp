@@ -73,11 +73,14 @@ void Renderer::render()
 
 bool Renderer::isOpen()
 {
-    sf::Event evento;
-    while (janela.pollEvent(evento))
-    {
-        if (evento.type == sf::Event::Closed)
-            janela.close();
-    }
     return janela.isOpen();
+}
+
+void Renderer::close()
+{
+    janela.close();
+}
+bool Renderer::pollEvent(sf::Event &evento)
+{
+    return janela.pollEvent(evento);
 }
