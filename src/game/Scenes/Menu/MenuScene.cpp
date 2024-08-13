@@ -31,14 +31,16 @@ void MenuScene::atualizar()
 
 void MenuScene::renderizar()
 {
-    Renderer::getRenderer()->addDrawable(fundo, 0);
-    Renderer::getRenderer()->addDrawable(texto, 1);
-    Renderer::getRenderer()->render();
+    std::cout << "Cena: Menu" << std::endl;
+    Renderer* renderizador = Renderer::getRenderer();
+    renderizador->clearDrawables();
+    renderizador->addDrawable(fundo, 0);
+    renderizador->addDrawable(texto, 1);
+    renderizador->render();
 }
 
 void MenuScene::processarEventos(const sf::Event& evento)
 {
-    std::cout << "Cena: Menu" << std::endl;
     
     if(evento.type == sf::Event::MouseButtonPressed){
         if(evento.mouseButton.button == sf::Mouse::Left)
