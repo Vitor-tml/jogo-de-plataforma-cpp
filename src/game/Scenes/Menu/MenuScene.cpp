@@ -31,7 +31,6 @@ void MenuScene::atualizar()
 
 void MenuScene::renderizar()
 {
-    std::cout << "Cena: Menu" << std::endl;
     Renderer* renderizador = Renderer::getRenderer();
     renderizador->clearDrawables();
     renderizador->addDrawable(fundo, 0);
@@ -46,7 +45,6 @@ void MenuScene::processarEventos(const sf::Event& evento)
         if(evento.mouseButton.button == sf::Mouse::Left)
         {
             sf::Vector2f posicaoClique(evento.mouseButton.x, evento.mouseButton.y);
-            std::cout << "Jhonny eh gay!" << std::endl;
             SceneManager::getInstance()->desempilharCena();
         }
     }

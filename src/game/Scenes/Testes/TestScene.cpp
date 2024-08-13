@@ -14,7 +14,6 @@ void TestScene::renderizar()
 {
     Renderer* gerenciadorGrafico = Renderer::getRenderer();
 
-    std::cout << "Cena: Teste" << std::endl;
     gerenciadorGrafico->clearDrawables();
     gerenciadorGrafico->addDrawable(fundo, 0);
     gerenciadorGrafico->addDrawable(jogador.getSprite(), 1);
