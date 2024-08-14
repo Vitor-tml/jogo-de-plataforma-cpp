@@ -57,7 +57,7 @@ public:
      */
     void update(float deltaTime);
     /**
-     * @brief Atualiza animação e estado do player de acordo com a entrada do usuário
+     * @brief Atualiza animação e estado do player de acordo com a entrada do usuário, responsável pela movimentação do personagem.
      */
     void userInput();
     /**
