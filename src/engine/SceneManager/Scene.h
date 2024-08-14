@@ -7,6 +7,9 @@ class Scene{
 public:
     sf::Clock tempo;
     float deltaTime;
+public:
+    Scene() {};
+    virtual ~Scene() {};
     virtual void inicializar() = 0;
     virtual void finalizar() = 0;
     virtual void atualizar() = 0;

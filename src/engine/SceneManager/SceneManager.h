@@ -31,7 +31,7 @@ public:
      */
     void mudarCena(std::unique_ptr<Scene> novaCena);
     /**
-     * @brief Adiciona cena a fila pausando cena atual 
+     * @brief Adiciona cena a fila pausando cena atual
      */
     void empilharCena(std::unique_ptr<Scene> novaCena);
     /**

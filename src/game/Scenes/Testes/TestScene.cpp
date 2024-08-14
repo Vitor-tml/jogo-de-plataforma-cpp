@@ -4,12 +4,13 @@ TestScene::TestScene():
     jogador(ResourceManager::getInstance()->getTexture("jogador")),
     fundo(ResourceManager::getInstance()->getTexture("fundo"))
 {
-    fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
-
-    // Settando movimento de câmera
-    //Renderer::getRenderer()->setTamanhoCamera(400, 300); // Colocar na inicialização
 }
 
+void TestScene::inicializar()
+{
+    fundo.setTextureRect(sf::IntRect(0, 200, 900, 600));
+    //Renderer::getRenderer()->setTamanhoCamera(400, 300);
+}
 void TestScene::renderizar()
 {
     Renderer* gerenciadorGrafico = Renderer::getRenderer();

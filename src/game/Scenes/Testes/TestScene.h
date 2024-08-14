@@ -15,9 +15,9 @@ public:
     ~TestScene(){};
     void renderizar() override;
     void atualizar() override;
+    void inicializar();
 
     // temporário
-    void inicializar(){}
     void finalizar(){}
     void processarEventos(const sf::Event& evento);
     void pausar() {}
