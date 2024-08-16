@@ -17,6 +17,9 @@
 # Diretório do vscode
 /.vs-code
 
+# Documentação Doxygen
+/docs/html
+
 # Diretórios de configuração do CMake
 /CMakeFiles/
 /CMakeCache.txt
