@@ -18,14 +18,14 @@
  * sobre a cena renderizada.
  * 
  * @author Vitor-tml
-     */
+*/
 
 class Renderer {
 private:
     static Renderer* singleton;
     sf::RenderWindow janela;
     sf::View camera;
-    std::vector<std::pair<const sf::Drawable*, int>> drawables; // vetor de pares de int e drawable
+    std::vector<std::pair<const sf::Drawable*, int>> drawables; ///< vetor de pares de int e drawable
     Renderer(int largura, int altura, const std::string& titulo);
     ~Renderer();
 public:
