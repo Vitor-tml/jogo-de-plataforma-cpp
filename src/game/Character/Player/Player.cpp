@@ -1,6 +1,6 @@
 #include "Player.h"
 Player::Player(sf::Texture& textura)
-:   Character(20), // Definindo vida do player
+:   Character(100, 100, 20), // Definindo vida do player
     estaNoChao(false),
     fisica(), // Mudar os valores padroes para cada entidade
     parado(textura,{sf::IntRect(0, 0, 32, 32),
@@ -24,14 +24,15 @@ Player::Player(sf::Texture& textura)
     sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
     sprite.setScale(sf::Vector2f(3.f, 3.f));
     sprite.setOrigin(sf::Vector2f(16, 16));
-    sprite.setPosition(100, 100);
+    sprite.setPosition(x, y);
 }
 
 void Player::executar(float deltaTime)
 {
     userInput();
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
-
+    x = sprite.getPosition().x;
+    y = sprite.getPosition().y;
     // Atualiza animaçaão atual
     animacaoAtual->update(deltaTime);
     sprite.setTextureRect(animacaoAtual->getFrameAtual());
@@ -45,12 +46,12 @@ void Player::userInput()
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
         velocidade.x -= velocidadeHorizontal;
-        sprite.setScale(sf::Vector2f(-3 , 3));
+        sprite.setScale(sf::Vector2f(-3 , 3)); ///< Muda a direção da sprite
         animacaoAtual = &andando;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
         velocidade.x += velocidadeHorizontal;
-        sprite.setScale(sf::Vector2f(3 , 3));
+        sprite.setScale(sf::Vector2f(3 , 3)); ///< Muda a direção da sprite
         animacaoAtual = &andando;
     }
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && estaNoChao){

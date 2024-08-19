@@ -22,7 +22,7 @@ public:
      * @brief Construtor da classe Character.
      * @param vidas Número inicial de vidas do personagem. O valor padrão é 0.
      */
-    Character(int vidas = 0) : Entity(), nVidas(vidas) {};
+    Character(int x = 0, int y = 0, int vidas = 0) : Entity(x, y), nVidas(vidas) {};
 
     /**
      * @brief Destruidor da classe Character.

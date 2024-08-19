@@ -22,7 +22,7 @@ public:
      * @brief Construtor padrão da classe Entity.
      * Inicializa as coordenadas x e y para 0.
      */
-    Entity(): x(0), y(0) {};
+    Entity(int xx = 0, int yy = 0): x(xx), y(yy) {};
     /**
      * @brief Destruidor da classe Entity.
      * O destruidor é virtual para garantir a destruição correta das classes derivadas, nessa classe coloca as coordenadas em -1.
