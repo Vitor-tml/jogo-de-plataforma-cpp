@@ -207,10 +207,10 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="Operations[3]" type="UMLOperation" guid="TEU+jZQeWEq1GD3xCktbVwAA">
-<XPD:ATTR name="Name" type="string">renderizar</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">desenhar</XPD:ATTR>
 <XPD:REF name="Owner">M9od5EzxP0e0sVn8RZKlKwAA</XPD:REF>
 <XPD:ATTR name="#Parameters" type="integer">1</XPD:ATTR>
-<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="D7ShV1tVyE+wd3AsT3E1kwAA">
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="L/Fyhfbyo0OVJH3M+0cXrwAA">
 <XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">void</XPD:ATTR>
 <XPD:REF name="BehavioralFeature">TEU+jZQeWEq1GD3xCktbVwAA</XPD:REF>

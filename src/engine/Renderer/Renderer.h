@@ -46,7 +46,7 @@ public:
      * @brief Adiciona elementos na fila de renderização.
      * @param drawable qualquer objeto desenhável do SFML (sprite, texto, etc)
      * @param camada ordem em que vai ser renderizado, os últimos são os que aparecem por cima
-     * 
+     * @todo Inserir um método para colocar a camada por ordem de inserção.
      */
     void addDrawable(const sf::Drawable& drawable, int camada = 0); // Adiciona um elemento para ser desenhado
     /**
