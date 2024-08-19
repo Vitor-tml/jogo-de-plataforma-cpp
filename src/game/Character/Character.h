@@ -28,7 +28,7 @@ public:
      * @brief Destruidor da classe Character.
      * O destruidor é virtual para garantir a destruição correta das classes derivadas.
      */
-    virtual ~Character();
+    virtual ~Character() {};
 
     /**
      * @brief Método puramente virtual para executar a lógica do personagem.

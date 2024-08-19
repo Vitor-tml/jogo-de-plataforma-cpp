@@ -4,7 +4,7 @@
 #include "../../../engine/SceneManager/Scene.h"
 #include "../../../engine/Renderer/Renderer.h"
 #include "../../../engine/ResourceManager/ResourceManager.h"
-#include "../../Player/Player.h"
+#include "../../Character/Player/Player.h"
 
 class TestScene : public Scene{
 private:

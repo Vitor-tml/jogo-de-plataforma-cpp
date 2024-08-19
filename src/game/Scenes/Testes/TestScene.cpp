@@ -25,7 +25,7 @@ void TestScene::renderizar()
 void TestScene::atualizar()
 {
     deltaTime = tempo.restart().asSeconds();
-    jogador.update(deltaTime);
+    jogador.executar(deltaTime);
 }
 
 void TestScene::processarEventos(const sf::Event& evento)
