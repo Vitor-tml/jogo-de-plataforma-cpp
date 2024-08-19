@@ -9,6 +9,7 @@
  * 
  * Esta é uma classe abstrata que define a interface para todas as entidades no jogo.
  * As classes derivadas devem implementar os métodos puros virtuais `executar` e `salvar`.
+ * @see Ente
  * @author Vitor-tml
  */
 class Entity : public Ente {
