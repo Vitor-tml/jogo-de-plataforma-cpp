@@ -13,9 +13,9 @@ void Phase::executar()
     // deltaTime = tempo.restart().asSeconds();
     // jogador.executar(deltaTime);
 
-    std::cout << "Cheguei aqui!" << std::endl;
+    
     gerenciadorGrafico->clearDrawables();
-    gerenciadorGrafico->addDrawable(shape);
+    gerenciadorGrafico->addDrawable(shape, 0);
     gerenciadorGrafico->render();
     
     // jogador.renderizar();

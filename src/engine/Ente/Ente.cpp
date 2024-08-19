@@ -1,5 +1,5 @@
 #include "Ente.h"
-
+#include <iostream>
 int Ente::cont = 0;
 Renderer* Ente::gerenciadorGrafico = Renderer::getRenderer();
 
