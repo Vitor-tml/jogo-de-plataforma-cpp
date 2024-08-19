@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Renderer/Renderer.h"
 /**
+ * @class Ente
  * @brief Classe base para todos os elementos visuais do jogo.
  * 
  * A classe Ente é responsável por representar elementos visuais
@@ -26,7 +27,11 @@ public:
      * @brief Destrutora da classe-base Ente.
      * Apenas para criar explicitamente o método.
      */
-    ~Ente();
+    virtual ~Ente();
+    /**
+     * @brief Método puramente virtual para executar a lógica do objeto
+     * Deve ser implementada nas classes filhas para trabalhar a lógica do objeto.
+     */
     virtual void executar() = 0;
     /**
      * @brief Método que renderiza o objeto na tela
