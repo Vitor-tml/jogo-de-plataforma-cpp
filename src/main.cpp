@@ -5,7 +5,7 @@
 #include "game/Scenes/Menu/MenuScene.h"
 #include "game/Scenes/Editor/EditorScene.h"
 #include "game/Scenes/Testes/TestScene.h"
-
+#include "game/Levels/Phase.h"
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
@@ -18,16 +18,27 @@ int main()
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
     gerenciadorDeRecursos->loadTexture("menu", "../assets/textures/cenaMenu.png");
 
-    // Declaração das cenas
+    Phase fase;
+
+    while (janela->isOpen())
+    {
+        sf::Event evento;
+        while(janela->pollEvent(evento))
+        {
+            if(evento.type == sf::Event::Closed)
+                janela->close();
+            fase.executar();
+        }
+    }
+    
+
+    // Antigo sistema de cenas
+    /*
     SceneManager* gerenciadorDeCenas = SceneManager::getInstance();
     //gerenciadorDeCenas->mudarCena(std::make_unique<EditorScene>());
     gerenciadorDeCenas->empilharCena(std::make_unique<TestScene>());
     gerenciadorDeCenas->empilharCena(std::make_unique<MenuScene>());
-    
-    /**
-     * "Cena" atual
-     * @todo Implementar aqui gerenciador de cenas 
-    */    
+       
     while(janela->isOpen())
     {
         sf::Event evento;
@@ -41,6 +52,7 @@ int main()
         gerenciadorDeCenas->atualizarCenaAtual();
         gerenciadorDeCenas->renderizarCenaAtual();
     }
+    */
         
     return 0;
 }

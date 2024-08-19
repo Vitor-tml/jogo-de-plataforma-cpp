@@ -16,13 +16,18 @@ protected:
     const int id;                        //< Indentificador para permanência de objeto
     static int cont;                     //< Contador de ID
     static Renderer* gerenciadorGrafico; //< Instância única do renderer
-    sf::Sprite figura;                   //< Shape a ser desenhado do elemento.
+    sf::Sprite shape;                   //< Shape a ser desenhado do elemento.
 public:
     /**
      * @brief Construtora da classe-base Ente.
      * Inicia o atríbuto id e inicia "figura" com um place holder.
      */
     Ente();
+    /**
+     * @brief Construtora com parâmetros da classe base Ente
+     * Inicia o atríbuto id define a textura do sprite
+     */
+    Ente(sf::Texture figura);
     /**
      * @brief Destrutora da classe-base Ente.
      * Apenas para criar explicitamente o método.

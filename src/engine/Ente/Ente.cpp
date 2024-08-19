@@ -6,9 +6,14 @@ Renderer* Ente::gerenciadorGrafico = Renderer::getRenderer();
 Ente::Ente():
     id(++cont)
 {
-    sf::Texture placeHolder;
-    placeHolder.create(64, 64);
-    figura.setTexture(placeHolder);
+    // sf::Texture placeHolder;
+    // placeHolder.create(64, 64);
+    // shape.setTexture(placeHolder);
+}
+Ente::Ente(sf::Texture figura):
+    id(++cont)
+{
+    shape.setTexture(figura);
 }
 Ente::~Ente()
 {
@@ -18,5 +23,5 @@ Ente::~Ente()
 void Ente::renderizar()
 {
     // O objeto deve apenas se inserir na fila de renderização, a renderização final fica por parte da cena
-    gerenciadorGrafico->addDrawable(figura);
+    gerenciadorGrafico->addDrawable(shape);
 }
