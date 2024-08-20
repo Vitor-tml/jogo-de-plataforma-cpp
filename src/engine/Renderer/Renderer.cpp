@@ -1,8 +1,9 @@
 #include "Renderer.h"
 #include <algorithm>
+#include <iostream>
 
 Renderer* Renderer::singleton = nullptr;
-
+int Renderer::camadaJanela = 0;
 Renderer::Renderer(int largura, int altura, const std::string &titulo)
     : janela(sf::VideoMode(largura, altura), titulo),
       camera(sf::FloatRect(0, 0, largura, altura)) // Inicia câmera com tamanho da janela
@@ -25,13 +26,15 @@ Renderer* Renderer::getRenderer(int largura, int altura, const std::string& titu
 
 void Renderer::addDrawable(const sf::Drawable &drawable, int camada)
 {
-    if(camada == 0 && !drawables.empty()) ///< Caso a camada seja 0 e não seja a primeira da fila, coloca como última da fila
-        camada = drawables.size();
-    drawables.push_back(std::make_pair(&drawable, camada));
+    // if(camada == 0 && !drawables.empty()) ///< Caso a camada seja 0 e não seja a primeira da fila, coloca como última da fila
+    //     camada = drawables.size();
+    //std::cout << "Rederizando camada: " << camadaJanela << std::endl;
+    drawables.push_back(std::make_pair(&drawable, camadaJanela++));
 }
 
 void Renderer::clearDrawables()
 {
+    camadaJanela = 0;
     drawables.clear();
 }
 

@@ -22,6 +22,7 @@
 
 class Renderer {
 private:
+    static int camadaJanela;
     static Renderer* singleton;
     sf::RenderWindow janela;
     sf::View camera;

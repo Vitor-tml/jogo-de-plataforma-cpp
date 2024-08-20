@@ -10,14 +10,18 @@ Phase::Phase() :
 
 void Phase::executar()
 {
-    // deltaTime = tempo.restart().asSeconds();
-    // jogador.executar(deltaTime);
+    deltaTime = tempo.restart().asSeconds();
+    jogador.executar(deltaTime);
 
     
     gerenciadorGrafico->clearDrawables();
-    gerenciadorGrafico->addDrawable(shape, 0);
+    // gerenciadorGrafico->addDrawable(shape, 0);
+    renderizar();
+    gerenciadorGrafico->addDrawable(jogador.getSprite(), 1);
     gerenciadorGrafico->render();
     
-    // jogador.renderizar();
-    // gerenciadorGrafico->setCentroCamera(jogador.getSprite().getPosition().x, jogador.getSprite().getPosition().y);
+
+    //jogador.renderizar();
+    // Onde colocar o setCentroCamera?
+    //gerenciadorGrafico->setCentroCamera(jogador.getSprite().getPosition().x, jogador.getSprite().getPosition().y);
 }

@@ -27,7 +27,7 @@ public:
      * @brief Construtora com parâmetros da classe base Ente
      * Inicia o atríbuto id define a textura do sprite
      */
-    Ente(sf::Texture figura);
+    Ente(sf::Texture& figura);
     /**
      * @brief Destrutora da classe-base Ente.
      * Apenas para criar explicitamente o método.
@@ -43,5 +43,9 @@ public:
      * Adiciona a sprite do objeto na fila de renderização do gerenciador gráfico.
      */
     void renderizar();
+    
+    // Debug
+    void setTexture(sf::Texture& textura) { shape.setTexture(textura);};
+    sf::Sprite getSprite() const { return shape; };
 };
 #endif

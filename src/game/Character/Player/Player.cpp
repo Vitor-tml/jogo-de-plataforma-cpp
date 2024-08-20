@@ -1,6 +1,6 @@
 #include "Player.h"
 Player::Player(sf::Texture& textura)
-:   Character(100, 100, 20), // Definindo vida do player
+:   Character(100, 100, 20, textura), // Definindo vida do player
     estaNoChao(false),
     fisica(), // Mudar os valores padroes para cada entidade
     parado(textura,{sf::IntRect(0, 0, 32, 32),

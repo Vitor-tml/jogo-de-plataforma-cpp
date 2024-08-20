@@ -6,13 +6,15 @@ Renderer* Ente::gerenciadorGrafico = Renderer::getRenderer();
 Ente::Ente():
     id(++cont)
 {
-    // sf::Texture placeHolder;
-    // placeHolder.create(64, 64);
-    // shape.setTexture(placeHolder);
+    std::cout << "Construtora sem parametro(ente)" << std::endl;
+    sf::Texture placeHolder;
+    placeHolder.create(64, 64);
+    shape.setTexture(placeHolder);
 }
-Ente::Ente(sf::Texture figura):
+Ente::Ente(sf::Texture& figura):
     id(++cont)
 {
+    std::cout << "Construtora com parametro(ente)" << std::endl;
     shape.setTexture(figura);
 }
 Ente::~Ente()

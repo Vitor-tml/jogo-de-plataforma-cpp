@@ -13,10 +13,11 @@ private:
     float deltaTime;
 public:
     Phase();
-    ~Phase() {};
+    virtual ~Phase() noexcept {};
     virtual void executar();
     void gerenciarColisoes() {};
     void criarInimigos() {};
     void criarObstaculos() {};
+    
 };
 #endif

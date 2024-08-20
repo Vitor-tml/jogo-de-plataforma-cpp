@@ -27,6 +27,7 @@ int main()
         {
             if(evento.type == sf::Event::Closed)
                 janela->close();
+            
             fase.executar();
         }
     }

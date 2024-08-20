@@ -23,7 +23,7 @@ bool ResourceManager::loadTexture(const std::string& id, const std::string& file
 
 sf::Texture& ResourceManager::getTexture(const std::string& id)
 {
-    std::cout << "Carregando textura: " << id << std::endl;
+    // std::cout << "Carregando textura: " << id << std::endl;
     sf::Texture* placeHolder = new sf::Texture;
     placeHolder->create(64, 64);
     // Colocar tratamento caso não tenha a textura

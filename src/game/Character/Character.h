@@ -23,7 +23,8 @@ public:
      * @param vidas Número inicial de vidas do personagem. O valor padrão é 0.
      */
     Character(int x = 0, int y = 0, int vidas = 0) : Entity(x, y), nVidas(vidas) {};
-
+    Character(int x, int y, int vidas, sf::Texture& textura) : Entity(x, y, textura), nVidas(vidas) {};
+ 
     /**
      * @brief Destruidor da classe Character.
      * O destruidor é virtual para garantir a destruição correta das classes derivadas.
