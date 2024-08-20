@@ -19,7 +19,6 @@
  * 
  * @author Vitor-tml
 */
-
 class Renderer {
 private:
     static int camadaJanela;
