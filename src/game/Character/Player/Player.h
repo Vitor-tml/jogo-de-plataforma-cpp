@@ -19,10 +19,6 @@
 class Player : public Character{
 private:
     /**
-     * @brief "Desenho" na tela, que representa o jogador,
-     */
-    sf::Sprite sprite;
-    /**
      * @brief Componente que controla a física do player
      * @see PhysicsComponent
      */
@@ -77,5 +73,10 @@ public:
      * @todo Implementar quando decidido sobre a lógica de permanencia e controle de arquivos.
      */
     void salvar() override { std::cout << "Sem metodo de salvar ainda." << std::endl;};
+    /**
+     * @brief Retorna posição do personagem
+     * 
+     */
+    sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
 };
 #endif

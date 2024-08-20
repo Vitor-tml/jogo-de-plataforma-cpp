@@ -26,10 +26,10 @@ int main()
         while(janela->pollEvent(evento))
         {
             if(evento.type == sf::Event::Closed)
-                janela->close();
-            
-            fase.executar();
+                janela->close();    
         }
+        
+        fase.executar();
     }
     
 

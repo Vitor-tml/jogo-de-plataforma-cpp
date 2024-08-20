@@ -16,7 +16,7 @@ protected:
     const int id;                        //< Indentificador para permanência de objeto
     static int cont;                     //< Contador de ID
     static Renderer* gerenciadorGrafico; //< Instância única do renderer
-    sf::Sprite shape;                   //< Shape a ser desenhado do elemento.
+    sf::Sprite sprite;                   //< Shape a ser desenhado do elemento.
 public:
     /**
      * @brief Construtora da classe-base Ente.
@@ -42,10 +42,16 @@ public:
      * @brief Método que renderiza o objeto na tela
      * Adiciona a sprite do objeto na fila de renderização do gerenciador gráfico.
      */
-    void renderizar();
-    
-    // Debug
-    void setTexture(sf::Texture& textura) { shape.setTexture(textura);};
-    sf::Sprite getSprite() const { return shape; };
+    void renderizar(int camada = 0);
+    /**
+     * @brief Retorna o sprite do Ente
+     * @return sf::Sprite 
+     */
+    sf::Sprite getSprite() const;
+    /**
+     * @brief Nova textura do Ente
+     * @param textura nova textura do ente
+     */
+    void setTexture(sf::Texture& textura);
 };
 #endif

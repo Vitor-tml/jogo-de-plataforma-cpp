@@ -33,10 +33,9 @@ void Player::executar(float deltaTime)
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
-    // Atualiza animaçaão atual
+    // Atualiza animação atual
     animacaoAtual->update(deltaTime);
     sprite.setTextureRect(animacaoAtual->getFrameAtual());
-
 }
 
 void Player::userInput()
