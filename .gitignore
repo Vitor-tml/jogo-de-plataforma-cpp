@@ -40,3 +40,6 @@
 # Arquivos de sistema
 .DS_Store
 Thumbs.db
+
+# Temporário uml
+/docs/uml/diagrama-de-classes.~ml
