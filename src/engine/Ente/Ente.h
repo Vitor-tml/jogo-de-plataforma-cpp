@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../Renderer/Renderer.h"
+#include "../ResourceManager/ResourceManager.h"
 /**
  * @class Ente
  * @brief Classe base para todos os elementos visuais do jogo.
@@ -15,7 +16,8 @@ class Ente{
 protected:
     const int id;                        //< Indentificador para permanência de objeto
     static int cont;                     //< Contador de ID
-    static Renderer* gerenciadorGrafico; //< Instância única do renderer
+    static Renderer* gGrafico; //< Instância única do renderer
+    static ResourceManager* gRecursos;   //< Inst&ancia única do gerenciador de recursos
     sf::Sprite sprite;                   //< Shape a ser desenhado do elemento.
 public:
     /**

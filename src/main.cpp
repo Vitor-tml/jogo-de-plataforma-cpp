@@ -6,19 +6,20 @@
 #include "game/Scenes/Editor/EditorScene.h"
 #include "game/Scenes/Testes/TestScene.h"
 #include "game/Levels/Phase.h"
+#include "game/Menu/Menu.h"
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
 
     ResourceManager* gerenciadorDeRecursos = ResourceManager::getInstance();
     
-    // Carregamento de recursos -> usado em várias, deixar aqui
+    // Carregamento de recursos -> usado em várias -> Perguntar para o professor onde deve ser colocado?
     gerenciadorDeRecursos->loadTexture("jogador", "../assets/textures/knight.png");
     gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
     gerenciadorDeRecursos->loadTexture("menu", "../assets/textures/cenaMenu.png");
 
-    Phase fase;
+    Menu menu;
 
     while (janela->isOpen())
     {
@@ -29,7 +30,7 @@ int main()
                 janela->close();    
         }
         
-        fase.executar();
+        menu.executar();
     }
     
 

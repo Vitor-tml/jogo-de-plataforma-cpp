@@ -29,7 +29,7 @@ sf::Texture& ResourceManager::getTexture(const std::string& id)
     // Colocar tratamento caso não tenha a textura
     if(texturas.find(id) == texturas.end())
     {
-        std::cout << "A textura "<< id << " ainda nao foi carregada!" << std::endl;
+        std::cout << "A textura "<< id << " ainda nao foi carregada! Adicionando placeHolder" << std::endl;
         return *placeHolder;
     }
     else

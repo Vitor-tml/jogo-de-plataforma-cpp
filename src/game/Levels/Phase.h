@@ -8,7 +8,6 @@
 class Phase : public Ente {
 private:
     Player jogador;
-    static ResourceManager* gerenciadorDeRecursos;
     sf::Clock tempo;
     float deltaTime;
 public:

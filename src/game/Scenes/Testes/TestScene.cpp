@@ -13,13 +13,13 @@ void TestScene::inicializar()
 }
 void TestScene::renderizar()
 {
-    Renderer* gerenciadorGrafico = Renderer::getRenderer();
+    Renderer* gGrafico = Renderer::getRenderer();
 
-    gerenciadorGrafico->clearDrawables();
-    gerenciadorGrafico->addDrawable(fundo, 0);
-    gerenciadorGrafico->addDrawable(jogador.getSprite(), 1);
-    gerenciadorGrafico->setCentroCamera(jogador.getSprite().getPosition().x, jogador.getSprite().getPosition().y);
-    gerenciadorGrafico->render();
+    gGrafico->clearDrawables();
+    gGrafico->addDrawable(fundo, 0);
+    gGrafico->addDrawable(jogador.getSprite(), 1);
+    gGrafico->setCentroCamera(jogador.getSprite().getPosition().x, jogador.getSprite().getPosition().y);
+    gGrafico->render();
 }
 
 void TestScene::atualizar()
