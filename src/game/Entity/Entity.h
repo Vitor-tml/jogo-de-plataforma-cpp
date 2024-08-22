@@ -22,7 +22,7 @@ public:
      * @brief Construtor padrão da classe Entity.
      * Inicializa as coordenadas x e y para 0.
      */
-    Entity(int xx = 0, int yy = 0): Ente(), x(xx), y(yy) {sprite.setOrigin(x, y);};
+    Entity(int xx = 0, int yy = 0): Ente(), x(xx), y(yy) {sprite.setPosition(x, y);};
     Entity(int xx, int yy, sf::Texture& textura): Ente(textura), x(xx), y(yy) {{sprite.setOrigin(x, y);}};
     /**
      * @brief Destruidor da classe Entity.

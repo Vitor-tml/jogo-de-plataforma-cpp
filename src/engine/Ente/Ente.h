@@ -19,6 +19,7 @@ protected:
     static Renderer* gGrafico; //< Instância única do renderer
     static ResourceManager* gRecursos;   //< Inst&ancia única do gerenciador de recursos
     sf::Sprite sprite;                   //< Shape a ser desenhado do elemento.
+    sf::RectangleShape caixaColisao;
 public:
     /**
      * @brief Construtora da classe-base Ente.

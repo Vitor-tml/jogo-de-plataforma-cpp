@@ -25,7 +25,17 @@ Ente::~Ente()
 void Ente::renderizar(int camada)
 {
     // O objeto deve apenas se inserir na fila de renderização, a renderização final fica por parte da cena
+
+    // DEBUG -> caixas de colisão
+    sf::FloatRect areaColisao = sprite.getGlobalBounds();
+    caixaColisao.setSize(sf::Vector2f(areaColisao.width, areaColisao.height));
+    caixaColisao.setPosition(areaColisao.left, areaColisao.top);
+    caixaColisao.setOutlineColor(sf::Color::Red);
+    caixaColisao.setOutlineThickness(2);
+    caixaColisao.setFillColor(sf::Color::Transparent);
+
     gGrafico->addDrawable(sprite, camada);
+    gGrafico->addDrawable(caixaColisao, camada + 1);
 }
 
 sf::Sprite Ente::getSprite() const
