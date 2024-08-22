@@ -3,11 +3,10 @@
 
 #include <SFML/Graphics.hpp>
 #include "../Character.h"
-#include "../../../engine/Renderer/Renderer.h"
-#include "../../../engine/PhysicsComponent/PhysicsComponent.h"
+#include "../Player/Player.h"
 
-class Player;
-class Enemy {
+
+class Enemy : public Character {
 private:
     sf::RectangleShape shape;                   // Para o teste
 
@@ -18,8 +17,11 @@ public:
     Enemy();
     ~Enemy();                                   // Transformar em virtual futuramente
 
-    void drawTestEnemy(Renderer& renderer);
-    void executar();                            // Transformar em virtual futuramente
+    void inimigoTeste(Renderer& renderer);
+    void mover(float deltaTime);
+    void executar(float deltaTime);              // Transformar em virtual futuramente
     void danificar(Player* jogador);            // Transformar em virtual futuramente
+    void executar() {}
+    void salvar() {}
 };
 #endif

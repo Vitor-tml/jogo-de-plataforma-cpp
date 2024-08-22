@@ -72,6 +72,14 @@ public:
      * @brief Método responsável pela permanência de objeto da classe player.
      * @todo Implementar quando decidido sobre a lógica de permanencia e controle de arquivos.
      */
+    int getVida();
+    /**
+     * @brief Retorna vida atual do player.
+     */
+    void setVida(int vida);
+    /**
+     * @brief Altera o valor da vida atual do player.
+     */
     void salvar() override { std::cout << "Sem metodo de salvar ainda." << std::endl;};
     /**
      * @brief Retorna posição do personagem

@@ -18,8 +18,9 @@ void Phase::executar()
     gGrafico->clearDrawables();
     renderizar();
     jogador.renderizar();
-    inimigo.drawTestEnemy(*gGrafico); // Cria o inimigo de teste
-    inimigo.executar();
+    inimigo.inimigoTeste(*gGrafico); // Cria o inimigo de teste
+    inimigo.executar(deltaTime);
+    inimigo.renderizar();
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
     gGrafico->render();
     
