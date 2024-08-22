@@ -1,8 +1,9 @@
 #ifndef _ENEMY_H
 #define _ENEMY_H
 
+#include "../Character.h"
 class Player;
-class Enemy{
+class Enemy: public Character {
 protected:
     int nivelMaldade;
 public:

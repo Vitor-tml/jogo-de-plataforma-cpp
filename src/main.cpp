@@ -2,25 +2,26 @@
 #include <iostream>
 
 #include "engine/SceneManager/SceneManager.h"
+#include "engine/CollisionManager/CollisionManager.h"
 #include "game/Scenes/Menu/MenuScene.h"
 #include "game/Scenes/Editor/EditorScene.h"
 #include "game/Scenes/Testes/TestScene.h"
 #include "game/Levels/Phase.h"
 #include "game/Menu/Menu.h"
+#include "game/Obstacles/Obstacle.h"
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
 
-    ResourceManager* gerenciadorDeRecursos = ResourceManager::getInstance();
+    ResourceManager* gRecursos = ResourceManager::getInstance();
     
     // Carregamento de recursos -> usado em várias -> Perguntar para o professor onde deve ser colocado?
-    gerenciadorDeRecursos->loadTexture("jogador", "../assets/textures/knight.png");
-    gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
-    gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
-    gerenciadorDeRecursos->loadTexture("menu", "../assets/textures/cenaMenu.png");
+    gRecursos->loadTexture("jogador", "../assets/textures/knight.png");
+    gRecursos->loadTexture("fundo", "../assets/textures/background.png");
+    gRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
+    gRecursos->loadTexture("menu", "../assets/textures/cenaMenu.png");
 
-    Menu menu;
-
+    Phase menu;
     while (janela->isOpen())
     {
         sf::Event evento;

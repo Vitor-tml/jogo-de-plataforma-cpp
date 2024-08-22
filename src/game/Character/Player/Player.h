@@ -27,7 +27,7 @@ private:
     const float velocidadeHorizontal = 200.f;
     /**
      * Velocidade vertical e horizontal do player.
-     */
+    */
     sf::Vector2f velocidade;
     /**
      * @brief Componente que controlam o estado atual da sprite do player, gerando a animação.
