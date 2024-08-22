@@ -4,10 +4,12 @@
 #include "../../engine/Ente/Ente.h"
 #include "../../engine/ResourceManager/ResourceManager.h"
 #include "../Character/Player/Player.h"
+#include "../Character/Enemy/Enemy.h"
 
 class Phase : public Ente {
 private:
     Player jogador;
+    Enemy inimigo;
     sf::Clock tempo;
     float deltaTime;
 public:

@@ -19,7 +19,7 @@ int main()
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
     gerenciadorDeRecursos->loadTexture("menu", "../assets/textures/cenaMenu.png");
 
-    Menu menu;
+    Phase menu;
 
     while (janela->isOpen())
     {
