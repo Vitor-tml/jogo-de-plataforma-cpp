@@ -23,7 +23,7 @@ public:
      * Inicializa as coordenadas x e y para 0.
      */
     Entity(int xx = 0, int yy = 0): Ente(), x(xx), y(yy) {sprite.setPosition(x, y);};
-    Entity(int xx, int yy, sf::Texture& textura): Ente(textura), x(xx), y(yy) {{sprite.setOrigin(x, y);}};
+    Entity(int xx, int yy, float offSetColisorX, float offSetColisorY, sf::Texture& textura): Ente(textura, offSetColisorX, offSetColisorY), x(xx), y(yy) {{sprite.setOrigin(x, y);}};
     /**
      * @brief Destruidor da classe Entity.
      * O destruidor é virtual para garantir a destruição correta das classes derivadas, nessa classe coloca as coordenadas em -1.

@@ -8,7 +8,7 @@ class Obstacle : public Entity {
 protected:
     bool danoso;
 public:
-    Obstacle(int xx, int yy, sf::Texture& textura): Entity(xx, yy, textura) {};
+    Obstacle(int xx, int yy, sf::Texture& textura): Entity(xx, yy, 0, 0, textura) {};
     ~Obstacle(){};
     virtual void executar(){};                  // Depois colocar virtual pura
     virtual void obstacular(Player *jogador){}; // Depois colocar virtual pura

@@ -20,6 +20,8 @@ protected:
     static ResourceManager* gRecursos;   //< Inst&ancia única do gerenciador de recursos
     sf::Sprite sprite;                   //< Shape a ser desenhado do elemento.
     sf::RectangleShape caixaColisao;
+    sf::CircleShape pontoOrigem;
+    sf::Vector2f offSetColisao;
 public:
     /**
      * @brief Construtora da classe-base Ente.
@@ -30,7 +32,7 @@ public:
      * @brief Construtora com parâmetros da classe base Ente
      * Inicia o atríbuto id define a textura do sprite
      */
-    Ente(sf::Texture& figura);
+    Ente(sf::Texture& figura, float offSetx = 0, float OffSety = 0);
     /**
      * @brief Destrutora da classe-base Ente.
      * Apenas para criar explicitamente o método.
@@ -51,6 +53,7 @@ public:
      * @return sf::Sprite 
      */
     sf::Sprite getSprite() const;
+    sf::RectangleShape getCaixaColisao() const;
     /**
      * @brief Nova textura do Ente
      * @param textura nova textura do ente

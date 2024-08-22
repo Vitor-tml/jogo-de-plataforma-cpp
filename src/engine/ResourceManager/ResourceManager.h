@@ -21,6 +21,7 @@ private:
     ResourceManager(){}; ///< Construtora privada para evitar outras instâncias
     std::unordered_map<std::string, sf::Texture> texturas; ///< Conjunto de texturas (chave, textura)
     std::unordered_map<std::string, sf::Font> fontes;///< Conjunto de fontes (chave, fonte)
+    std::unordered_map<std::string, sf::Image> imagens;///< Conjunto de fontes (chave, fonte)
 public:
     ~ResourceManager(){};
     /**
@@ -44,9 +45,20 @@ public:
      * @param id identificador da fonte a ser usado posteriormente.
      * @param filename Caminho relativo para o arquivo da fonte.
      * @note O caminho é relativo ao executável do programa.
-     * @return true se a fonte foi carregada com sucesso, false caso não.
+     * @return true se a fonte foi carregada com sucesso.
+     * @return false se não foi possível carregar a fonte
      */
     bool loadFont(const std::string& id, const std::string& filename);
+    /**
+     * @brief Carrega imagem e armazena com um indentificador
+     * @param id identificador da imagem a ser usado posteriormente.
+     * @param filename Caminho relativo para o arquivo da fonte.
+     * @note O caminho é relativo ao executável do programa.
+     * @return true se a imagem foi carregada com sucesso
+     * @return false se não foi possível carregar a imagem
+     * @todo Adicionar poka-yoke caso a imagem não possa ser carregada
+     */
+    bool loadImage(const std::string& id, const std::string& filename);
     /**
      * @brief Retorna uma textura posteriormente carregada, a partir de um identificador.
      * @param id Identificador da textura já armazenada.
@@ -59,5 +71,11 @@ public:
      * @return Referência a fonte relativa ao ID.
      */
     sf::Font& getFont(const std::string& id);
+    /**
+     * @brief Retorna uma imagem posteriormente carregada, a partir de um identificador.
+     * @param id Identificador da imagem já armazenada.
+     * @return Referência a imagem relativa ao ID.
+     */
+    sf::Image& getImage(const std::string& id);
 };
 #endif

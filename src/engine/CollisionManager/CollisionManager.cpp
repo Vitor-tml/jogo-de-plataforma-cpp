@@ -35,7 +35,7 @@ void CollisionManager::verificaColisaoObstaculo()
     }
     for(Obstacle* obstaculo : lObstaculos)
     {
-        if(jogador->getSprite().getGlobalBounds().intersects(obstaculo->getSprite().getGlobalBounds()))
+        if(jogador->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds()))
             std::cout << "Jogador colidiu com um obstaculo!" << std::endl;
     }
 }
