@@ -6,7 +6,10 @@ Enemy::Enemy(sf::Texture& textura) :
 nivelMaldade(1),
 Character(100, 100, 20, textura),
 estaNoChao(false),
-fisica()
+fisica(),
+posXInicial(sprite.getPosition().x),
+limiteDireita(posXInicial + distancia),
+limiteEsquerda(posXInicial - distancia)
 {
     sprite.setTexture(textura);
     sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
@@ -17,14 +20,8 @@ fisica()
 
 Enemy::~Enemy() {}
 
-bool indoDireita = true;
 void Enemy::mover(float deltaTime) {
-    static float velocidadeHorizontal = 100.0f; // Pixels por segundo
-    static float distancia = 200.0f; // Distância total do movimento
-    static float posXInicial = sprite.getPosition().x;
-
-    float limiteDireita = posXInicial + distancia;
-    float limiteEsquerda = posXInicial - distancia;
+    posXInicial = sprite.getPosition().x;
 
     if (indoDireita) {
         sprite.move(velocidadeHorizontal * deltaTime, 0.0f);

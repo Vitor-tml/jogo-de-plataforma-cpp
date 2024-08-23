@@ -10,20 +10,25 @@ class Enemy : public Character {
 private:
     PhysicsComponent fisica;
     bool estaNoChao;
-    const float velocidadeHorizontal = 200.f;
     sf::Vector2f velocidade;
+
+    bool indoDireita = true;                       // Utilizado para movimentar o inimigo
+    float posXInicial;
+    const float velocidadeHorizontal = 100.0f;     // Pixels por segundo
+    const float distancia = 200.0f;                // Distância total do movimento
+    const float limiteDireita;
+    const float limiteEsquerda;
 
 protected:
     int nivelMaldade;
 
 public:
     Enemy(sf::Texture& textura);
-    ~Enemy();                                   // Transformar em virtual futuramente
+    ~Enemy();                                       // Transformar em virtual futuramente
 
-    void inimigoTeste(Renderer& renderer);
     void mover(float deltaTime);
-    void executar(float deltaTime);              // Transformar em virtual futuramente
-    void danificar(Player* jogador);            // Transformar em virtual futuramente
+    void executar(float deltaTime);                 // Transformar em virtual futuramente
+    void danificar(Player* jogador);                // Transformar em virtual futuramente
     void executar() {}
     void salvar() {}
 };
