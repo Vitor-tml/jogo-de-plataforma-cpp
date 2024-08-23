@@ -18,6 +18,7 @@ int main()
     gerenciadorDeRecursos->loadTexture("fundo", "../assets/textures/background.png");
     gerenciadorDeRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
     gerenciadorDeRecursos->loadTexture("menu", "../assets/textures/cenaMenu.png");
+    gerenciadorDeRecursos->loadTexture("inimigo", "../assets/textures/skeleton.png");
 
     Phase menu;
 

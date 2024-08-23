@@ -8,13 +8,16 @@
 
 class Enemy : public Character {
 private:
-    sf::RectangleShape shape;                   // Para o teste
+    PhysicsComponent fisica;
+    bool estaNoChao;
+    const float velocidadeHorizontal = 200.f;
+    sf::Vector2f velocidade;
 
 protected:
     int nivelMaldade;
 
 public:
-    Enemy();
+    Enemy(sf::Texture& textura);
     ~Enemy();                                   // Transformar em virtual futuramente
 
     void inimigoTeste(Renderer& renderer);

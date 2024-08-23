@@ -2,40 +2,39 @@
 
 #include <iostream>
 
-Enemy::Enemy() :
-nivelMaldade(1)
+Enemy::Enemy(sf::Texture& textura) :
+nivelMaldade(1),
+Character(100, 100, 20, textura),
+estaNoChao(false),
+fisica()
 {
-
+    sprite.setTexture(textura);
+    sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
+    sprite.setScale(sf::Vector2f(3.f, 3.f));
+    sprite.setOrigin(sf::Vector2f(16, 16));
+    sprite.setPosition(x, y);
 }
 
 Enemy::~Enemy() {}
-
-void Enemy::inimigoTeste(Renderer& renderer) {
-    float groundY = 492; // Talvez usar um getGround() pra não deixar hardcoded
-    shape.setSize(sf::Vector2f(50.0f, 100.0f));
-    shape.setFillColor(sf::Color::Red);
-    shape.setPosition(300.0f, groundY - shape.getSize().y / 2);
-    renderer.addDrawable(shape);
-}
 
 bool indoDireita = true;
 void Enemy::mover(float deltaTime) {
     static float velocidadeHorizontal = 100.0f; // Pixels por segundo
     static float distancia = 200.0f; // Distância total do movimento
-    static float posXInicial = shape.getPosition().x;
+    static float posXInicial = sprite.getPosition().x;
 
     float limiteDireita = posXInicial + distancia;
     float limiteEsquerda = posXInicial - distancia;
 
     if (indoDireita) {
         velocidadeHorizontal += 200.0f;
-        shape.move(velocidadeHorizontal * deltaTime, 0.0f);
-        if (shape.getPosition().x >= limiteDireita) {
+        sprite.move(velocidadeHorizontal * deltaTime, 0.0f);
+        if (sprite.getPosition().x >= limiteDireita) {
             indoDireita = false;
         }
     } else {
-        shape.move(-velocidadeHorizontal * deltaTime, 0.0f);
-        if (shape.getPosition().x <= limiteEsquerda) {
+        sprite.move(-velocidadeHorizontal * deltaTime, 0.0f);
+        if (sprite.getPosition().x <= limiteEsquerda) {
             indoDireita = true;
         }
     }
@@ -43,7 +42,10 @@ void Enemy::mover(float deltaTime) {
 
 void Enemy::executar(float deltaTime)
 {
+    fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     this->mover(deltaTime);
+    x = sprite.getPosition().x;
+    y = sprite.getPosition().y;
 }
 
 void Enemy::danificar(Player* jogador)

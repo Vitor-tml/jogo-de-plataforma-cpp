@@ -2,7 +2,8 @@
 
 Phase::Phase() :
     Ente(gRecursos->getTexture("fundo")),
-    jogador(gRecursos->getTexture("jogador"))
+    jogador(gRecursos->getTexture("jogador")),
+    inimigo(gRecursos->getTexture("inimigo"))
 {
     // Iniciar local?
     //sprite.setOrigin()
@@ -18,7 +19,6 @@ void Phase::executar()
     gGrafico->clearDrawables();
     renderizar();
     jogador.renderizar();
-    inimigo.inimigoTeste(*gGrafico); // Cria o inimigo de teste
     inimigo.executar(deltaTime);
     inimigo.renderizar();
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
