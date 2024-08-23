@@ -43,10 +43,20 @@ void Entity::inicializarCaixaColisao()
     caixaColisao.setFillColor(sf::Color::Transparent);
     atualizarCaixaColisao();
 }
+void Entity::inicializarCaixaColisao(int largura, int altura)
+{
+    sf::Vector2f tamanho(largura, altura);
+    caixaColisao.setSize(tamanho);
+    caixaColisao.setOrigin(sprite.getOrigin());
+    caixaColisao.setOutlineColor(sf::Color::Red);
+    caixaColisao.setOutlineThickness(2);
+    caixaColisao.setFillColor(sf::Color::Transparent);
+    atualizarCaixaColisao();
+}
 
 void Entity::atualizarCaixaColisao()
 {
     // Considera a origem do sprite e a posição ao ajustar a hitbox
     sf::Vector2f pos = sprite.getPosition();
-    caixaColisao.setPosition(pos.x + offSetColisao.x/2, pos.y + offSetColisao.y/2);
+    caixaColisao.setPosition(pos.x + offSetColisao.x/2, pos.y + offSetColisao.y);
 }

@@ -49,7 +49,7 @@ public:
     void renderizarCaixaColisao();
 
     void inicializarCaixaColisao();
-
+    void inicializarCaixaColisao(int largura, int altura);
     void atualizarCaixaColisao();
 };
 

@@ -25,7 +25,7 @@ Player::Player(sf::Texture& textura)
     sprite.setOrigin(sf::Vector2f(48, 48)); // Centro da sprite
     sprite.setPosition(x, y);
 
-    inicializarCaixaColisao();
+    inicializarCaixaColisao(40, 58); // Tamanho real da sprite
 }
 
 void Player::executar(float deltaTime)
