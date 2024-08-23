@@ -27,7 +27,6 @@ void Enemy::mover(float deltaTime) {
     float limiteEsquerda = posXInicial - distancia;
 
     if (indoDireita) {
-        velocidadeHorizontal += 200.0f;
         sprite.move(velocidadeHorizontal * deltaTime, 0.0f);
         if (sprite.getPosition().x >= limiteDireita) {
             indoDireita = false;
