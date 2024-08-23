@@ -15,7 +15,7 @@ public:
     CollisionManager(): jogador(nullptr)    {};
     CollisionManager(Player *p): jogador(p) {};
     ~CollisionManager();
-    void incluirObstaculos(Obstacle *p);
+    void incluirObstaculo(Obstacle *p);
     void incluirInimigos(Enemy *p);
     void verificaColisaoObstaculo();
     // void verificaColisao();

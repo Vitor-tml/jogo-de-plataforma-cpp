@@ -6,7 +6,7 @@ CollisionManager::~CollisionManager()
     lInimigos.clear();
 }
 
-void CollisionManager::incluirObstaculos(Obstacle *p)
+void CollisionManager::incluirObstaculo(Obstacle *p)
 {
     if(p == nullptr)
     {

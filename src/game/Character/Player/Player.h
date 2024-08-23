@@ -78,5 +78,6 @@ public:
      * 
      */
     sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
+
 };
 #endif

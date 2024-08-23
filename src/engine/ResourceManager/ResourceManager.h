@@ -18,12 +18,12 @@
 class ResourceManager{
 private:
     static ResourceManager *singleton; ///< Instância singleton do gerenciador de recursos
-    ResourceManager(){}; ///< Construtora privada para evitar outras instâncias
     std::unordered_map<std::string, sf::Texture> texturas; ///< Conjunto de texturas (chave, textura)
     std::unordered_map<std::string, sf::Font> fontes;///< Conjunto de fontes (chave, fonte)
     std::unordered_map<std::string, sf::Image> imagens;///< Conjunto de fontes (chave, fonte)
+    ResourceManager(){}; ///< Construtora privada para evitar outras instâncias
+    ~ResourceManager(){ delete singleton; };
 public:
-    ~ResourceManager(){};
     /**
      * @brief Retorna o ponteiro para a instância singleton do gerenciador
      * @throw Na primeira chamar aloca o gerenciador.

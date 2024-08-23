@@ -1,7 +1,7 @@
 #include "Player.h"
 // Sprite real -> 40x58
 Player::Player(sf::Texture& textura)
-:   Character(100, 100, 56, 38, 20, textura), // Definindo vida do player
+:   Character(100, 100, 56, 28, 20, textura), // Definindo vida do player
     estaNoChao(false),
     fisica(), // Mudar os valores padrões para cada entidade
     parado(textura, {sf::IntRect(0, 0, 96, 96),
@@ -21,11 +21,11 @@ Player::Player(sf::Texture& textura)
     animacaoAtual(&parado)
 {   
     // Define animações
-    sprite.setTexture(textura);
     sprite.setTextureRect(sf::IntRect(0, 0, 96, 96));
     sprite.setOrigin(sf::Vector2f(48, 48)); // Centro da sprite
     sprite.setPosition(x, y);
-    caixaColisao.setOrigin(sprite.getOrigin());
+
+    inicializarCaixaColisao();
 }
 
 void Player::executar(float deltaTime)
@@ -34,6 +34,9 @@ void Player::executar(float deltaTime)
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
+
+    atualizarCaixaColisao();
+
     // Atualiza animação atual
     animacaoAtual->update(deltaTime);
     sprite.setTextureRect(animacaoAtual->getFrameAtual());
