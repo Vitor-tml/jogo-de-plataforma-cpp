@@ -7,6 +7,11 @@
 #include "game/Scenes/Testes/TestScene.h"
 #include "game/Levels/Phase.h"
 #include "game/Menu/Menu.h"
+// Teste da lista de Entidades:
+#include "lists/ListaEntidades/ListaEntidades.h"
+#include "game/Entity/Entity.h"
+#include "game/Character/Enemy/Enemy.h"
+#include <SFML/Graphics.hpp>
 
 int main()
 {
@@ -22,6 +27,18 @@ int main()
     gerenciadorDeRecursos->loadTexture("inimigo", "../assets/textures/skeleton.png");
 
     Phase menu;
+
+    // Teste da lista de Entidades:
+    sf::Texture textura;
+    ListaEntidades lista(10);
+    lista.incluir(new Enemy(textura));
+    lista.incluir(new Enemy(textura));
+    lista.incluir(new Enemy(textura));
+    std::cout << "Lista de entidades:" << std::endl;
+    lista.imprimirElementos();
+    std::cout << "Percorrendo entidades:" << std::endl;
+    lista.percorrer();
+
 
     while (janela->isOpen())
     {

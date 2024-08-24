@@ -23,7 +23,7 @@ void ListaEntidades::imprimirElementos() {
     Elemento<Entity>* pAux = listaEntidades.getPrimeiroElemento();
 
     while (pAux != nullptr) {
-        std::cout << "Entidade: " << pAux->getInfo()->getInfo() << std::endl;
+        std::cout << "Entidade: " << pAux->getInfo() << std::endl;
         pAux = pAux->getProximoElemento();
     }
 }
