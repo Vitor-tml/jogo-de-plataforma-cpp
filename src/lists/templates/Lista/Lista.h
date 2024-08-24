@@ -26,8 +26,6 @@ public:
     void listarElementos();
 };
 
-#include "Lista.h"
-
 template<class TL>
 Lista<TL>::Lista() {
     inicializarLista(100, 0);
