@@ -18,10 +18,3 @@ void ListaEntidades::incluir(Entity* pEntidade) {
 void ListaEntidades::imprimirElementos() {
     listaEntidades.listarElementos();
 }
-
-Entity* ListaEntidades::getPrimeiroElemento() {
-    if (listaEntidades.getPrimeiroElemento() != nullptr) {
-        return listaEntidades.getPrimeiroElemento()->getInfo();
-    }
-    return nullptr;
-}

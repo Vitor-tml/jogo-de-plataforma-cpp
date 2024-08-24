@@ -3,6 +3,7 @@
 
 #include "../templates/Lista/Lista.h"
 #include "../../game/Entity/Entity.h"
+#include <string>
 
 class ListaEntidades {
 private:
@@ -15,7 +16,6 @@ public:
 
     void incluir(Entity* pEntidade);
     void imprimirElementos();
-    Entity* getPrimeiroElemento();
 };
 
 #endif

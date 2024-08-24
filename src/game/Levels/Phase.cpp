@@ -9,6 +9,7 @@ Phase::Phase() :
     // Iniciar local?
     //sprite.setOrigin()
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
+    
     listaEntidades.incluir(&jogador);
     listaEntidades.incluir(&inimigo);
 }
