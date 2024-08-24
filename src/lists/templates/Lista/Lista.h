@@ -1,23 +1,31 @@
 #ifndef LISTA_H
 #define LISTA_H
 
+#include "../Elemento/Elemento.h"
 #include <iostream>
 
-#include "../Elemento/Elemento.h"
-
-template<class TE>
+template<class TIPO>
 class Lista {
 private:
-    Elemento<TE>* pPrimeiro;
-    Elemento<TE>* pUltimo;
+    int maxElementos;
+    int countElementos;
+
+    ElementoLista<TIPO>* pPrimeiroElemento;
+    ElementoLista<TIPO>* pUltimoElemento;
 
 public:
+    Lista(int numEle);
     Lista();
     ~Lista();
 
-    Elemento<TE>* getPrimeiro();
-    void incluir(TE* pInfo);
-    void percorrer();
+    void inicializarLista(int numEle, int countEle);
+    
+    ElementoLista<TIPO>* getPrimeiroElemento();
+
+    void incluirElemento(ElementoLista<TIPO>* pEle);
+    void listarElementos();
 };
+
+#include "Lista.cpp"
 
 #endif
