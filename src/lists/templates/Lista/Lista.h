@@ -10,8 +10,8 @@ private:
     int maxElementos;
     int countElementos;
 
-    ElementoLista<TL>* pPrimeiroElemento;
-    ElementoLista<TL>* pUltimoElemento;
+    Elemento<TL>* pPrimeiroElemento;
+    Elemento<TL>* pUltimoElemento;
 
 public:
     Lista(int numEle);
@@ -20,9 +20,9 @@ public:
 
     void inicializarLista(int numEle, int countEle);
     
-    ElementoLista<TL>* getPrimeiroElemento();
+    Elemento<TL>* getPrimeiroElemento();
 
-    void incluirElemento(ElementoLista<TL>* pEle);
+    void incluirElemento(Elemento<TL>* pEle);
     void listarElementos();
 };
 

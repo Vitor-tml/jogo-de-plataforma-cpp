@@ -7,6 +7,7 @@
 #include "game/Scenes/Testes/TestScene.h"
 #include "game/Levels/Phase.h"
 #include "game/Menu/Menu.h"
+
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");

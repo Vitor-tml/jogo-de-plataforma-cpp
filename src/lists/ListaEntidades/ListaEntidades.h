@@ -1,22 +1,22 @@
 #ifndef LISTAENTIDADES_H
 #define LISTAENTIDADES_H
 
-#include "../templates/Lista.h"
-#include "../../game/Entity/Entidade.h"
+#include "../templates/Lista/Lista.h"
+#include "../../game/Entity/Entity.h"
 
 class ListaEntidades {
 private:
-    Lista<Entidade> listaEntidades;
+    Lista<Entity> listaEntidades;
 
 public:
     ListaEntidades();
     ListaEntidades(int maxElementos);
     ~ListaEntidades();
 
-    void incluir(Entidade* pEntidade);
+    void incluir(Entity* pEntidade);
     void percorrer();
     void imprimirElementos();
-    Entidade* getPrimeiroElemento();
+    Entity* getPrimeiroElemento();
 };
 
 #endif

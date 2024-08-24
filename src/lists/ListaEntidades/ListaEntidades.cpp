@@ -9,8 +9,8 @@ ListaEntidades::ListaEntidades(int maxElementos) : listaEntidades(maxElementos) 
 
 ListaEntidades::~ListaEntidades() {}
 
-void ListaEntidades::incluir(Entidade* pEntidade) {
-    Elemento<Entidade>* novoElemento = new Elemento<Entidade>();
+void ListaEntidades::incluir(Entity* pEntidade) {
+    Elemento<Entity>* novoElemento = new Elemento<Entity>();
     novoElemento->setInfo(pEntidade);
     listaEntidades.incluirElemento(novoElemento);
 }
@@ -20,7 +20,7 @@ void ListaEntidades::percorrer() {
 }
 
 void ListaEntidades::imprimirElementos() {
-    Elemento<Entidade>* pAux = listaEntidades.getPrimeiroElemento();
+    Elemento<Entity>* pAux = listaEntidades.getPrimeiroElemento();
 
     while (pAux != nullptr) {
         std::cout << "Entidade: " << pAux->getInfo()->getInfo() << std::endl;
@@ -28,7 +28,7 @@ void ListaEntidades::imprimirElementos() {
     }
 }
 
-Entidade* ListaEntidades::getPrimeiroElemento() {
+Entity* ListaEntidades::getPrimeiroElemento() {
     if (listaEntidades.getPrimeiroElemento() != nullptr) {
         return listaEntidades.getPrimeiroElemento()->getInfo();
     }
