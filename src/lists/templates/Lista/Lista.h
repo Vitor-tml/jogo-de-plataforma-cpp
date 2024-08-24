@@ -4,14 +4,14 @@
 #include "../Elemento/Elemento.h"
 #include <iostream>
 
-template<class TIPO>
+template<class TL>
 class Lista {
 private:
     int maxElementos;
     int countElementos;
 
-    ElementoLista<TIPO>* pPrimeiroElemento;
-    ElementoLista<TIPO>* pUltimoElemento;
+    ElementoLista<TL>* pPrimeiroElemento;
+    ElementoLista<TL>* pUltimoElemento;
 
 public:
     Lista(int numEle);
@@ -20,9 +20,9 @@ public:
 
     void inicializarLista(int numEle, int countEle);
     
-    ElementoLista<TIPO>* getPrimeiroElemento();
+    ElementoLista<TL>* getPrimeiroElemento();
 
-    void incluirElemento(ElementoLista<TIPO>* pEle);
+    void incluirElemento(ElementoLista<TL>* pEle);
     void listarElementos();
 };
 

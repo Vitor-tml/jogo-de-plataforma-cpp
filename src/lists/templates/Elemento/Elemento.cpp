@@ -1,41 +1,41 @@
-template<class TIPO>
-Elemento<TIPO>::Elemento() {
+template<class TE>
+Elemento<TE>::Elemento() {
     pInfoElemento = nullptr;
     pProximoElemento = nullptr;
     pAnteriorElemento = nullptr;
 }
 
-template<class TIPO>
-Elemento<TIPO>::~Elemento() {
+template<class TE>
+Elemento<TE>::~Elemento() {
     delete pInfoElemento;
 }
 
-template<class TIPO>
-void Elemento<TIPO>::setInfo(TIPO* pInfoEle) {
+template<class TE>
+void Elemento<TE>::setInfo(TE* pInfoEle) {
     pInfoElemento = pInfoEle;
 }
 
-template<class TIPO>
-TIPO* Elemento<TIPO>::getInfo() {
+template<class TE>
+TE* Elemento<TE>::getInfo() {
     return pInfoElemento;
 }
 
-template<class TIPO>
-void Elemento<TIPO>::setProximoElemento(Elemento<TIPO>* pProxEle) {
+template<class TE>
+void Elemento<TE>::setProximoElemento(Elemento<TE>* pProxEle) {
     pProximoElemento = pProxEle;
 }
 
-template<class TIPO>
-Elemento<TIPO>* Elemento<TIPO>::getProximoElemento() {
+template<class TE>
+Elemento<TE>* Elemento<TE>::getProximoElemento() {
     return pProximoElemento;
 }
 
-template<class TIPO>
-void Elemento<TIPO>::setAnteriorElemento(Elemento<TIPO>* pAnteEle) {
+template<class TE>
+void Elemento<TE>::setAnteriorElemento(Elemento<TE>* pAnteEle) {
     pAnteriorElemento = pAnteEle;
 }
 
-template<class TIPO>
-Elemento<TIPO>* Elemento<TIPO>::getAnteriorElemento() {
+template<class TE>
+Elemento<TE>* Elemento<TE>::getAnteriorElemento() {
     return pAnteriorElemento;
 }

@@ -1,26 +1,26 @@
 #include "Lista.h"
 
-template<class TIPO>
-Lista<TIPO>::Lista() {
+template<class TL>
+Lista<TL>::Lista() {
     inicializarLista(100, 0);
 }
 
-template<class TIPO>
-Lista<TIPO>::Lista(int maxEle) {
+template<class TL>
+Lista<TL>::Lista(int maxEle) {
     inicializarLista(maxEle, 0);
 }
 
-template<class TIPO>
-void Lista<TIPO>::inicializarLista(int maxEle, int countEle) {
+template<class TL>
+void Lista<TL>::inicializarLista(int maxEle, int countEle) {
     maxElementos = maxEle;
     countElementos = countEle;
     pPrimeiroElemento = nullptr;
     pUltimoElemento = nullptr;
 }
 
-template<class TIPO>
-Lista<TIPO>::~Lista() {
-    ElementoLista<TIPO>* pAux1 = pPrimeiroElemento, *pAux2;
+template<class TL>
+Lista<TL>::~Lista() {
+    ElementoLista<TL>* pAux1 = pPrimeiroElemento, *pAux2;
 
     while (pAux1 != nullptr) {
         pAux2 = pAux1->getProximoElemento();
@@ -32,13 +32,13 @@ Lista<TIPO>::~Lista() {
     pUltimoElemento = nullptr;
 }
 
-template<class TIPO>
-ElementoLista<TIPO>* Lista<TIPO>::getPrimeiroElemento() {
+template<class TL>
+ElementoLista<TL>* Lista<TL>::getPrimeiroElemento() {
     return pPrimeiroElemento;
 }
 
-template<class TIPO>
-void Lista<TIPO>::incluirElemento(ElementoLista<TIPO>* pEle) {
+template<class TL>
+void Lista<TL>::incluirElemento(ElementoLista<TL>* pEle) {
     if (pEle == nullptr) return;
     if (countElementos >= maxElementos) {
         std::cout << "Limite de elementos na lista já atingido!" << std::endl;
@@ -58,9 +58,9 @@ void Lista<TIPO>::incluirElemento(ElementoLista<TIPO>* pEle) {
     pEle->getInfo()->setID(countElementos);
 }
 
-template<class TIPO>
-void Lista<TIPO>::listarElementos() {
-    ElementoLista<TIPO>* pAux = pPrimeiroElemento;
+template<class TL>
+void Lista<TL>::listarElementos() {
+    ElementoLista<TL>* pAux = pPrimeiroElemento;
     while (pAux != nullptr) {
         std::cout << pAux->getInfo()->getInfo() << std::endl;
         pAux = pAux->getProximoElemento();

@@ -1,25 +1,25 @@
 #ifndef _ELEMENTO_H_
 #define _ELEMENTO_H_
 
-template<class TIPO>
+template<class TE>
 class Elemento {
 private:
-    TIPO* pInfoElemento;    
-    Elemento<TIPO>* pProximoElemento;
-    Elemento<TIPO>* pAnteriorElemento;
+    TE* pInfoElemento;    
+    Elemento<TE>* pProximoElemento;
+    Elemento<TE>* pAnteriorElemento;
 
 public:
     Elemento();
     ~Elemento();
 
-    void setInfo(TIPO* pInfoEle);
-    TIPO* getInfo();
+    void setInfo(TE* pInfoEle);
+    TE* getInfo();
 
-    void setProximoElemento(Elemento<TIPO>* pProxEle);
-    Elemento<TIPO>* getProximoElemento();
+    void setProximoElemento(Elemento<TE>* pProxEle);
+    Elemento<TE>* getProximoElemento();
 
-    void setAnteriorElemento(Elemento<TIPO>* pAnteEle);
-    Elemento<TIPO>* getAnteriorElemento();
+    void setAnteriorElemento(Elemento<TE>* pAnteEle);
+    Elemento<TE>* getAnteriorElemento();
 };
 
 #include "Elemento.cpp"
