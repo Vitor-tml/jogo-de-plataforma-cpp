@@ -22,8 +22,6 @@ public:
     Elemento<TE>* getAnteriorElemento();
 };
 
-// Implementações dos métodos
-
 template<class TE>
 Elemento<TE>::Elemento() : pInfoElemento(nullptr), pProximoElemento(nullptr), pAnteriorElemento(nullptr) {
 }
@@ -63,4 +61,4 @@ Elemento<TE>* Elemento<TE>::getAnteriorElemento() {
     return pAnteriorElemento;
 }
 
-#endif // _ELEMENTO_H_
+#endif

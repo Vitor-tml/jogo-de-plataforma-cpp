@@ -5,6 +5,7 @@
 #include "../../engine/ResourceManager/ResourceManager.h"
 #include "../Character/Player/Player.h"
 #include "../Character/Enemy/Enemy.h"
+#include "../../lists/ListaEntidades/ListaEntidades.h"
 
 class Phase : public Ente {
 private:
@@ -12,6 +13,7 @@ private:
     Enemy inimigo;
     sf::Clock tempo;
     float deltaTime;
+    ListaEntidades listaEntidades;
 public:
     Phase();
     virtual ~Phase() noexcept {};
