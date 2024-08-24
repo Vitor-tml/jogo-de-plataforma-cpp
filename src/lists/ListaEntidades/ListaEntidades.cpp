@@ -15,17 +15,8 @@ void ListaEntidades::incluir(Entity* pEntidade) {
     listaEntidades.incluirElemento(novoElemento);
 }
 
-void ListaEntidades::percorrer() {
-    listaEntidades.listarElementos();
-}
-
 void ListaEntidades::imprimirElementos() {
-    Elemento<Entity>* pAux = listaEntidades.getPrimeiroElemento();
-
-    while (pAux != nullptr) {
-        std::cout << "Entidade: " << pAux->getInfo() << std::endl;
-        pAux = pAux->getProximoElemento();
-    }
+    listaEntidades.listarElementos();
 }
 
 Entity* ListaEntidades::getPrimeiroElemento() {

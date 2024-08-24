@@ -14,7 +14,6 @@ public:
     ~ListaEntidades();
 
     void incluir(Entity* pEntidade);
-    void percorrer();
     void imprimirElementos();
     Entity* getPrimeiroElemento();
 };
