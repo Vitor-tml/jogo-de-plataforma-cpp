@@ -24,6 +24,8 @@ void CollisionManager::incluirInimigos(Enemy *p)
         std::cout << "ERRO: Inimigo nulo sendo inserido" << std::endl;
         return;
     }
+
+    lInimigos.push_back(p);
 }
 
 void CollisionManager::verificaColisaoObstaculo()
@@ -37,5 +39,19 @@ void CollisionManager::verificaColisaoObstaculo()
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds()))
             std::cout << "Jogador colidiu com um obstaculo!" << std::endl;
+    }
+}
+
+void CollisionManager::verificaColisaoInimigo()
+{
+    if(jogador == nullptr)
+    {
+        std::cout << "ERRO: Jogador nulo, colisao com obstaculos." << std::endl;
+        return;
+    }
+    for(Enemy* inimigo : lInimigos)
+    {
+        if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+            std::cout << "Jogador colidiu com um inimigo!" << std::endl;
     }
 }

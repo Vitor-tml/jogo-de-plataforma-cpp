@@ -12,8 +12,8 @@ include_directories(include)
 include_directories(${CMAKE_SOURCE_DIR}/libs/SFML-2.6.1/include)
 
 # Definir o diretório onde o SFML está instalado
-set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};C:/Users/gusfi/projeto-tecprog/jogo-de-plataforma-cpp/lib/SFML-2.6.1/lib/cmake/SFML")
-set(SFML_DIR "C:/Users/gusfi/projeto-tecprog/jogo-de-plataforma-cpp/lib/SFML-2.6.1/lib/cmake/SFML")
+set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${CMAKE_SOURCE_DIR}/libs/SFML-2.6.1/lib/cmake/SFML")
+set(SFML_DIR "${CMAKE_SOURCE_DIR}/libs/SFML-2.6.1/lib/cmake/SFML")
 
 # Encontrar e carregar o pacote SFML
 find_package(SFML 2.6.1 COMPONENTS system window graphics network audio REQUIRED)

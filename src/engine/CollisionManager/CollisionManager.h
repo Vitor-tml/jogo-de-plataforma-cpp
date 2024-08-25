@@ -18,6 +18,7 @@ public:
     void incluirObstaculo(Obstacle *p);
     void incluirInimigos(Enemy *p);
     void verificaColisaoObstaculo();
+    void verificaColisaoInimigo();
     // void verificaColisao();
     // void tratarColisoes();
 };
