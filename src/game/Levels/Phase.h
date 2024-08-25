@@ -5,11 +5,16 @@
 #include "../../engine/ResourceManager/ResourceManager.h"
 #include "../../engine/CollisionManager/CollisionManager.h"
 #include "../Character/Player/Player.h"
+#include "../Character/Enemy/Enemy.h"
+#include "../../lists/ListaEntidades/ListaEntidades.h"
+
 class Phase : public Ente {
 private:
     Player jogador;
+    Enemy inimigo;
     sf::Clock tempo;
     float deltaTime;
+    ListaEntidades listaEntidades;
 
     CollisionManager gColisao;
     Obstacle plataforma;

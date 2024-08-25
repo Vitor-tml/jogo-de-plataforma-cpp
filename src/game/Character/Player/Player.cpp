@@ -68,6 +68,14 @@ void Player::userInput()
     }
 }
 
+int Player::getVida(){
+    return nVidas;
+}
+
+void Player::setVida(int vida){
+    this->nVidas = vida;
+}
+
 sf::Sprite& Player::getSprite()
 {
     return sprite;

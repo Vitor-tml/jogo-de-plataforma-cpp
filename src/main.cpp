@@ -9,6 +9,7 @@
 #include "game/Levels/Phase.h"
 #include "game/Menu/Menu.h"
 #include "game/Obstacles/Obstacle.h"
+
 int main()
 {
     Renderer* janela = Renderer::getRenderer(800, 600, "Jogo de Plataforma");
