@@ -23,7 +23,17 @@ bool ResourceManager::loadTexture(const std::string& id, const std::string& file
 
 sf::Texture& ResourceManager::getTexture(const std::string& id)
 {
-    return texturas.at(id);
+    // std::cout << "Carregando textura: " << id << std::endl;
+    sf::Texture* placeHolder = new sf::Texture;
+    placeHolder->create(64, 64);
+    // Colocar tratamento caso não tenha a textura
+    if(texturas.find(id) == texturas.end())
+    {
+        std::cout << "A textura "<< id << " ainda nao foi carregada! Adicionando placeHolder" << std::endl;
+        return *placeHolder;
+    }
+    else
+        return texturas.at(id);
 }
 
 bool ResourceManager::loadFont(const std::string& id, const std::string& filename)
@@ -40,5 +50,14 @@ bool ResourceManager::loadFont(const std::string& id, const std::string& filenam
 
 sf::Font& ResourceManager::getFont(const std::string& id)
 {
-    return fontes.at(id);
+    sf::Font* fonte = new sf::Font;
+    // Colocar alguma fonte padrao
+    // fonte.setFont();
+    if(fontes.find(id) == fontes.end())
+    {
+        std::cout << "A fonte "<< id << " ainda nao foi carregada!" << std::endl;
+        return *fonte;
+    }
+    else
+        return fontes.at(id);
 }

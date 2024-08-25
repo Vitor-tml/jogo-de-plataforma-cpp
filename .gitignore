@@ -17,6 +17,9 @@
 # Diretório do vscode
 /.vs-code
 
+# Documentação Doxygen
+/docs/html
+
 # Diretórios de configuração do CMake
 /CMakeFiles/
 /CMakeCache.txt
@@ -37,3 +40,6 @@
 # Arquivos de sistema
 .DS_Store
 Thumbs.db
+
+# Temporário uml
+/docs/uml/diagrama-de-classes.~ml

@@ -18,14 +18,14 @@
  * sobre a cena renderizada.
  * 
  * @author Vitor-tml
-     */
-
+*/
 class Renderer {
 private:
+    static int camadaJanela;
     static Renderer* singleton;
     sf::RenderWindow janela;
     sf::View camera;
-    std::vector<std::pair<const sf::Drawable*, int>> drawables; // vetor de pares de int e drawable
+    std::vector<std::pair<const sf::Drawable*, int>> drawables; ///< vetor de pares de int e drawable
     Renderer(int largura, int altura, const std::string& titulo);
     ~Renderer();
 public:
@@ -46,7 +46,7 @@ public:
      * @brief Adiciona elementos na fila de renderização.
      * @param drawable qualquer objeto desenhável do SFML (sprite, texto, etc)
      * @param camada ordem em que vai ser renderizado, os últimos são os que aparecem por cima
-     * 
+     * @todo Inserir um método para colocar a camada por ordem de inserção.
      */
     void addDrawable(const sf::Drawable& drawable, int camada = 0); // Adiciona um elemento para ser desenhado
     /**

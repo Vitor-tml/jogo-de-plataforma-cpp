@@ -10,7 +10,6 @@
  * Utiliza o padrão Singleton para garantir que apenas uma instância do gerenciador de cenas exista.
  * As cenas são armazenadas em uma pilha, permitindo empilhar, desempilhar e trocar de cenas.
  */
-
 class SceneManager{
 private:
     static SceneManager *singleton; ///< Ponteiro para a instância singleton

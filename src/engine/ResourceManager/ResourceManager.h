@@ -15,7 +15,6 @@
  * 
  * @author Vitor-tml
  */
-
 class ResourceManager{
 private:
     static ResourceManager *singleton; ///< Instância singleton do gerenciador de recursos
