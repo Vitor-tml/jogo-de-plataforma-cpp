@@ -18,6 +18,7 @@
  */
 class Player : public Character{
 private:
+    int pontos;
     /**
      * @brief Componente que controla a física do player
      * @see PhysicsComponent
