@@ -40,9 +40,9 @@ void CollisionManager::verificaColisaoObstaculo()
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds()))
         {
-            tratarColisoes(obstaculo);
-        }
+            tratarColisoesObstaculo(obstaculo);
             // std::cout << "Jogador colidiu com um obstaculo!" << std::endl;
+        }
     }
 }
 
@@ -57,16 +57,16 @@ void CollisionManager::verificaColisaoInimigo()
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
         {
-
+            // tratarColisoesInimigo(inimigo);
+            std::cout << "Jogador colidiu com um inimigo!" << std::endl;
         }
-            // std::cout << "Jogador colidiu com um inimigo!" << std::endl;
     }
 }
 
-void CollisionManager::tratarColisoes(Obstacle* obstaculo)
+void CollisionManager::tratarColisoesObstaculo(Obstacle* obstaculo)
 {
     std::set<float> overlaps;
-    sf::FloatRect playerBox = jogador->getCaixaColisao().getGlobalBounds();
+    sf::FloatRect playerBox   = jogador->getCaixaColisao().getGlobalBounds();
     sf::FloatRect obstacleBox = obstaculo->getCaixaColisao().getGlobalBounds();
 
     const int ESQUERDA = 0;
@@ -74,14 +74,14 @@ void CollisionManager::tratarColisoes(Obstacle* obstaculo)
     const int TOPO     = 2;
     const int FUNDO    = 3;
     float vJogador[4]   =  {playerBox.left, playerBox.left + playerBox.width,
-                            playerBox.top, playerBox.top + playerBox.height};
+                            playerBox.top,  playerBox.top  + playerBox.height};
     float vObstaculo[4] =  {obstacleBox.left, obstacleBox.left + obstacleBox.width,
-                            obstacleBox.top, obstacleBox.top + obstacleBox.height};
+                            obstacleBox.top,  obstacleBox.top  + obstacleBox.height};
 
-    float overlapEsquerda = positivoOuLimite(vJogador[DIREITA]  - vObstaculo[ESQUERDA]);
+    float overlapEsquerda = positivoOuLimite(vJogador[DIREITA]   - vObstaculo[ESQUERDA]);
     float overlapDireita  = positivoOuLimite(vObstaculo[DIREITA] - vJogador[ESQUERDA]);
-    float overlapCima     = positivoOuLimite(vJogador[FUNDO]    - vObstaculo[TOPO]);
-    float overlapBaixo    = positivoOuLimite(vObstaculo[FUNDO] - vJogador[TOPO]);
+    float overlapCima     = positivoOuLimite(vJogador[FUNDO]     - vObstaculo[TOPO]);
+    float overlapBaixo    = positivoOuLimite(vObstaculo[FUNDO]   - vJogador[TOPO]);
 
     float menorOverlap = std::min({overlapEsquerda, overlapDireita, overlapCima, overlapBaixo});
     
