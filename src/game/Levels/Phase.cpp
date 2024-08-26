@@ -29,6 +29,7 @@ void Phase::executar()
     gGrafico->render();
     
     //listaEntidades.imprimirElementos();
+    listaEntidades.~ListaEntidades();
     //jogador.renderizar();
     // Onde colocar o setCentroCamera?
 }

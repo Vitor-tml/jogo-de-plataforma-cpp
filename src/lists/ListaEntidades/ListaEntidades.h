@@ -12,7 +12,7 @@ private:
 public:
     ListaEntidades();
     ListaEntidades(int maxElementos);
-    ~ListaEntidades();
+    ~ListaEntidades() = default;
 
     void incluir(Entity* pEntidade);
     void imprimirElementos();

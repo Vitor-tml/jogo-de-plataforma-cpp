@@ -7,8 +7,6 @@ ListaEntidades::ListaEntidades() : listaEntidades(100) { // Inicializa com capac
 ListaEntidades::ListaEntidades(int maxElementos) : listaEntidades(maxElementos) { // Inicializa com capacidade definida
 }
 
-ListaEntidades::~ListaEntidades() {}
-
 void ListaEntidades::incluir(Entity* pEntidade) {
     Elemento<Entity>* novoElemento = new Elemento<Entity>();
     novoElemento->setInfo(pEntidade);
