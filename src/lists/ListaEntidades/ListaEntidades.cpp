@@ -11,8 +11,17 @@ void ListaEntidades::incluir(Entity* pEntidade) {
     Elemento<Entity>* novoElemento = new Elemento<Entity>();
     novoElemento->setInfo(pEntidade);
     listaEntidades.incluirElemento(novoElemento);
+    novoElemento->getInfo()->renderizar(4);
 }
 
 void ListaEntidades::imprimirElementos() {
     listaEntidades.listarElementos();
+}
+
+Entity* ListaEntidades::operator[](int index) {
+    return listaEntidades[index];
+}
+
+int ListaEntidades::getTamanho() const {
+    return listaEntidades.getTamanho();
 }

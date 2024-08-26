@@ -28,7 +28,7 @@ Elemento<TE>::Elemento() : pInfoElemento(nullptr), pProximoElemento(nullptr), pA
 
 template<class TE>
 Elemento<TE>::~Elemento() {
-    delete pInfoElemento;
+    //delete pInfoElemento;
 }
 
 template<class TE>

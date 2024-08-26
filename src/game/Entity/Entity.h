@@ -35,12 +35,15 @@ public:
      * Este método deve ser implementado pelas classes derivadas para definir o comportamento específico da entidade.
      */
     virtual void executar() = 0;
+    virtual void executar(float deltaTime) = 0;
     /**
      * @brief Método puramente virtual para salvar o estado da entidade.
      * 
      * Este método deve ser implementado pelas classes derivadas para definir como o estado da entidade deve ser salvo e a lógica de permanência de objeto.
      */
     virtual void salvar() = 0;
+
+    int getID() { return id; }
 };
 
 #endif
