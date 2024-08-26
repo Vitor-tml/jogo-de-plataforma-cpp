@@ -20,20 +20,14 @@ void Phase::executar()
     deltaTime = tempo.restart().asSeconds();
     
     for (int i = 0; i < listaEntidades.getTamanho(); i++) {
-        //listaEntidades[i]->executar(deltaTime);
+        listaEntidades[i]->executar(deltaTime);
         listaEntidades[i]->renderizar(i+1);
     }
 
-    jogador.executar(deltaTime);
     renderizar();
-    //jogador.renderizar();
-    inimigo.executar(deltaTime);
-    //inimigo.renderizar();
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
     gGrafico->render();
     
-    //listaEntidades.imprimirElementos();
-    //jogador.renderizar();
     // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();
 }
