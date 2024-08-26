@@ -1,3 +1,4 @@
+
 #include "Player.h"
 // Sprite real -> 40x58
 Player::Player(sf::Texture& textura)
@@ -32,6 +33,7 @@ Player::Player(sf::Texture& textura)
 void Player::executar(float deltaTime)
 {
     userInput();
+    setNoChao(false);
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
@@ -99,4 +101,13 @@ void Player::setNoChao(bool noChao)
 bool Player::getNoChao() const
 {
     return estaNoChao;
+}
+
+void Player::setPosicao(int xx, int yy)
+{
+    sprite.setPosition(xx, yy);
+}
+void Player::setPosicao(sf::Vector2f posicao)
+{
+    sprite.setPosition(posicao);
 }

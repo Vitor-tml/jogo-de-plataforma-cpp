@@ -93,5 +93,8 @@ public:
 
     void setNoChao(bool noChao);
     bool getNoChao() const;
+
+    void setPosicao(int xx, int yy);
+    void setPosicao(sf::Vector2f posicao);
 };
 #endif

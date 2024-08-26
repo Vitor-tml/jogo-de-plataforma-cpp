@@ -1,5 +1,5 @@
 #include "PhysicsComponent.h"
-
+#include <iostream>
 PhysicsComponent::PhysicsComponent(float gravity, float jumpHeight)
     : gravidade(gravity), alturaPulo(jumpHeight){}
 
@@ -8,8 +8,7 @@ void PhysicsComponent::aplicaFisica(sf::Sprite& entidade, sf::Vector2f& velocida
     // Aplica a gravidade
     velocidade.y += gravidade * deltaTime;
 
-    // Atualiza a posição
-    entidade.move(velocidade * deltaTime);
+    std::cout << estaNoChao << std::endl;
 
     // Verifica colisão com o chão ou outras plataformas
     if (estaNoChao)
@@ -17,6 +16,10 @@ void PhysicsComponent::aplicaFisica(sf::Sprite& entidade, sf::Vector2f& velocida
         // Apenas aplicando a gravidade se não estiver no chão
         velocidade.y = 0;
     }
+    // Atualiza a posição
+    entidade.move(velocidade * deltaTime);
+    
+    
 }
 
 float PhysicsComponent::getPulo()const

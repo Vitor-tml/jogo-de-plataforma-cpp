@@ -1,5 +1,6 @@
 #include "CollisionManager.h"
-
+#include <math.h>
+#include <set>
 CollisionManager::~CollisionManager()
 {
     lObstaculos.clear();
@@ -55,40 +56,58 @@ void CollisionManager::verificaColisaoInimigo()
     for(Enemy* inimigo : lInimigos)
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
-        {}
+        {
+
+        }
             // std::cout << "Jogador colidiu com um inimigo!" << std::endl;
     }
 }
 
 void CollisionManager::tratarColisoes(Obstacle* obstaculo)
 {
+    std::set<float> overlaps;
     sf::FloatRect playerBox = jogador->getCaixaColisao().getGlobalBounds();
     sf::FloatRect obstacleBox = obstaculo->getCaixaColisao().getGlobalBounds();
 
-    float overlapX = std::min(playerBox.left + playerBox.width - obstacleBox.left,
-                              obstacleBox.left + obstacleBox.width - playerBox.left);
-    float overlapY = std::min(playerBox.top + playerBox.height - obstacleBox.top,
-                              obstacleBox.top + obstacleBox.height - playerBox.top);
+    const int ESQUERDA = 0;
+    const int DIREITA  = 1;
+    const int TOPO     = 2;
+    const int FUNDO    = 3;
+    float vJogador[4]   =  {playerBox.left, playerBox.left + playerBox.width,
+                            playerBox.top, playerBox.top + playerBox.height};
+    float vObstaculo[4] =  {obstacleBox.left, obstacleBox.left + obstacleBox.width,
+                            obstacleBox.top, obstacleBox.top + obstacleBox.height};
 
-    if (overlapX < overlapY)
-    {
-        // Colisão horizontal
-        if (playerBox.left < obstacleBox.left)
-            jogador->setVelocidade(sf::Vector2f(-100.f, jogador->getVelocidade().y)); // Empurrar para a esquerda
-        else
-            jogador->setVelocidade(sf::Vector2f(100.f, jogador->getVelocidade().y)); // Empurrar para a direita
+    float overlapEsquerda = positivoOuLimite(vJogador[DIREITA]  - vObstaculo[ESQUERDA]);
+    float overlapDireita  = positivoOuLimite(vJogador[ESQUERDA] - vObstaculo[DIREITA]);
+    float overlapCima     = positivoOuLimite(vJogador[FUNDO]    - vObstaculo[TOPO]);
+    float overlapBaixo    = positivoOuLimite(vJogador[TOPO]     - vObstaculo[FUNDO]);
+
+    float menorOverlap = std::min({overlapEsquerda, overlapDireita, overlapCima, overlapBaixo});
+    
+    if(menorOverlap == overlapEsquerda){
+        std::cout << "Esquerda" << std::endl;
+        // jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(overlapEsquerda, 0));
+        jogador->setVelocidade(sf::Vector2f(0, jogador->getVelocidade().y));
+    }else if(menorOverlap == overlapDireita){
+        std::cout << "Direita" << std::endl;
+        // jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(overlapDireita, 0));
+        jogador->setVelocidade(sf::Vector2f(0, jogador->getVelocidade().y));
+    }else if(menorOverlap == overlapCima){
+        // jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(0, overlapCima));
+        jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 0));
+        jogador->setNoChao(true);
+    }else if(menorOverlap == overlapBaixo){
+        // jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(0, overlapBaixo));
+        jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 0));
+        jogador->setNoChao(true);
     }
-    else
-    {
-        // Colisão vertical
-        if (playerBox.top < obstacleBox.top)
-        {
-            jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, -100.f)); // Empurrar para cima
-            jogador->setNoChao(true); // Marcar o jogador como estando no chão
-        }
-        else
-        {
-            jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 100.f)); // Empurrar para baixo
-        }
-    }
+    
+}
+
+float positivoOuLimite(float a)
+{
+    if(a > 0)
+        return a;
+    return 1000000;
 }

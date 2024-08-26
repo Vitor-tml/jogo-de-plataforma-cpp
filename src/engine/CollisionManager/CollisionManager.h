@@ -22,4 +22,6 @@ public:
     void tratarColisoes(Obstacle* obstaculo);
     // void verificaColisao();
 };
+
+float positivoOuLimite(float a);
 #endif

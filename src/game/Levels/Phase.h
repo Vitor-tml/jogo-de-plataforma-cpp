@@ -18,6 +18,8 @@ private:
 
     CollisionManager gColisao;
     Obstacle plataforma;
+    Obstacle plataforma2;
+    Obstacle plataforma3;
     Obstacle chao;
 
 public:
