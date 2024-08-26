@@ -5,8 +5,8 @@ Phase::Phase() :
     jogador(gRecursos->getTexture("jogador")),
     inimigo(gRecursos->getTexture("inimigo")),
     plataforma(0, 500, gRecursos->getTexture("plataforma")),
-    plataforma2(100, 500, gRecursos->getTexture("plataforma")),
-    plataforma3(100, 468, gRecursos->getTexture("plataforma")),
+    plataforma2(0, 500, gRecursos->getTexture("plataforma")),
+    plataforma3(100, 436, gRecursos->getTexture("plataforma")),
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
     listaEntidades(),
     gColisao(&jogador)
@@ -33,30 +33,31 @@ void Phase::executar()
     deltaTime = tempo.restart().asSeconds();
     
     gGrafico->clearDrawables();
+    jogador.setNoChao(false);
+    gColisao.verificaColisaoObstaculo();
+    gColisao.verificaColisaoInimigo();
     
     renderizar(0);
-    
+
     chao.renderizar(1);
-    chao.renderizarCaixaColisao();
+    // chao.renderizarCaixaColisao();
 
     
     jogador.executar(deltaTime);
     jogador.renderizar(2);
-    jogador.renderizarCaixaColisao();
+    // jogador.renderizarCaixaColisao();
     
     plataforma.renderizar(1);
-    plataforma.renderizarCaixaColisao();
+    // plataforma.renderizarCaixaColisao();
     plataforma2.renderizar(1);
-    plataforma2.renderizarCaixaColisao();
+    // plataforma2.renderizarCaixaColisao();
     plataforma3.renderizar(1);
-    plataforma3.renderizarCaixaColisao();
+    // plataforma3.renderizarCaixaColisao();
 
     inimigo.executar(deltaTime);
     inimigo.renderizar(1);
-    inimigo.renderizarCaixaColisao();
+    // inimigo.renderizarCaixaColisao();
     
-    gColisao.verificaColisaoObstaculo();
-    gColisao.verificaColisaoInimigo();
     
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y);
     gGrafico->render();

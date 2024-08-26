@@ -79,26 +79,28 @@ void CollisionManager::tratarColisoes(Obstacle* obstaculo)
                             obstacleBox.top, obstacleBox.top + obstacleBox.height};
 
     float overlapEsquerda = positivoOuLimite(vJogador[DIREITA]  - vObstaculo[ESQUERDA]);
-    float overlapDireita  = positivoOuLimite(vJogador[ESQUERDA] - vObstaculo[DIREITA]);
+    float overlapDireita  = positivoOuLimite(vObstaculo[DIREITA] - vJogador[ESQUERDA]);
     float overlapCima     = positivoOuLimite(vJogador[FUNDO]    - vObstaculo[TOPO]);
-    float overlapBaixo    = positivoOuLimite(vJogador[TOPO]     - vObstaculo[FUNDO]);
+    float overlapBaixo    = positivoOuLimite(vObstaculo[FUNDO] - vJogador[TOPO]);
 
     float menorOverlap = std::min({overlapEsquerda, overlapDireita, overlapCima, overlapBaixo});
     
     if(menorOverlap == overlapEsquerda){
-        std::cout << "Esquerda" << std::endl;
-        // jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(overlapEsquerda, 0));
+        // std::cout << "Esquerda" << std::endl;
+        jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(overlapEsquerda, 0));
         jogador->setVelocidade(sf::Vector2f(0, jogador->getVelocidade().y));
     }else if(menorOverlap == overlapDireita){
-        std::cout << "Direita" << std::endl;
-        // jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(overlapDireita, 0));
+        // std::cout << "Direita" << std::endl;
+        jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(overlapDireita, 0));
         jogador->setVelocidade(sf::Vector2f(0, jogador->getVelocidade().y));
     }else if(menorOverlap == overlapCima){
-        // jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(0, overlapCima));
+        // std::cout << "Cima" << std::endl;
+        jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(0, overlapCima));
         jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 0));
         jogador->setNoChao(true);
     }else if(menorOverlap == overlapBaixo){
-        // jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(0, overlapBaixo));
+        // std::cout << "Baixo" << std::endl;
+        jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(0, overlapBaixo));
         jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 0));
         jogador->setNoChao(true);
     }
