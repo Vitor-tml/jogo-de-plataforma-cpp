@@ -88,5 +88,10 @@ public:
      */
     sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
 
+    void setVelocidade(const sf::Vector2f& novaVelocidade);
+    sf::Vector2f getVelocidade() const;
+
+    void setNoChao(bool noChao);
+    bool getNoChao() const;
 };
 #endif

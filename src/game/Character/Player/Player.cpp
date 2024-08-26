@@ -81,3 +81,22 @@ sf::Sprite& Player::getSprite()
 {
     return sprite;
 }
+
+void Player::setVelocidade(const sf::Vector2f& novaVelocidade) {
+    this->velocidade = novaVelocidade;
+}
+
+sf::Vector2f Player::getVelocidade() const {
+    return this->velocidade;
+}
+
+
+void Player::setNoChao(bool noChao)
+{
+    estaNoChao = noChao;
+}
+
+bool Player::getNoChao() const
+{
+    return estaNoChao;
+}

@@ -16,10 +16,10 @@ Phase::Phase() :
     listaEntidades.incluir(&jogador);
     listaEntidades.incluir(&inimigo);
     gColisao.incluirObstaculo(&plataforma); 
+    gColisao.incluirObstaculo(&chao); 
     gColisao.incluirInimigos(&inimigo); 
 }
 
-int aux = 0;
 void Phase::executar()
 {
     deltaTime = tempo.restart().asSeconds();
@@ -43,10 +43,6 @@ void Phase::executar()
     inimigo.renderizar(1);
     inimigo.renderizarCaixaColisao();
     
-    gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
+    gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y);
     gGrafico->render();
-    
-    //listaEntidades.imprimirElementos();
-    //jogador.renderizar();
-    // Onde colocar o setCentroCamera?
 }
