@@ -2,9 +2,11 @@
 #define _PLAYER_H
 
 #include <SFML/Graphics.hpp>
-#include "../../engine/PhysicsComponent/PhysicsComponent.h"
-#include "../../engine/Animation/Animation.h"
+#include "../Character.h"
+#include "../../../engine/PhysicsComponent/PhysicsComponent.h"
+#include "../../../engine/Animation/Animation.h"
 #include <map>
+#include <iostream>
 
 /**
  * @class Player
@@ -14,12 +16,8 @@
  * 
  * @author Vitor-tml
  */
-class Player {
+class Player : public Character{
 private:
-    /**
-     * @brief "Desenho" na tela, que representa o jogador,
-     */
-    sf::Sprite sprite;
     /**
      * @brief Componente que controla a física do player
      * @see PhysicsComponent
@@ -47,15 +45,20 @@ private:
 public:
     /**
      * @brief construtora do player, carrega o spritesheet do personagem.
+     * @param textura imagem que irá representar o player
      * @todo Valor padrão para ser também uma construtora sem parâmetros
      */
     Player(sf::Texture& textura);
     /**
+     * @todo Perguntar quando a sobrecarga e de método para o professor
+     */
+    void executar() override {};
+    /**
      * @brief Atualiza o estado da animação e le a entrada do usuário
      * @param deltaTime Tempo decorrido entra a ultima chamada da função
-     * @todo Testar implementação por evento, em vez de deltaTiem
+     * @todo Testar implementação por evento, em vez de deltaTime
      */
-    void update(float deltaTime);
+    void executar(float deltaTime);
     /**
      * @brief Atualiza animação e estado do player de acordo com a entrada do usuário, responsável pela movimentação do personagem.
      */
@@ -65,5 +68,23 @@ public:
      * @return Estado atual da animação/player para renderização
      */
     sf::Sprite& getSprite();
+    /**
+     * @brief Método responsável pela permanência de objeto da classe player.
+     * @todo Implementar quando decidido sobre a lógica de permanencia e controle de arquivos.
+     */
+    int getVida();
+    /**
+     * @brief Retorna vida atual do player.
+     */
+    void setVida(int vida);
+    /**
+     * @brief Altera o valor da vida atual do player.
+     */
+    void salvar() override { std::cout << "Sem metodo de salvar ainda." << std::endl;};
+    /**
+     * @brief Retorna posição do personagem
+     * 
+     */
+    sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
 };
 #endif
