@@ -4,8 +4,9 @@ Phase::Phase() :
     Ente(gRecursos->getTexture("fundo")),
     jogador(gRecursos->getTexture("jogador")),
     inimigo(gRecursos->getTexture("inimigo")),
-    listaEntidades(),
     plataforma(0, 500, gRecursos->getTexture("plataforma")),
+    chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
+    listaEntidades(),
     gColisao(&jogador)
 {
     // Iniciar local?
@@ -28,6 +29,9 @@ void Phase::executar()
     gGrafico->clearDrawables();
     
     renderizar(0);
+    chao.renderizar(1);
+    chao.renderizarCaixaColisao();
+
     jogador.executar(deltaTime);
     jogador.renderizar(2);
     jogador.renderizarCaixaColisao();

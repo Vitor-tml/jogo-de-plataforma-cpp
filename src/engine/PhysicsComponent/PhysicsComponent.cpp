@@ -13,9 +13,9 @@ void PhysicsComponent::aplicaFisica(sf::Sprite& entidade, sf::Vector2f& velocida
 
     // Verifica colisão com o chao
 
-    if(entidade.getPosition().y >= 492)
+    if(entidade.getPosition().y >= 592)
     {
-        entidade.setPosition(entidade.getPosition().x, 492);
+        entidade.setPosition(entidade.getPosition().x, 592);
         velocidade.y = 0;
         estaNoChao = true;
     }

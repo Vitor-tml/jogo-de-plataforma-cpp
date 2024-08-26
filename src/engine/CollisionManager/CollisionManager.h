@@ -19,7 +19,7 @@ public:
     void incluirInimigos(Enemy *p);
     void verificaColisaoObstaculo();
     void verificaColisaoInimigo();
+    void tratarColisoes();
     // void verificaColisao();
-    // void tratarColisoes();
 };
 #endif

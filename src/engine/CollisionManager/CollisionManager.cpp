@@ -38,7 +38,8 @@ void CollisionManager::verificaColisaoObstaculo()
     for(Obstacle* obstaculo : lObstaculos)
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds()))
-            std::cout << "Jogador colidiu com um obstaculo!" << std::endl;
+        {}
+            // std::cout << "Jogador colidiu com um obstaculo!" << std::endl;
     }
 }
 
@@ -52,6 +53,12 @@ void CollisionManager::verificaColisaoInimigo()
     for(Enemy* inimigo : lInimigos)
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
-            std::cout << "Jogador colidiu com um inimigo!" << std::endl;
+        {}
+            // std::cout << "Jogador colidiu com um inimigo!" << std::endl;
     }
+}
+
+void CollisionManager::tratarColisoes()
+{
+
 }

@@ -18,6 +18,7 @@ private:
 
     CollisionManager gColisao;
     Obstacle plataforma;
+    Obstacle chao;
 
 public:
     Phase();

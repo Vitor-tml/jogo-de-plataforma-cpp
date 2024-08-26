@@ -22,7 +22,8 @@ Player::Player(sf::Texture& textura)
 {   
     // Define animações
     sprite.setTextureRect(sf::IntRect(0, 0, 96, 96));
-    sprite.setOrigin(sf::Vector2f(48, 48)); // Centro da sprite
+    sf::FloatRect tamanho = sprite.getGlobalBounds();
+    sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
     sprite.setPosition(x, y);
 
     inicializarCaixaColisao(40, 58); // Tamanho real da sprite

@@ -13,8 +13,8 @@ limiteEsquerda(posXInicial - distancia)
 {
     sprite.setTexture(textura);
     sprite.setTextureRect(sf::IntRect(0, 0, 96, 144));
-    //sprite.setScale(sf::Vector2f(3.f, 3.f)); -> aumentei o tamanho
-    sprite.setOrigin(sf::Vector2f(48, 72));
+    sf::FloatRect tamanho = sprite.getGlobalBounds();
+    sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
     sprite.setPosition(x, y);
     inicializarCaixaColisao();
 }

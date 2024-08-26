@@ -1,7 +1,7 @@
 #include "Obstacle.h"
 
-Obstacle::Obstacle(int xx, int yy, sf::Texture& textura):
-Entity(xx, yy, 0, 0, textura)
+Obstacle::Obstacle(int xx, int yy, sf::Texture& textura, int offX, int offY):
+Entity(xx, yy, offX, offY, textura)
 {
     inicializarCaixaColisao();
 }

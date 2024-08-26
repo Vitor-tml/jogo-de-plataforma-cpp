@@ -22,6 +22,7 @@ int main()
     gRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
     gRecursos->loadTexture("menu",       "../assets/textures/cenaMenu.png");
     gRecursos->loadTexture("inimigo",       "../assets/textures/skeleton.png");
+    gRecursos->loadTexture("chao",       "../assets/textures/chao.png");
     gRecursos->loadImage("jogador",      "../assets/textures/knight.png");
     Phase menu;
     while (janela->isOpen())
