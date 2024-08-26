@@ -11,7 +11,6 @@ void ListaEntidades::incluir(Entity* pEntidade) {
     Elemento<Entity>* novoElemento = new Elemento<Entity>();
     novoElemento->setInfo(pEntidade);
     listaEntidades.incluirElemento(novoElemento);
-    novoElemento->getInfo()->renderizar(4);
 }
 
 void ListaEntidades::imprimirElementos() {

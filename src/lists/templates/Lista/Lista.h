@@ -113,8 +113,6 @@ TL* Lista<TL>::operator[](int index) {
     Elemento<TL>* pAux = pPrimeiroElemento;
     for (int i = 0; i < index; ++i) {
         pAux = pAux->getProximoElemento();
-        std::cout << index << std::endl;
-        // std::cout << pAux->getInfo()->getID() << std::endl;
     }
     return pAux->getInfo();
 }

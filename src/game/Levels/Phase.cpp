@@ -23,10 +23,8 @@ void Phase::executar()
         //listaEntidades[i]->executar(deltaTime);
         listaEntidades[i]->renderizar(i+1);
     }
-    std::cout << "Tamanho" << listaEntidades.getTamanho() << std::endl;
 
     jogador.executar(deltaTime);
-    gGrafico->clearDrawables();
     renderizar();
     //jogador.renderizar();
     inimigo.executar(deltaTime);
@@ -37,4 +35,5 @@ void Phase::executar()
     //listaEntidades.imprimirElementos();
     //jogador.renderizar();
     // Onde colocar o setCentroCamera?
+    gGrafico->clearDrawables();
 }
