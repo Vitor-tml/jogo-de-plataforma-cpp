@@ -1658,7 +1658,7 @@
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">692</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">1116</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">1112</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">125</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">94</XPD:ATTR>
 <XPD:REF name="Model">lnmEeOvWxEGeGWwDLIc8QQAA</XPD:REF>
@@ -2245,7 +2245,7 @@
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="zTV0CvgjmEavtRcDOsvMcAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="wo3tyEJRk0ahY0ZWmB02iQAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Inim_Facil</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Esqueleto</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="QrPmANvtuU+XSIh3tsL1ugAA">
 <XPD:ATTR name="Text" type="string">&lt;&lt;Inimigo 2&gt;&gt;</XPD:ATTR>
@@ -2698,7 +2698,7 @@
 <XPD:ATTR name="LineColor" type="string">clGreen</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">1996,804;2048,804;2048,1404;772,1404;772,1209</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">1996,804;2048,804;2048,1404;772,1404;772,1205</XPD:ATTR>
 <XPD:REF name="Model">PfsAIKo8DE6Rog3tFG6pxQAA</XPD:REF>
 <XPD:REF name="Head">9UOeYF9VTkaWLGI3odJlfQAA</XPD:REF>
 <XPD:REF name="Tail">+sk7CpvBPUqdgZSuwoXOwgAA</XPD:REF>
@@ -2868,7 +2868,7 @@
 <XPD:ATTR name="LineColor" type="string">clGreen</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">clBlue</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">880,992;752,992;752,1116</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">880,992;752,992;752,1112</XPD:ATTR>
 <XPD:REF name="Model">Puw+q4xvHkieSeWtrBYqyAAA</XPD:REF>
 <XPD:REF name="Head">9UOeYF9VTkaWLGI3odJlfQAA</XPD:REF>
 <XPD:REF name="Tail">kvs6oq6ro0epESl22ysdwAAA</XPD:REF>
@@ -3490,7 +3490,7 @@
 <XPD:ATTR name="LineColor" type="string">$00408000</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="LineStyle" type="LineStyleKind">lsRectilinear</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">1456,184;1456,80;2240,80;2240,1356;716,1356;716,1209</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">1456,184;1456,80;2240,80;2240,1356;716,1356;716,1205</XPD:ATTR>
 <XPD:REF name="Model">993yBP+5EE6KcgGeC49dBAAA</XPD:REF>
 <XPD:REF name="Head">9UOeYF9VTkaWLGI3odJlfQAA</XPD:REF>
 <XPD:REF name="Tail">ydQ0u2noMUeUz27ryWz7PAAA</XPD:REF>
@@ -5241,7 +5241,7 @@
 </XPD:OBJ>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[4]" type="UMLClass" guid="/kgpM0BGfE+a7qP01bw7hAAA">
-<XPD:ATTR name="Name" type="string">Inim_Facil</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Esqueleto</XPD:ATTR>
 <XPD:ATTR name="StereotypeName" type="string">Inimigo 2</XPD:ATTR>
 <XPD:REF name="Namespace">WmMPnOmkFUaEn4CHmyLHQAAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
