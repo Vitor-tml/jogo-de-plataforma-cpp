@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../Character.h"
-#include "../../../engine/PhysicsComponent/PhysicsComponent.h"
+
 #include "../../../engine/Animation/Animation.h"
 #include <map>
 #include <iostream>
@@ -19,17 +19,9 @@
 class Player : public Character{
 private:
     int pontos;
-    /**
-     * @brief Componente que controla a física do player
-     * @see PhysicsComponent
-     */
-    PhysicsComponent fisica;
-    bool estaNoChao;
+
     const float velocidadeHorizontal = 200.f;
-    /**
-     * Velocidade vertical e horizontal do player.
-    */
-    sf::Vector2f velocidade;
+    
     /**
      * @brief Componente que controlam o estado atual da sprite do player, gerando a animação.
      * @see Animation
@@ -86,15 +78,8 @@ public:
      * @brief Retorna posição do personagem
      * 
      */
-    sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
+    
 
-    void setVelocidade(const sf::Vector2f& novaVelocidade);
-    sf::Vector2f getVelocidade() const;
-
-    void setNoChao(bool noChao);
-    bool getNoChao() const;
-
-    void setPosicao(int xx, int yy);
-    void setPosicao(sf::Vector2f posicao);
+    
 };
 #endif

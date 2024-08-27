@@ -31,5 +31,6 @@ public:
     void danificar(Player* jogador);                // Transformar em virtual futuramente
     void executar() {}
     void salvar() {}
+
 };
 #endif

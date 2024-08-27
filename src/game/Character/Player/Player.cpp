@@ -3,8 +3,6 @@
 // Sprite real -> 40x58
 Player::Player(sf::Texture& textura)
 :   Character(100, 100, 56, 28, 20, textura), // Definindo vida do player
-    estaNoChao(false),
-    fisica(), // Mudar os valores padrões para cada entidade
     parado(textura, {sf::IntRect(0, 0, 96, 96),
                      sf::IntRect(96, 0, 96, 96), 
                      sf::IntRect(192, 0, 96, 96), 
@@ -81,32 +79,4 @@ void Player::setVida(int vida){
 sf::Sprite& Player::getSprite()
 {
     return sprite;
-}
-
-void Player::setVelocidade(const sf::Vector2f& novaVelocidade) {
-    this->velocidade = novaVelocidade;
-}
-
-sf::Vector2f Player::getVelocidade() const {
-    return this->velocidade;
-}
-
-
-void Player::setNoChao(bool noChao)
-{
-    estaNoChao = noChao;
-}
-
-bool Player::getNoChao() const
-{
-    return estaNoChao;
-}
-
-void Player::setPosicao(int xx, int yy)
-{
-    sprite.setPosition(xx, yy);
-}
-void Player::setPosicao(sf::Vector2f posicao)
-{
-    sprite.setPosition(posicao);
 }

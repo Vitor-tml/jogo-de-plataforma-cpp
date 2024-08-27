@@ -19,6 +19,7 @@
  * 
  * @author Vitor-tml
 */
+// namespace Gerenciadores{
 class Renderer {
 private:
     static int camadaJanela;
@@ -90,5 +91,5 @@ public:
      */
     bool pollEvent(sf::Event &evento);
 };
-
+// }
 #endif
