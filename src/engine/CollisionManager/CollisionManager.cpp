@@ -107,6 +107,48 @@ void CollisionManager::tratarColisoesObstaculo(Obstacle* obstaculo)
     
 }
 
+void CollisionManager::tratarColisoesInimigoObstaculo(Enemy* inimigo, Obstacle* obstaculo)
+{
+    std::set<float> overlaps;
+    sf::FloatRect enemyBox   = inimigo->getCaixaColisao().getGlobalBounds();
+    sf::FloatRect obstacleBox = obstaculo->getCaixaColisao().getGlobalBounds();
+
+    const int ESQUERDA = 0;
+    const int DIREITA  = 1;
+    const int TOPO     = 2;
+    const int FUNDO    = 3;
+    float vInimigo[4]   =  {enemyBox.left, enemyBox.left + enemyBox.width,
+                            enemyBox.top,  enemyBox.top  + enemyBox.height};
+    float vObstaculo[4] =  {obstacleBox.left, obstacleBox.left + obstacleBox.width,
+                            obstacleBox.top,  obstacleBox.top  + obstacleBox.height};
+
+    float overlapEsquerda = positivoOuLimite(vInimigo[DIREITA]   - vObstaculo[ESQUERDA]);
+    float overlapDireita  = positivoOuLimite(vObstaculo[DIREITA] - vInimigo[ESQUERDA]);
+    float overlapCima     = positivoOuLimite(vInimigo[FUNDO]     - vObstaculo[TOPO]);
+    float overlapBaixo    = positivoOuLimite(vObstaculo[FUNDO]   - vInimigo[TOPO]);
+
+    float menorOverlap = std::min({overlapEsquerda, overlapDireita, overlapCima, overlapBaixo});
+    
+    if(menorOverlap == overlapEsquerda){
+        // std::cout << "Esquerda" << std::endl;
+        inimigo->setPosicao(inimigo->getPosicao() - sf::Vector2f(overlapEsquerda, 0));
+        inimigo->setVelocidade(sf::Vector2f(0, inimigo->getVelocidade().y));
+    }else if(menorOverlap == overlapDireita){
+        // std::cout << "Direita" << std::endl;
+        inimigo->setPosicao(inimigo->getPosicao() + sf::Vector2f(overlapDireita, 0));
+        inimigo->setVelocidade(sf::Vector2f(0, inimigo->getVelocidade().y));
+    }else if(menorOverlap == overlapCima){
+        // std::cout << "Cima" << std::endl;
+        inimigo->setPosicao(inimigo->getPosicao() - sf::Vector2f(0, overlapCima));
+        inimigo->setVelocidade(sf::Vector2f(inimigo->getVelocidade().x, 0));
+        inimigo->setNoChao(true);
+    }else if(menorOverlap == overlapBaixo){
+        // std::cout << "Baixo" << std::endl;
+        inimigo->setPosicao(inimigo->getPosicao() + sf::Vector2f(0, overlapBaixo));
+        inimigo->setVelocidade(sf::Vector2f(inimigo->getVelocidade().x, 0));
+        inimigo->setNoChao(true);
+    }
+}
 float positivoOuLimite(float a)
 {
     if(a > 0)

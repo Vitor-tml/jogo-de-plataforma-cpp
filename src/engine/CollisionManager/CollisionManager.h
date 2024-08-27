@@ -20,6 +20,7 @@ public:
     void verificaColisaoObstaculo();
     void verificaColisaoInimigo();
     void tratarColisoesObstaculo(Obstacle* obstaculo);
+    void CollisionManager::tratarColisoesInimigoObstaculo(Enemy* inimigo, Obstacle* obstaculo);
     // void verificaColisao();
 };
 
