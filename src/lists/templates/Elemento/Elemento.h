@@ -1,6 +1,13 @@
 #ifndef _ELEMENTO_H_
 #define _ELEMENTO_H_
 
+/**
+ * @class Lista
+ * @brief Template de um elemento que pode ser inserido em uma lista.
+ * @author GustavoPellanda
+ */
+
+
 template<class TE>
 class Elemento {
 private:
@@ -14,12 +21,19 @@ public:
 
     void setInfo(TE* pInfoEle);
     TE* getInfo();
-
+    /**
+     * @brief Info guarda o ponteiro do objeto que será guardado pelo elemento de lista.
+     */
     void setProximoElemento(Elemento<TE>* pProxEle);
     Elemento<TE>* getProximoElemento();
-
+    /**
+     * @brief Ponteiro para o próximo elemento da lista.
+     */
     void setAnteriorElemento(Elemento<TE>* pAnteEle);
     Elemento<TE>* getAnteriorElemento();
+    /**
+     * @brief Ponteiro para o elemento anterior da lista.
+     */
 };
 
 template<class TE>

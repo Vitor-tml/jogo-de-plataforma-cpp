@@ -5,6 +5,12 @@
 #include "../../game/Entity/Entity.h"
 #include <string>
 
+/**
+ * @class ListaEntidades
+ * @brief Classe utilizada para criar uma lista de entidades do jogo.
+ * @author GustavoPellanda
+ */
+
 class ListaEntidades {
 private:
     Lista<Entity> listaEntidades;

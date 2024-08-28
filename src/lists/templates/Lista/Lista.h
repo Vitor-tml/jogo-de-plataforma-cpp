@@ -4,6 +4,12 @@
 #include "../Elemento/Elemento.h"
 #include <iostream>
 
+/**
+ * @class Lista
+ * @brief Template de uma lista simplesmente encadeada.
+ * @author GustavoPellanda
+ */
+
 template<class TL>
 class Lista {
 private:
