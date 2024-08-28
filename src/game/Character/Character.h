@@ -2,7 +2,8 @@
 #define _CHARACTER_H
 
 #include "../Entity/Entity.h"
-#include "../../engine/PhysicsComponent/PhysicsComponent.h"#include "../../../lib/json.hpp"
+#include "../../engine/PhysicsComponent/PhysicsComponent.h"
+#include "../../../lib/json.hpp"
 
 /**
  * @class Character

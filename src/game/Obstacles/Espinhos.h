@@ -9,6 +9,7 @@ public:
     Espinhos(int xx, int yy, sf::Texture &textura, int offsetX = 0, int offsetY = 0);
     ~Espinhos(){};
     void executar(){};
+    void executar(float deltaTime){};
     void obstacular(Player *jogador);
     void obstacular(Entity *p){};
 };

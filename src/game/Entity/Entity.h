@@ -2,7 +2,8 @@
 #define _ENTITY_H_
 
 #include "../../engine/Ente/Ente.h"
-#include "../../engine/PhysicsComponent/PhysicsComponent.h"#include "../../../lib/json.hpp"
+#include "../../engine/PhysicsComponent/PhysicsComponent.h"
+#include "../../../lib/json.hpp"
 
 /**
  * @class Entity

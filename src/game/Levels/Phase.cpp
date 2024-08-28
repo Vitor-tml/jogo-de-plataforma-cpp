@@ -22,6 +22,7 @@ Phase::Phase() :
     listaEntidades.incluir(&plataforma2);
     listaEntidades.incluir(&plataforma3);
     listaEntidades.incluir(&chao);
+    listaEntidades.incluir(&espinho);
     gColisao.incluirObstaculo(&plataforma); 
     gColisao.incluirObstaculo(&plataforma2); 
     gColisao.incluirObstaculo(&plataforma3); 
@@ -35,15 +36,16 @@ void Phase::executar()
     deltaTime = tempo.restart().asSeconds();
 
     renderizar();
-    
     for (int i = 0; i < listaEntidades.getTamanho(); i++) {
         listaEntidades[i]->executar(deltaTime);
         listaEntidades[i]->renderizar(i+1);
+        listaEntidades[i]->renderizarCaixaColisao();
     }
 
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
     gGrafico->render();
-    
+    jogador.setNoChao(false);
+    gColisao.tratarColisoes();
     saveManager.saveEntidades(listaEntidades, "save.txt");
 
     // Onde colocar o setCentroCamera?

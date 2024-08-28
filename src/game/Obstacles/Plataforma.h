@@ -10,6 +10,7 @@ public:
     Plataforma(int xx, int yy, sf::Texture &textura, int offsetX = 0, int offsetY = 0);
     ~Plataforma() {};
     void executar();
+    void executar(float deltaTime){};
     void obstacular(Player *p);
     void obstacular(Entity *p);
 };
