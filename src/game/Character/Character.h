@@ -2,6 +2,7 @@
 #define _CHARACTER_H
 
 #include "../Entity/Entity.h"
+#include "../../../lib/json.hpp"
 
 /**
  * @class Character
@@ -42,7 +43,7 @@ public:
      * 
      * Este método deve ser implementado pelas classes derivadas para definir como o estado do personagem deve ser salvo e lógica de permanência de objeto.
      */
-    virtual void salvar() = 0;
+    virtual nlohmann::json salvar() const = 0;
 };
 
 #endif

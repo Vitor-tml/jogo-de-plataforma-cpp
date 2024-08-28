@@ -1,6 +1,7 @@
 #ifndef _OBSTACLE_H
 #define _OBSTACLE_H
 
+#include "../../../lib/json.hpp"
 #include "../Entity/Entity.h"
 
 class Player;
@@ -10,5 +11,14 @@ protected:
 public:
     virtual void executar() = 0;
     virtual void obstacular(Player *jogador) = 0;
+    
+    nlohmann::json salvar() const override {
+        nlohmann::json j;
+        j["id"] = getID();
+        j["posX"] = 10;
+        j["posY"] = 10;
+        j["health"] = 10;
+        return j;
+    }
 };
 #endif

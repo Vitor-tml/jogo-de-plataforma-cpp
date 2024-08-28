@@ -48,3 +48,16 @@ void Enemy::danificar(Player* jogador)
 {
     jogador->setVida(jogador->getVida() - nivelMaldade);
 }
+
+int Enemy::getVida() const {
+    return nVidas;
+}
+
+nlohmann::json Enemy::salvar() const {
+    nlohmann::json j;
+    j["id"] = getID();
+    j["posX"] = getPosicao().x;
+    j["posY"] = getPosicao().y;
+    j["health"] = getVida();
+    return j;
+}

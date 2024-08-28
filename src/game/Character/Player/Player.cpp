@@ -64,7 +64,7 @@ void Player::userInput()
     }
 }
 
-int Player::getVida(){
+int Player::getVida() const {
     return nVidas;
 }
 
@@ -75,4 +75,13 @@ void Player::setVida(int vida){
 sf::Sprite& Player::getSprite()
 {
     return sprite;
+}
+
+nlohmann::json Player::salvar() const {
+    nlohmann::json j;
+    j["id"] = getID();
+    j["posX"] = getPosicao().x;
+    j["posY"] = getPosicao().y;
+    j["health"] = getVida();
+    return j;
 }

@@ -2,6 +2,7 @@
 #define _ENTITY_H_
 
 #include "../../engine/Ente/Ente.h"
+#include "../../../lib/json.hpp"
 
 /**
  * @class Entity
@@ -35,12 +36,15 @@ public:
      * Este método deve ser implementado pelas classes derivadas para definir o comportamento específico da entidade.
      */
     virtual void executar() = 0;
+    virtual void executar(float deltaTime) = 0;
     /**
      * @brief Método puramente virtual para salvar o estado da entidade.
      * 
      * Este método deve ser implementado pelas classes derivadas para definir como o estado da entidade deve ser salvo e a lógica de permanência de objeto.
      */
-    virtual void salvar() = 0;
+    virtual nlohmann::json salvar() const = 0;
+
+    int getID() const { return id; }
 };
 
 #endif

@@ -4,6 +4,12 @@
 #include "../Elemento/Elemento.h"
 #include <iostream>
 
+/**
+ * @class Lista
+ * @brief Template de uma lista simplesmente encadeada.
+ * @author GustavoPellanda
+ */
+
 template<class TL>
 class Lista {
 private:
@@ -24,6 +30,9 @@ public:
 
     void incluirElemento(Elemento<TL>* pEle);
     void listarElementos();
+
+    TL* operator[](int index) const;
+    int getTamanho() const; 
 };
 
 template<class TL>
@@ -46,16 +55,16 @@ void Lista<TL>::inicializarLista(int maxEle, int countEle) {
 
 template<class TL>
 Lista<TL>::~Lista() {
-    Elemento<TL>* pAux1 = pPrimeiroElemento, *pAux2;
+    // Elemento<TL>* pAux1 = pPrimeiroElemento, *pAux2;
 
-    while (pAux1 != nullptr) {
-        pAux2 = pAux1->getProximoElemento();
-        delete pAux1;
-        pAux1 = pAux2;
-    }
+    // while (pAux1 != nullptr) {
+    //     pAux2 = pAux1->getProximoElemento();
+    //     delete pAux1;
+    //     pAux1 = pAux2;
+    // }
 
-    pPrimeiroElemento = nullptr;
-    pUltimoElemento = nullptr;
+    // pPrimeiroElemento = nullptr;
+    // pUltimoElemento = nullptr;
 }
 
 template<class TL>
@@ -91,5 +100,28 @@ void Lista<TL>::listarElementos() {
         pAux = pAux->getProximoElemento();
     }
 }
+
+// -- Métodos criados para facilitar a iteração pela lista: -- 
+
+template<class TL>
+int Lista<TL>::getTamanho() const {
+    return countElementos;
+}
+
+// Sobrecarga do operador []
+template<class TL>
+TL* Lista<TL>::operator[](int index) const {
+    if (index < 0 || index >= countElementos) {
+        std::cerr << "Índice fora dos limites!" << std::endl;
+        return nullptr;
+    }
+
+    Elemento<TL>* pAux = pPrimeiroElemento;
+    for (int i = 0; i < index; ++i) {
+        pAux = pAux->getProximoElemento();
+    }
+    return pAux->getInfo();
+}
+
 
 #endif

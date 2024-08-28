@@ -6,6 +6,7 @@
 #include "../Character/Player/Player.h"
 #include "../Character/Enemy/Enemy.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
+#include "../../engine/Savemanager/SaveManager.h"
 
 class Phase : public Ente {
 private:
@@ -14,6 +15,7 @@ private:
     sf::Clock tempo;
     float deltaTime;
     ListaEntidades listaEntidades;
+    SaveManager saveManager;
 public:
     Phase();
     virtual ~Phase() noexcept {};

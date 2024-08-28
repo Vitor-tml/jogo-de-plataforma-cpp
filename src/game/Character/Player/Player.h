@@ -1,6 +1,7 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+#include "../../../lib/json.hpp"
 #include <SFML/Graphics.hpp>
 #include "../Character.h"
 #include "../../../engine/PhysicsComponent/PhysicsComponent.h"
@@ -72,7 +73,7 @@ public:
      * @brief Método responsável pela permanência de objeto da classe player.
      * @todo Implementar quando decidido sobre a lógica de permanencia e controle de arquivos.
      */
-    int getVida();
+    int getVida() const;
     /**
      * @brief Retorna vida atual do player.
      */
@@ -80,7 +81,7 @@ public:
     /**
      * @brief Altera o valor da vida atual do player.
      */
-    void salvar() override { std::cout << "Sem metodo de salvar ainda." << std::endl;};
+    nlohmann::json salvar() const override;
     /**
      * @brief Retorna posição do personagem
      * 
