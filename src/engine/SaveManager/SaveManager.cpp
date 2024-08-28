@@ -6,10 +6,10 @@
 using json = nlohmann::json;
 
 std::string SaveManager::getTipo(const Entity* entidade) const {
-    if (dynamic_cast<const Enemy*>(entidade)) return "Enemy";
-    if (dynamic_cast<const Player*>(entidade)) return "Player";
-    if (dynamic_cast<const Obstacle*>(entidade)) return "Obstacle";
-    return "Unknown";
+    if (dynamic_cast<const Enemy*>(entidade)) return "Inimigo";
+    if (dynamic_cast<const Player*>(entidade)) return "Jogador";
+    if (dynamic_cast<const Obstacle*>(entidade)) return "Obstáculo";
+    return "Entidade";
 }
 
 Entity* SaveManager::criarEntidade(const std::string& tipo) const {
@@ -26,9 +26,9 @@ void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& 
     for (int i = 0; i < lista.getTamanho(); i++) {
         json jEntidade;
         const Entity* entidade = lista[i];
-        jEntidade["pointer"] = reinterpret_cast<uintptr_t>(entidade);
-        jEntidade["tipo"] = getTipo(entidade);
-        jLista.push_back(jEntidade);
+        jEntidade["tipo"] = getTipo(entidade);        // Usa o método getTipo para identificar o qual é a entidade
+        jEntidade["dados"] = entidade->salvar();      // Usa o método salvar de cada entidade para buscar os dados próprios delas
+        jLista.push_back(jEntidade);                  // Insere as informações de cada entidade no JSON
     }
 
     try {
@@ -36,10 +36,14 @@ void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& 
         if (!arquivo.is_open()) {
             throw std::ios_base::failure("Erro ao abrir o arquivo para escrita.");
         }
-        arquivo << jLista.dump(4); // Salvando com indentação
+        
+        arquivo << jLista.dump(4); // Salva o JSON no arquivo
         if (!arquivo) {
             throw std::ios_base::failure("Erro ao escrever no arquivo.");
         }
+        
+        std::cout << "Lista de entidades salva com sucesso no arquivo: " << filename << std::endl;
+    
     } catch (const std::ios_base::failure& e) {
         std::cerr << "Erro ao salvar entidades: " << e.what() << std::endl;
     }
