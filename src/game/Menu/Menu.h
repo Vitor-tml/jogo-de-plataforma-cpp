@@ -19,9 +19,12 @@
  */
 class Menu : public Ente {
 private:
+    int* estado;
 public:
-    Menu();
+    Menu(int* i);
     ~Menu() {};
+    void setEstado(int i);
+    const int getEstado() const;
 
     void executar();
 };
