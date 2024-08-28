@@ -1733,7 +1733,7 @@
 <XPD:OBJ name="OwnedViews[21]" type="UMLClassView" guid="XqepOezZpUWQX0PQTjRzNgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$0080FF80</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">416</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">412</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">840</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">152</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">123</XPD:ATTR>
@@ -3873,19 +3873,19 @@
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[64]" type="UMLClassView" guid="x2JmS74VlU+VEB5szm7YtwAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">$008080FF</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$0080FF80</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">1276</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">1132</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">101</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">78</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">164</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">82</XPD:ATTR>
 <XPD:REF name="Model">v/yCrnMMeEWoOuPwwGgIEQAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="V9vcs1i4TUadhRjS4ICipAAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="H1Vtlpwgk0ifZTlpUmuXiAAA">
 <XPD:ATTR name="FontStyle" type="integer">1</XPD:ATTR>
-<XPD:ATTR name="Text" type="string">Obst_Dificil</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">Espinho</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="StereotypeLabel" type="LabelView" guid="C3aluRbyMUO9jyUUC7fkvQAA">
-<XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
+<XPD:ATTR name="Text" type="string">&lt;&lt;Obstaluco3&gt;&gt;</XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="PropertyLabel" type="LabelView" guid="lAZkFAgea02uwFYsiDLC+QAA">
 <XPD:ATTR name="Visible" type="boolean">False</XPD:ATTR>
@@ -5615,7 +5615,8 @@
 <XPD:REF name="Views[0]">gEs9i5sYoEy3Je5m3LTBNgAA</XPD:REF>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedElements[47]" type="UMLClass" guid="v/yCrnMMeEWoOuPwwGgIEQAA">
-<XPD:ATTR name="Name" type="string">Obst_Dificil</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">Espinho</XPD:ATTR>
+<XPD:ATTR name="StereotypeName" type="string">Obstaluco3</XPD:ATTR>
 <XPD:REF name="Namespace">IoH8RzmxEE6xOc9zvj2jawAA</XPD:REF>
 <XPD:ATTR name="#Views" type="integer">4</XPD:ATTR>
 <XPD:REF name="Views[0]">x2JmS74VlU+VEB5szm7YtwAA</XPD:REF>
@@ -5626,13 +5627,25 @@
 <XPD:REF name="Generalizations[0]">i3dh9o/MZk2stu8JC7+TsAAA</XPD:REF>
 <XPD:ATTR name="#Operations" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Operations[0]" type="UMLOperation" guid="5OOB/VikukmEqZwespM1CAAA">
-<XPD:ATTR name="Name" type="string">...</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">obstacular</XPD:ATTR>
 <XPD:REF name="Owner">v/yCrnMMeEWoOuPwwGgIEQAA</XPD:REF>
+<XPD:ATTR name="#Parameters" type="integer">2</XPD:ATTR>
+<XPD:OBJ name="Parameters[0]" type="UMLParameter" guid="TY/rFmSt00ak+UkqrnxBYAAA">
+<XPD:ATTR name="DirectionKind" type="UMLParameterDirectionKind">pdkReturn</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">void</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">5OOB/VikukmEqZwespM1CAAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Parameters[1]" type="UMLParameter" guid="nTBvhMOsp0aazGuUR5o5VQAA">
+<XPD:ATTR name="Name" type="string">p</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Jogador *</XPD:ATTR>
+<XPD:REF name="BehavioralFeature">5OOB/VikukmEqZwespM1CAAA</XPD:REF>
+</XPD:OBJ>
 </XPD:OBJ>
 <XPD:ATTR name="#Attributes" type="integer">1</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="bWZSVqOVvUK3Hf2dGUG8dAAA">
-<XPD:ATTR name="Name" type="string">...</XPD:ATTR>
+<XPD:ATTR name="Name" type="string">dano</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">Int</XPD:ATTR>
 <XPD:REF name="Owner">v/yCrnMMeEWoOuPwwGgIEQAA</XPD:REF>
 </XPD:OBJ>
 </XPD:OBJ>
