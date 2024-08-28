@@ -10,6 +10,7 @@ Game::Game():
     gRecursos->loadTexture("menu",       "../assets/textures/cenaMenu.png");
     gRecursos->loadTexture("inimigo",       "../assets/textures/skeleton.png");
     gRecursos->loadTexture("chao",       "../assets/textures/chao.png");
+    gRecursos->loadTexture("espinho",      "../assets/textures/espinho.png");
     gRecursos->loadImage("jogador",      "../assets/textures/knight.png");
 }
 
@@ -20,7 +21,8 @@ Game::~Game()
 
 void Game::executar()
 {
-    Menu menu;
+    int estado = 0;
+    Menu menu(&estado);
     Phase fase1;
     while (janela->isOpen())
     {
@@ -30,7 +32,17 @@ void Game::executar()
             if(evento.type == sf::Event::Closed)
                 janela->close();    
         }
-        
-        fase1.executar();
+        switch (estado)
+        {
+        case 0:
+            menu.executar();
+            estado = menu.getEstado();
+            break;
+        case 1:
+            fase1.executar();
+            break;
+        default:
+            break;
+        }
     }
 }

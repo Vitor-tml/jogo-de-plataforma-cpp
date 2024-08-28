@@ -13,23 +13,11 @@
  * concretas para os métodos `executar` e `salvar`.
  * @see Entity Ente
  * @author Vitor-tml
- */
+ */ 
+class Entity;
 class Character : public Entity {
 protected:
     int nVidas; ///< Número de vidas do personagem.
-
-    /**
-     * Velocidade vertical e horizontal do player.
-    */
-    sf::Vector2f velocidade;
-
-        /**
-     * @brief Componente que controla a física do player
-     * @see PhysicsComponent
-     */
-    PhysicsComponent fisica;
-    bool estaNoChao;
-
 public:
     /**
      * @brief Construtor da classe Character.
@@ -56,18 +44,6 @@ public:
      * Este método deve ser implementado pelas classes derivadas para definir como o estado do personagem deve ser salvo e lógica de permanência de objeto.
      */
     virtual nlohmann::json salvar() const = 0;
-
-
-    sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
-    
-    void setVelocidade(const sf::Vector2f& novaVelocidade);
-    sf::Vector2f getVelocidade() const;
-
-    void setNoChao(bool noChao);
-    bool getNoChao() const;
-
-    void setPosicao(int xx, int yy);
-    void setPosicao(sf::Vector2f posicao);
 };
 
 #endif

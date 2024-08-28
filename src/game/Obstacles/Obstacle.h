@@ -13,6 +13,7 @@ public:
     ~Obstacle(){};
     virtual void executar(){};                  // Depois colocar virtual pura
     virtual void obstacular(Player *jogador){}; // Depois colocar virtual pura
+    virtual void obstacular(Entity *p){}; // Depois colocar virtual pura
     
     nlohmann::json salvar() const override {
         nlohmann::json j;

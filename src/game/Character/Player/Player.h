@@ -80,6 +80,22 @@ public:
      * 
      */
     
+    // Pre-decremento (--a)
+    Player& operator--() {
+        if (nVidas > 0) {
+            --nVidas;
+        }
+        return *this;
+    }
+
+    // Pós-decremento (a--)
+    Player operator--(int) {
+        Player temp = *this;  // Salva o estado atual
+        if (nVidas > 0) {
+            --nVidas;
+        }
+        return temp;  // Retorna o estado antes da decretação
+    }
 
     
 };

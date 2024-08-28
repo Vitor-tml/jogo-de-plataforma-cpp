@@ -9,7 +9,8 @@ Phase::Phase() :
     plataforma3(100, 436, gRecursos->getTexture("plataforma")),
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
     listaEntidades(),
-    gColisao(&jogador)
+    gColisao(&jogador),
+    espinho(100, 500, gRecursos->getTexture("espinho"))
 {
     // Iniciar local?
     //sprite.setOrigin()
@@ -25,6 +26,7 @@ Phase::Phase() :
     gColisao.incluirObstaculo(&plataforma2); 
     gColisao.incluirObstaculo(&plataforma3); 
     gColisao.incluirObstaculo(&chao); 
+    gColisao.incluirObstaculo(&espinho); 
     gColisao.incluirInimigos(&inimigo); 
 }
 
