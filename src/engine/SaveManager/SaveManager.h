@@ -5,7 +5,7 @@
 #include "../../game/Character/Enemy/Enemy.h"
 #include "../../game/Character/Player/Player.h"
 #include "../../game/Obstacles/Obstacle.h"
-#include "json.hpp"
+#include "../../../lib/json.hpp"
 #include <string>
 
 /**

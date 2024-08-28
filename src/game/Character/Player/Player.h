@@ -73,7 +73,7 @@ public:
      * @brief Método responsável pela permanência de objeto da classe player.
      * @todo Implementar quando decidido sobre a lógica de permanencia e controle de arquivos.
      */
-    int getVida() const ;
+    int getVida() const;
     /**
      * @brief Retorna vida atual do player.
      */

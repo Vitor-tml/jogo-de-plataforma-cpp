@@ -31,6 +31,8 @@ public:
     void executar(float deltaTime);                 // Transformar em virtual futuramente
     void danificar(Player* jogador);                // Transformar em virtual futuramente
     void executar() {}
+    int getVida() const;
+    sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
     nlohmann::json salvar() const override;
 };
 #endif

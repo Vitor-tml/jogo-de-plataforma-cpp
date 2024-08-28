@@ -42,7 +42,7 @@ void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& 
             throw std::ios_base::failure("Erro ao escrever no arquivo.");
         }
         
-        std::cout << "Lista de entidades salva com sucesso no arquivo: " << filename << std::endl;
+        //std::cout << "Lista de entidades salva com sucesso no arquivo: " << filename << std::endl;
     
     } catch (const std::ios_base::failure& e) {
         std::cerr << "Erro ao salvar entidades: " << e.what() << std::endl;
