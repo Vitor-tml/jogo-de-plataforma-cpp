@@ -3,10 +3,12 @@
 #include <iostream>
 
 Enemy::Enemy(sf::Texture& textura) :
+velocidadeHorizontal(100.f),
+distancia(200.f),
+indoDireita(true),
 nivelMaldade(1),
 Character(100, 100, 0, 0, 20, textura),
 estaNoChao(false),
-fisica(),
 posXInicial(sprite.getPosition().x),
 limiteDireita(posXInicial + distancia),
 limiteEsquerda(posXInicial - distancia)
@@ -22,16 +24,16 @@ limiteEsquerda(posXInicial - distancia)
 Enemy::~Enemy() {}
 
 void Enemy::mover(float deltaTime) {
-    posXInicial = sprite.getPosition().x;
-
     if (indoDireita) {
-        sprite.move(velocidadeHorizontal * deltaTime, 0.0f);
-        if (sprite.getPosition().x >= limiteDireita) {
+        // sprite.move(velocidadeHorizontal * deltaTime, 0.0f);
+        this->setVelocidade(getVelocidade() + sf::Vector2f(velocidadeHorizontal * deltaTime, 0.f));
+        if (x >= limiteDireita) {
             indoDireita = false;
         }
     } else {
-        sprite.move(-velocidadeHorizontal * deltaTime, 0.0f);
-        if (sprite.getPosition().x <= limiteEsquerda) {
+        this->setVelocidade(getVelocidade() + sf::Vector2f(-velocidadeHorizontal * deltaTime, 0.f));
+        // sprite.move(-velocidadeHorizontal * deltaTime, 0.0f);
+        if (x <= limiteEsquerda) {
             indoDireita = true;
         }
     }
@@ -39,8 +41,8 @@ void Enemy::mover(float deltaTime) {
 
 void Enemy::executar(float deltaTime)
 {
-    fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     this->mover(deltaTime);
+    fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
 

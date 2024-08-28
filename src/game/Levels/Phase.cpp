@@ -21,9 +21,9 @@ Phase::Phase() :
     listaEntidades.incluir(&plataforma2);
     listaEntidades.incluir(&plataforma3);
     listaEntidades.incluir(&chao);
-    gColisao.incluirObstaculo(&plataforma); 
-    gColisao.incluirObstaculo(&plataforma2); 
-    gColisao.incluirObstaculo(&plataforma3); 
+    // gColisao.incluirObstaculo(&plataforma); 
+    // gColisao.incluirObstaculo(&plataforma2); 
+    // gColisao.incluirObstaculo(&plataforma3); 
     gColisao.incluirObstaculo(&chao); 
     gColisao.incluirInimigos(&inimigo); 
 }
@@ -34,29 +34,31 @@ void Phase::executar()
     
     gGrafico->clearDrawables();
     jogador.setNoChao(false);
-    gColisao.verificaColisaoObstaculo();
-    gColisao.verificaColisaoInimigo();
+    // gColisao.verificaColisaoObstaculo();
+    // gColisao.verificaColisaoInimigo();
     
+    
+    gColisao.tratarColisoes();
     renderizar(0);
 
     chao.renderizar(1);
-    // chao.renderizarCaixaColisao();
+    chao.renderizarCaixaColisao();
 
     
     jogador.executar(deltaTime);
     jogador.renderizar(2);
-    // jogador.renderizarCaixaColisao();
+    jogador.renderizarCaixaColisao();
     
-    plataforma.renderizar(1);
+    // plataforma.renderizar(1);
     // plataforma.renderizarCaixaColisao();
-    plataforma2.renderizar(1);
+    // plataforma2.renderizar(1);
     // plataforma2.renderizarCaixaColisao();
-    plataforma3.renderizar(1);
+    // plataforma3.renderizar(1);
     // plataforma3.renderizarCaixaColisao();
 
     inimigo.executar(deltaTime);
     inimigo.renderizar(1);
-    // inimigo.renderizarCaixaColisao();
+    inimigo.renderizarCaixaColisao();
     
     
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y);

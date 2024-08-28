@@ -5,9 +5,10 @@
 #include "../../engine/ResourceManager/ResourceManager.h"
 #include "../../engine/CollisionManager/CollisionManager.h"
 #include "../Character/Player/Player.h"
+#include "../Character/Character.h"
 #include "../Character/Enemy/Enemy.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
-
+#include "../Obstacles/Plataforma.h"
 class Phase : public Ente {
 private:
     Player jogador;
@@ -17,10 +18,10 @@ private:
     ListaEntidades listaEntidades;
 
     CollisionManager gColisao;
-    Obstacle plataforma;
-    Obstacle plataforma2;
-    Obstacle plataforma3;
-    Obstacle chao;
+    Plataforma plataforma;
+    Plataforma chao;
+    Plataforma plataforma2;
+    Plataforma plataforma3;
 
 public:
     Phase();

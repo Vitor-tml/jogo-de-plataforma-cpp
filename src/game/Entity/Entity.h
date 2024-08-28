@@ -2,7 +2,7 @@
 #define _ENTITY_H_
 
 #include "../../engine/Ente/Ente.h"
-
+#include "../../engine/PhysicsComponent/PhysicsComponent.h"
 /**
  * @class Entity
  * @brief Classe base para entidades no jogo.
@@ -19,6 +19,11 @@ protected:
     sf::RectangleShape caixaColisao;
     sf::CircleShape pontoOrigem;
     sf::Vector2f offSetColisao;
+
+    sf::Vector2f velocidade;
+    PhysicsComponent fisica;
+    bool estaNoChao;
+
 public:
     /**
      * @brief Construtor padrão da classe Entity.
@@ -51,6 +56,17 @@ public:
     void inicializarCaixaColisao();
     void inicializarCaixaColisao(int largura, int altura);
     void atualizarCaixaColisao();
+
+    sf::Vector2f getPosicao() const { return sf::Vector2f(x, y);}
+    
+    void setVelocidade(const sf::Vector2f& novaVelocidade);
+    sf::Vector2f getVelocidade() const;
+
+    void setNoChao(bool noChao);
+    bool getNoChao() const;
+
+    void setPosicao(int xx, int yy);
+    void setPosicao(sf::Vector2f posicao);
 };
 
 #endif

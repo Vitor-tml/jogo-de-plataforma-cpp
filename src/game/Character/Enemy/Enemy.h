@@ -8,14 +8,12 @@
 
 class Enemy : public Character {
 private:
-    PhysicsComponent fisica;
     bool estaNoChao;
-    sf::Vector2f velocidade;
 
     bool indoDireita = true;                       // Utilizado para movimentar o inimigo
     float posXInicial;
-    const float velocidadeHorizontal = 100.0f;     // Pixels por segundo
-    const float distancia = 200.0f;                // Distância total do movimento
+    const float velocidadeHorizontal;     // Pixels por segundo
+    const float distancia;                // Distância total do movimento
     const float limiteDireita;
     const float limiteEsquerda;
 
