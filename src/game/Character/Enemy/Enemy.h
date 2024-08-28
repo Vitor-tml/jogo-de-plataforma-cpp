@@ -31,13 +31,6 @@ public:
     void executar(float deltaTime);                 // Transformar em virtual futuramente
     void danificar(Player* jogador);                // Transformar em virtual futuramente
     void executar() {}
-    nlohmann::json salvar() const override {
-        nlohmann::json j;
-        j["id"] = 1;
-        j["posX"] = 10;
-        j["posY"] = 10;
-        j["health"] = 100;
-        return j;
-    }
+    nlohmann::json salvar() const override;
 };
 #endif

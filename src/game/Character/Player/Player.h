@@ -73,7 +73,7 @@ public:
      * @brief Método responsável pela permanência de objeto da classe player.
      * @todo Implementar quando decidido sobre a lógica de permanencia e controle de arquivos.
      */
-    int getVida();
+    int getVida() const ;
     /**
      * @brief Retorna vida atual do player.
      */
@@ -81,14 +81,7 @@ public:
     /**
      * @brief Altera o valor da vida atual do player.
      */
-    nlohmann::json salvar() const override {
-        nlohmann::json j;
-        j["id"] = 2;
-        j["posX"] = 10;
-        j["posY"] = 10;
-        j["health"] = 100;
-        return j;
-    }
+    nlohmann::json salvar() const override;
     /**
      * @brief Retorna posição do personagem
      * 

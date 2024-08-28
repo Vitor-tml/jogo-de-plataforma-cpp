@@ -13,7 +13,7 @@ public:
     virtual void obstacular(Player *jogador) = 0;
     nlohmann::json salvar() const override {
         nlohmann::json j;
-        j["id"] = 3;
+        j["id"] = 1;
         j["posX"] = 10;
         j["posY"] = 10;
         j["health"] = 100;

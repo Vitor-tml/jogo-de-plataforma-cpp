@@ -44,7 +44,7 @@ public:
      */
     virtual nlohmann::json salvar() const = 0;
 
-    int getID() { return id; }
+    int getID() const { return id; }
 };
 
 #endif
