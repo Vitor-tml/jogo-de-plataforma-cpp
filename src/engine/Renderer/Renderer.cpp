@@ -29,8 +29,8 @@ void Renderer::addDrawable(const sf::Drawable &drawable, int camada)
     // if(camada == 0 && !drawables.empty()) ///< Caso a camada seja 0 e não seja a primeira da fila, coloca como última da fila
     //     camada = drawables.size();
     //std::cout << "Rederizando camada: " << camadaJanela << std::endl;
-    // drawables.push_back(std::make_pair(&drawable, camadaJanela++));
-    drawables.push_back(std::make_pair(&drawable, camadaJanela));
+    drawables.push_back(std::make_pair(&drawable, camadaJanela++));
+    // drawables.push_back(std::make_pair(&drawable, camadaJanela));
 }
 
 void Renderer::clearDrawables()

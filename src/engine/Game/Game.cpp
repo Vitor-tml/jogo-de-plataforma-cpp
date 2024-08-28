@@ -11,6 +11,7 @@ Game::Game():
     gRecursos->loadTexture("inimigo",       "../assets/textures/skeleton.png");
     gRecursos->loadTexture("chao",       "../assets/textures/chao.png");
     gRecursos->loadTexture("espinho",      "../assets/textures/espinho.png");
+    gRecursos->loadTexture("bala",      "../assets/textures/bala.png");
     gRecursos->loadImage("jogador",      "../assets/textures/knight.png");
 }
 

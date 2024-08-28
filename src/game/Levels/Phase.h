@@ -11,7 +11,7 @@
 #include "../Obstacles/Plataforma.h"
 #include "../Obstacles/Espinhos.h"
 #include "../../engine/Savemanager/SaveManager.h"
-
+#include "../Projectile/Projectile.h"
 class Phase : public Ente {
 private:
     Player jogador;
@@ -27,6 +27,7 @@ private:
     Plataforma plataforma3;
     Espinhos espinho;
     SaveManager saveManager;
+    Projetctile bala;
 public:
     Phase();
     virtual ~Phase() noexcept {};

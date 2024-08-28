@@ -7,6 +7,7 @@ Phase::Phase() :
     plataforma(0, 500, gRecursos->getTexture("plataforma")),
     plataforma2(0, 500, gRecursos->getTexture("plataforma")),
     plataforma3(100, 436, gRecursos->getTexture("plataforma")),
+    bala(0, 400, gRecursos->getTexture("bala"), 0, 0),
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
     listaEntidades(),
     gColisao(&jogador),
@@ -23,6 +24,7 @@ Phase::Phase() :
     listaEntidades.incluir(&plataforma3);
     listaEntidades.incluir(&chao);
     listaEntidades.incluir(&espinho);
+    listaEntidades.incluir(&bala);
     gColisao.incluirObstaculo(&plataforma); 
     gColisao.incluirObstaculo(&plataforma2); 
     gColisao.incluirObstaculo(&plataforma3); 
@@ -35,10 +37,10 @@ void Phase::executar()
 {
     deltaTime = tempo.restart().asSeconds();
 
-    renderizar();
+    renderizar(0);
     for (int i = 0; i < listaEntidades.getTamanho(); i++) {
         listaEntidades[i]->executar(deltaTime);
-        listaEntidades[i]->renderizar(i+1);
+        listaEntidades[i]->renderizar(i + 1);
         listaEntidades[i]->renderizarCaixaColisao();
     }
 
