@@ -29,6 +29,8 @@ void Phase::executar()
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
     gGrafico->render();
     
+    saveManager.saveEntidades(listaEntidades, "save.txt");
+
     // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();
 }
