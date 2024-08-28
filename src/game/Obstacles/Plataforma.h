@@ -5,7 +5,7 @@
 class Player;
 class Plataforma : public Obstacle{
 private:
-    int empuxo;
+    sf::Vector2f empuxo;
 public:
     Plataforma(int xx, int yy, sf::Texture &textura, int offsetX = 0, int offsetY = 0);
     ~Plataforma() {};

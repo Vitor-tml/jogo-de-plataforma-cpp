@@ -9,6 +9,7 @@
 #include "../Character/Enemy/Enemy.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
 #include "../Obstacles/Plataforma.h"
+#include "../Obstacles/Espinhos.h"
 class Phase : public Ente {
 private:
     Player jogador;
@@ -22,7 +23,7 @@ private:
     Plataforma chao;
     Plataforma plataforma2;
     Plataforma plataforma3;
-
+    Espinhos espinho;
 public:
     Phase();
     virtual ~Phase() noexcept {};

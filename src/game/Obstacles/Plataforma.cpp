@@ -11,7 +11,7 @@ Plataforma::Plataforma(int xx, int yy, sf::Texture &textura, int offsetX, int of
 
 void Plataforma::executar()
 {
-
+    
 }
 
 void Plataforma::obstacular(Player *jogador)
@@ -60,7 +60,7 @@ void Plataforma::obstacular(Player *jogador)
 
 void Plataforma::obstacular(Entity *p)
 {   
-    std::cout << "Tratando colisao: Obstaculo entidade" << std::endl;
+    // std::cout << "Tratando colisao: Obstaculo entidade" << std::endl;
     sf::FloatRect playerBox   = p->getCaixaColisao().getGlobalBounds();
     sf::FloatRect obstacleBox = this->getCaixaColisao().getGlobalBounds();
 

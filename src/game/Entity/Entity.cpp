@@ -3,7 +3,6 @@
 Entity::Entity(int xx, int yy): 
     Ente(),
     offSetColisao(0.f, 0.f),
-    pontoOrigem(0.5f),
     caixaColisao(sf::Vector2f(0.f, 0.f))
 {
     x = xx;
@@ -13,7 +12,6 @@ Entity::Entity(int xx, int yy):
 Entity::Entity(int xx, int yy, float offSetColisorX, float offSetColisorY, sf::Texture& textura):
     Ente(textura),
     offSetColisao(offSetColisorX, offSetColisorY),
-    pontoOrigem(0.5f),
     caixaColisao(sf::Vector2f(0.f, 0.f))
 {
     x = xx;
