@@ -3,6 +3,7 @@
 
 #include "../../engine/Ente/Ente.h"
 #include "../../engine/ResourceManager/ResourceManager.h"
+#include "../../engine/CollisionManager/CollisionManager.h"
 #include "../Character/Player/Player.h"
 #include "../Character/Enemy/Enemy.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
@@ -15,6 +16,13 @@ private:
     sf::Clock tempo;
     float deltaTime;
     ListaEntidades listaEntidades;
+
+    CollisionManager gColisao;
+    Obstacle plataforma;
+    Obstacle plataforma2;
+    Obstacle plataforma3;
+    Obstacle chao;
+
     SaveManager saveManager;
 public:
     Phase();

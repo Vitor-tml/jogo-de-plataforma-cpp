@@ -4,7 +4,12 @@ Phase::Phase() :
     Ente(gRecursos->getTexture("fundo")),
     jogador(gRecursos->getTexture("jogador")),
     inimigo(gRecursos->getTexture("inimigo")),
-    listaEntidades()
+    plataforma(0, 500, gRecursos->getTexture("plataforma")),
+    plataforma2(0, 500, gRecursos->getTexture("plataforma")),
+    plataforma3(100, 436, gRecursos->getTexture("plataforma")),
+    chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
+    listaEntidades(),
+    gColisao(&jogador)
 {
     // Iniciar local?
     //sprite.setOrigin()
@@ -12,9 +17,17 @@ Phase::Phase() :
     
     listaEntidades.incluir(&jogador);
     listaEntidades.incluir(&inimigo);
+    listaEntidades.incluir(&plataforma);
+    listaEntidades.incluir(&plataforma2);
+    listaEntidades.incluir(&plataforma3);
+    listaEntidades.incluir(&chao);
+    gColisao.incluirObstaculo(&plataforma); 
+    gColisao.incluirObstaculo(&plataforma2); 
+    gColisao.incluirObstaculo(&plataforma3); 
+    gColisao.incluirObstaculo(&chao); 
+    gColisao.incluirInimigos(&inimigo); 
 }
 
-int aux = 0;
 void Phase::executar()
 {
     deltaTime = tempo.restart().asSeconds();

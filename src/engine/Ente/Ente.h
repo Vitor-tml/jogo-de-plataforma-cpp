@@ -29,7 +29,7 @@ public:
      * @brief Construtora com parâmetros da classe base Ente
      * Inicia o atríbuto id define a textura do sprite
      */
-    Ente(sf::Texture& figura);
+    Ente(sf::Texture& figura, float offSetx = 0, float OffSety = 0);
     /**
      * @brief Destrutora da classe-base Ente.
      * Apenas para criar explicitamente o método.

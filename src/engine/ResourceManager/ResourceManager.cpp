@@ -61,3 +61,22 @@ sf::Font& ResourceManager::getFont(const std::string& id)
     else
         return fontes.at(id);
 }
+
+bool ResourceManager::loadImage(const std::string& id, const std::string& filename)
+{
+    // Adicionar poka-yoke se não char a imagem;
+    sf::Image imagem;
+    if(imagem.loadFromFile(filename)){
+        imagens[id] = imagem;
+        return true;
+    }
+    std::cerr << "Erro ao carregar imagem: " << filename << std::endl;
+    exit(1); // Colocar tratamento de erro posteriormente
+    return false; 
+}
+
+sf::Image& ResourceManager::getImage(const std::string& id)
+{
+    // Colocar retorno de placeHolder caso a imagem não exista
+    return imagens.at(id);
+}

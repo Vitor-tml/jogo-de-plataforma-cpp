@@ -11,7 +11,7 @@ Ente::Ente():
     placeHolder.create(64, 64);
     sprite.setTexture(placeHolder);
 }
-Ente::Ente(sf::Texture& figura):
+Ente::Ente(sf::Texture& figura, float offSetx, float OffSety):
     id(++cont)
 {
     std::cout << "Construtora com parametro(ente)" << std::endl;

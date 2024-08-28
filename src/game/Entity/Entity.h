@@ -17,22 +17,26 @@ class Entity : public Ente {
 protected:
     int x; ///< Coordenada x da entidade.
     int y; ///< Coordenada y da entidade.
-
+    sf::RectangleShape caixaColisao;
+    sf::CircleShape pontoOrigem;
+    sf::Vector2f offSetColisao;
 public:
     /**
      * @brief Construtor padrão da classe Entity.
      * Inicializa as coordenadas x e y para 0.
      */
-    Entity(int xx = 0, int yy = 0): Ente(), x(xx), y(yy) {};
-    Entity(int xx, int yy, sf::Texture& textura): Ente(textura), x(xx), y(yy) {};
+    Entity(int xx = 0, int yy = 0);
+    Entity(int xx, int yy, float offSetColisorX, float offSetColisorY, sf::Texture& textura);
     /**
      * @brief Destruidor da classe Entity.
      * O destruidor é virtual para garantir a destruição correta das classes derivadas, nessa classe coloca as coordenadas em -1.
      */
-    virtual ~Entity() { x = -1; y = -1; };
+    virtual ~Entity() {};
+    sf::RectangleShape getCaixaColisao() const;
+
     /**
      * @brief Método puramente virtual para executar a lógica da entidade.
-     * 
+     * e
      * Este método deve ser implementado pelas classes derivadas para definir o comportamento específico da entidade.
      */
     virtual void executar() = 0;
@@ -43,6 +47,12 @@ public:
      * Este método deve ser implementado pelas classes derivadas para definir como o estado da entidade deve ser salvo e a lógica de permanência de objeto.
      */
     virtual nlohmann::json salvar() const = 0;
+
+    void renderizarCaixaColisao();
+
+    void inicializarCaixaColisao();
+    void inicializarCaixaColisao(int largura, int altura);
+    void atualizarCaixaColisao();
 
     int getID() const { return id; }
 };
