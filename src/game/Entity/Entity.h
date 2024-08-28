@@ -17,7 +17,6 @@ protected:
     int x; ///< Coordenada x da entidade.
     int y; ///< Coordenada y da entidade.
     sf::RectangleShape caixaColisao;
-    sf::CircleShape pontoOrigem;
     sf::Vector2f offSetColisao;
 
     sf::Vector2f velocidade;
