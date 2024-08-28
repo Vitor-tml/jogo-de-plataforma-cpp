@@ -29,7 +29,7 @@ void Phase::executar()
     gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
     gGrafico->render();
     
-    saveManager.saveEntidades(listaEntidades, "save.txt");
+    saveManager.saveEntidades(listaEntidades, "save.txt"); // Isso vai ter que ficar fora do loop futuramente, em um evento que dá trigger no processo de salvar
 
     // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();

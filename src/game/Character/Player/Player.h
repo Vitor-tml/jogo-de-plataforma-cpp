@@ -1,6 +1,7 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+#include "../../../lib/json.hpp"
 #include <SFML/Graphics.hpp>
 #include "../Character.h"
 #include "../../../engine/PhysicsComponent/PhysicsComponent.h"
@@ -80,7 +81,14 @@ public:
     /**
      * @brief Altera o valor da vida atual do player.
      */
-    void salvar() override { std::cout << "Sem metodo de salvar ainda." << std::endl;};
+    nlohmann::json salvar() const override {
+        nlohmann::json j;
+        j["id"] = 2;
+        j["posX"] = 10;
+        j["posY"] = 10;
+        j["health"] = 100;
+        return j;
+    }
     /**
      * @brief Retorna posição do personagem
      * 

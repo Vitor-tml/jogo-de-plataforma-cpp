@@ -1,6 +1,7 @@
 #ifndef _ENEMY_H
 #define _ENEMY_H
 
+#include "../../../lib/json.hpp"
 #include <SFML/Graphics.hpp>
 #include "../Character.h"
 #include "../Player/Player.h"
@@ -30,6 +31,13 @@ public:
     void executar(float deltaTime);                 // Transformar em virtual futuramente
     void danificar(Player* jogador);                // Transformar em virtual futuramente
     void executar() {}
-    void salvar() {}
+    nlohmann::json salvar() const override {
+        nlohmann::json j;
+        j["id"] = 1;
+        j["posX"] = 10;
+        j["posY"] = 10;
+        j["health"] = 100;
+        return j;
+    }
 };
 #endif

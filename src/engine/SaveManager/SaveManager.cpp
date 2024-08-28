@@ -6,9 +6,9 @@
 using json = nlohmann::json;
 
 std::string SaveManager::getTipo(const Entity* entidade) const {
-    if (dynamic_cast<const Enemy*>(entidade)) return "Inimigo";
-    if (dynamic_cast<const Player*>(entidade)) return "Jogador";
-    if (dynamic_cast<const Obstacle*>(entidade)) return "Obstáculo";
+    if (dynamic_cast<const Enemy*>(entidade)) return "Enemy";
+    if (dynamic_cast<const Player*>(entidade)) return "Player";
+    if (dynamic_cast<const Obstacle*>(entidade)) return "Obstacle";
     return "Entidade";
 }
 
