@@ -25,7 +25,7 @@ public:
     void incluirElemento(Elemento<TL>* pEle);
     void listarElementos();
 
-    TL* operator[](int index);
+    TL* operator[](int index) const;
     int getTamanho() const; 
 };
 
@@ -104,7 +104,7 @@ int Lista<TL>::getTamanho() const {
 
 // Sobrecarga do operador []
 template<class TL>
-TL* Lista<TL>::operator[](int index) {
+TL* Lista<TL>::operator[](int index) const {
     if (index < 0 || index >= countElementos) {
         std::cerr << "Índice fora dos limites!" << std::endl;
         return nullptr;

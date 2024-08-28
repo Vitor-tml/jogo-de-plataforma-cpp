@@ -17,7 +17,7 @@ void ListaEntidades::imprimirElementos() {
     listaEntidades.listarElementos();
 }
 
-Entity* ListaEntidades::operator[](int index) {
+Entity* ListaEntidades::operator[](int index) const {
     return listaEntidades[index];
 }
 

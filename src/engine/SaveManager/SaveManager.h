@@ -1,18 +1,17 @@
 #ifndef _SAVEMANAGER_H
-#define _SAVEMANAGER
+#define _SAVEMANAGER_H
 
-#include "../../game/Entity/Entity.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
+#include "json.hpp"
+#include <string>
 
 class SaveManager {
-private:
-
 public:
-    SaveManager();
-    ~SaveManager();
+    SaveManager() = default;
+    ~SaveManager() = default;
 
-    void saveEntidades(const Lista<Entity>& lista);
-    Lista<Entity> loadEntidades();
+    void saveEntidades(const ListaEntidades& lista, const std::string& filename);
+    ListaEntidades loadEntidades(const std::string& filename);
 };
 
 #endif

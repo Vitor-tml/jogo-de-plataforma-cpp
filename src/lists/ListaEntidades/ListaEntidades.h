@@ -17,7 +17,7 @@ public:
     void incluir(Entity* pEntidade);
     void imprimirElementos();
 
-    Entity* operator[](int index);
+    Entity* operator[](int index) const;
     int getTamanho() const;
 };
 
