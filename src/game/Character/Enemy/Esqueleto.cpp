@@ -39,6 +39,7 @@ void Esqueleto::mover(float deltaTime) {
 void Esqueleto::executar(float deltaTime)
 {
     this->mover(deltaTime);
+    verificarLimitesTela();
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;

@@ -14,28 +14,22 @@
 #include "../Obstacles/Espinhos.h"
 #include "../../engine/Savemanager/SaveManager.h"
 #include "../Projectile/Projectile.h"
+
 class Phase : public Ente {
-private:
+protected:
     Player jogador;
-    Esqueleto inimigo;
     sf::Clock tempo;
     float deltaTime;
     ListaEntidades listaEntidades;
-
-    CollisionManager gColisao;
-    Arqueiro legolas;
-    Plataforma plataforma;
-    Plataforma chao;
-    Plataforma plataforma2;
-    Plataforma plataforma3;
-    Espinhos espinho;
     SaveManager saveManager;
-    Projetctile bala;
+    CollisionManager gColisao;
+
+    
 public:
-    Phase();
+    Phase(sf::Texture& fundo);
     virtual ~Phase() noexcept {};
     virtual void executar();
-    void gerenciarColisoes() {};
+    void gerenciarColisoes(){};
     void criarInimigos() {};
     void criarObstaculos() {};
     

@@ -6,6 +6,7 @@
 #include "../../game/Character/Player/Player.h"
 #include "../../game/Menu/Menu.h"
 #include "../../game/Levels/Phase.h"
+#include "../../game/Levels/PrimeiraFase.h"
 
 class Game{
 private:

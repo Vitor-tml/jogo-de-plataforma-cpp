@@ -82,9 +82,37 @@ bool Entity::getNoChao() const
 
 void Entity::setPosicao(int xx, int yy)
 {
-    sprite.setPosition(xx, yy);
+    x = xx;
+    y = yy;
+    sprite.setPosition(x, y);
 }
 void Entity::setPosicao(sf::Vector2f posicao)
-{
+{   
+    x = posicao.x;
+    y = posicao.y;
     sprite.setPosition(posicao);
+}
+
+void Entity::verificarLimitesTela() {
+    int larguraTela = gGrafico->getTamanho().x;
+    int alturaTela = gGrafico->getTamanho().y;
+    // Verifica se a entidade está saindo pela esquerda da tela
+    int xx = x;
+    int yy = y;
+    if (sprite.getPosition().x < 0) {
+        xx = 0; // Define a coordenada x para 0 para manter a entidade dentro da tela
+    }
+    // Verifica se a entidade está saindo pela direita da tela
+    if (sprite.getPosition().x > larguraTela) {
+        xx = larguraTela; // Reposiciona a entidade dentro da tela
+    }
+    // Verifica se a entidade está saindo pelo topo da tela
+    if (sprite.getPosition().y < 0) {
+        yy = 0; // Define a coordenada y para 0 para manter a entidade dentro da tela
+    }
+    // Verifica se a entidade está saindo pelo fundo da tela
+    if (sprite.getPosition().y + caixaColisao.getSize().y > alturaTela) {
+        yy = alturaTela - caixaColisao.getSize().y; // Reposiciona a entidade dentro da tela
+    }
+    setPosicao(xx, yy);
 }

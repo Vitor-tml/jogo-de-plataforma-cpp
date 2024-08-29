@@ -71,6 +71,7 @@ public:
     void setPosicao(sf::Vector2f posicao);
 
     int getID() const { return id; }
+    void verificarLimitesTela();
 };
 
 #endif

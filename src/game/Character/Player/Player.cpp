@@ -31,6 +31,7 @@ Player::Player(sf::Texture& textura)
 void Player::executar(float deltaTime)
 {
     userInput();
+    verificarLimitesTela();
     // std::cout << nVidas << std::endl;
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;

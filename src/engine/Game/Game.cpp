@@ -25,7 +25,7 @@ void Game::executar()
 {
     int estado = 0;
     Menu menu(&estado);
-    Phase fase1;
+    PrimeiraFase fase1;
     while (janela->isOpen())
     {
         sf::Event evento;
