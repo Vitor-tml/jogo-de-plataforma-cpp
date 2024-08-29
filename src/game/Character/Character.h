@@ -45,6 +45,7 @@ public:
      * Este método deve ser implementado pelas classes derivadas para definir como o estado do personagem deve ser salvo e lógica de permanência de objeto.
      */
     virtual nlohmann::json salvar() const = 0;
+    const int getVida() const { return nVidas; }
 };
 
 #endif

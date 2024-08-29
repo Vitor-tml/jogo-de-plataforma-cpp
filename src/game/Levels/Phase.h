@@ -7,6 +7,7 @@
 #include "../Character/Player/Player.h"
 #include "../Character/Character.h"
 #include "../Character/Enemy/Enemy.h"
+#include "../Character/Enemy/Esqueleto.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
 #include "../Obstacles/Plataforma.h"
 #include "../Obstacles/Espinhos.h"
@@ -15,7 +16,7 @@
 class Phase : public Ente {
 private:
     Player jogador;
-    Enemy inimigo;
+    Esqueleto inimigo;
     sf::Clock tempo;
     float deltaTime;
     ListaEntidades listaEntidades;
