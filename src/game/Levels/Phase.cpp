@@ -9,6 +9,7 @@ Phase::Phase() :
     plataforma3(100, 436, gRecursos->getTexture("plataforma")),
     bala(0, 400, gRecursos->getTexture("bala"), 0, 0),
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
+    legolas(300, 300, gRecursos->getTexture("arqueiro")),
     listaEntidades(),
     gColisao(&jogador),
     espinho(100, 500, gRecursos->getTexture("espinho"))
@@ -25,12 +26,14 @@ Phase::Phase() :
     listaEntidades.incluir(&chao);
     listaEntidades.incluir(&espinho);
     listaEntidades.incluir(&bala);
+    listaEntidades.incluir(&legolas);
     gColisao.incluirObstaculo(&plataforma); 
     gColisao.incluirObstaculo(&plataforma2); 
     gColisao.incluirObstaculo(&plataforma3); 
     gColisao.incluirObstaculo(&chao); 
     gColisao.incluirObstaculo(&espinho); 
     gColisao.incluirInimigos(&inimigo); 
+    gColisao.incluirInimigos(&legolas); 
 }
 
 void Phase::executar()

@@ -8,6 +8,7 @@
 #include "../Character/Character.h"
 #include "../Character/Enemy/Enemy.h"
 #include "../Character/Enemy/Esqueleto.h"
+#include "../Character/Enemy/Arqueiro.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
 #include "../Obstacles/Plataforma.h"
 #include "../Obstacles/Espinhos.h"
@@ -22,6 +23,7 @@ private:
     ListaEntidades listaEntidades;
 
     CollisionManager gColisao;
+    Arqueiro legolas;
     Plataforma plataforma;
     Plataforma chao;
     Plataforma plataforma2;
