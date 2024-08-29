@@ -10,6 +10,7 @@
 #include "../../lists/ListaEntidades/ListaEntidades.h"
 #include "../Obstacles/Plataforma.h"
 #include "../Obstacles/Espinhos.h"
+#include "../Obstacles/EsferaMagica.h"
 #include "../../engine/Savemanager/SaveManager.h"
 
 class Phase : public Ente {
@@ -26,6 +27,7 @@ private:
     Plataforma plataforma2;
     Plataforma plataforma3;
     Espinhos espinho;
+    //EsferaMagica esfera;
     SaveManager saveManager;
 public:
     Phase();

@@ -46,7 +46,7 @@ void Phase::executar()
     gGrafico->render();
     
     gColisao.tratarColisoes();
-    saveManager.saveEntidades(listaEntidades, "save.txt");
+    saveManager.saveEntidades(listaEntidades, "save.json");
 
     // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();

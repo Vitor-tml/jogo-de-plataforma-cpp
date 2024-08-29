@@ -1,27 +1,34 @@
-#include Esferamagica.h
+#include EsferaMagica.h
 
-Esferamagica::Esferamagica(int xx, int yy, sf::Texture &textura, int offsetX = 0, int offsetY = 0) : 
+EsferaMagica::EsferaMagica(int xx, int yy, sf::Texture &textura, int offsetX = 0, int offsetY = 0) : 
 Obstacle(xx, yy, textura, offsetX, offsetY),
 elasticidade(1) {}
 
-Esferamagica::~Esferamagica() {}
+EsferaMagica::~EsferaMagica() {}
 
-void Esferamagica::executar(float deltaTime)
+void EsferaMagica::executar(float deltaTime)
 {
 
 }
 
-void Esferamagica::obstacular(Player* jogador) {
-    if (jogador->getNoChao()) {
-        sf::Vector2f velocidadeAtual = jogador->getVelocidade();
-        velocidadeAtual.y -= elasticidade;        // Aplicando a elasticidade como impulso para cima
-        jogador->setVelocidade(velocidadeAtual);  // Aumenta a velocidade vertical do jogador, simulando um salto
-        jogador->setNoChao(false);                // Atualiza o estado do jogador para não estar no chão
+void EsferaMagica::obstacular(Player* jogador) {
+    // Vamos verificar a colisão vertical com a esfera
+    sf::FloatRect playerBox = jogador->getCaixaColisao().getGlobalBounds();
+    sf::FloatRect obstacleBox = this->getCaixaColisao().getGlobalBounds();
+
+    if (playerBox.intersects(obstacleBox)) {
+        // Se o jogador estiver na base da esfera e colidindo com ela, aplica o impulso
+        if (jogador->getNoChao() && playerBox.top + playerBox.height >= obstacleBox.top) {
+            sf::Vector2f velocidadeAtual = jogador->getVelocidade();
+            velocidadeAtual.y -= elasticidade; // Aplicando a elasticidade como impulso para cima
+            jogador->setVelocidade(velocidadeAtual);
+            jogador->setNoChao(false); // O jogador foi arremessado para cima, portanto não está mais no chão
+        }
     }
 }
 
 
-void Esferamagica::obstacular(Entity *p)
+void EsferaMagica::obstacular(Entity *p)
 {
     
 }
