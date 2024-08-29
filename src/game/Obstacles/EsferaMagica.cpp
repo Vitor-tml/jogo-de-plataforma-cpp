@@ -1,8 +1,16 @@
-#include EsferaMagica.h
+#include "EsferaMagica.h"
 
-EsferaMagica::EsferaMagica(int xx, int yy, sf::Texture &textura, int offsetX = 0, int offsetY = 0) : 
-Obstacle(xx, yy, textura, offsetX, offsetY),
-elasticidade(1) {}
+EsferaMagica::EsferaMagica(int xx, int yy, sf::Texture &textura, int offsetX, int offsetY) :
+    Obstacle(xx, yy, textura, offsetX, offsetY), 
+    elasticidade(1)
+{
+    sprite.setTexture(textura);
+    // sprite.setTextureRect(sf::IntRect(0, 0, 96, 144));
+    // sf::FloatRect tamanho = sprite.getGlobalBounds();
+    // sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
+    // sprite.setPosition(x, y);
+    // inicializarCaixaColisao();
+}
 
 EsferaMagica::~EsferaMagica() {}
 
@@ -28,7 +36,7 @@ void EsferaMagica::obstacular(Player* jogador) {
 }
 
 
-void EsferaMagica::obstacular(Entity *p)
-{
+//void EsferaMagica::obstacular(Entity *p)
+// {
     
-}
+// }

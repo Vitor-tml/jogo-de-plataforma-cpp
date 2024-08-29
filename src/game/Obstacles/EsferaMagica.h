@@ -1,6 +1,9 @@
 #ifndef _ESFERAMAGICA_H
 #define _ESFERAMAGICA_H
 
+#include "Obstacle.h"
+#include "../Character/Player/Player.h"
+
 class EsferaMagica : public Obstacle {
 private:
     int elasticidade;
@@ -10,7 +13,7 @@ public:
     ~EsferaMagica();
     void executar(float deltaTime);
     void obstacular(Player *jogador);
-    void obstacular(Entity *p);
+    //void obstacular(Entity *p);
 
 };
 

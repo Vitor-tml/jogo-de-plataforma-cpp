@@ -27,7 +27,7 @@ private:
     Plataforma plataforma2;
     Plataforma plataforma3;
     Espinhos espinho;
-    //EsferaMagica esfera;
+    EsferaMagica esfera;
     SaveManager saveManager;
 public:
     Phase();
