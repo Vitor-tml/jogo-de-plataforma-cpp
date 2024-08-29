@@ -7,12 +7,16 @@ Game::Game():
     gRecursos->loadTexture("jogador",    "../assets/textures/knight.png");
     gRecursos->loadTexture("fundo",      "../assets/textures/background.png");
     gRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
-    gRecursos->loadTexture("menu",       "../assets/textures/cenaMenu.png");
-    gRecursos->loadTexture("inimigo",       "../assets/textures/skeleton.png");
+    gRecursos->loadTexture("menu",       "../assets/textures/fundomenu.png");
+    gRecursos->loadTexture("inimigo",    "../assets/textures/skeleton.png");
     gRecursos->loadTexture("chao",       "../assets/textures/chao.png");
-    gRecursos->loadTexture("espinho",      "../assets/textures/espinho.png");
+    gRecursos->loadTexture("espinho",    "../assets/textures/espinho.png");
+    gRecursos->loadTexture("bala",       "../assets/textures/bala.png");
+    gRecursos->loadTexture("arqueiro",   "../assets/textures/arqueiro.png");
+    gRecursos->loadTexture("icones",     "../assets/textures/menu.png");
     gRecursos->loadTexture("esfera",      "../assets/textures/esferaMagica.png");
     gRecursos->loadImage("jogador",      "../assets/textures/knight.png");
+    gRecursos->loadFont("fonte",         "../assets/fonts/Thunderbolt.ttf");
 }
 
 Game::~Game()
@@ -24,7 +28,7 @@ void Game::executar()
 {
     int estado = 0;
     Menu menu(&estado);
-    Phase fase1;
+    PrimeiraFase fase1;
     while (janela->isOpen())
     {
         sf::Event evento;
@@ -45,5 +49,7 @@ void Game::executar()
         default:
             break;
         }
+        
+        std::cout << "Opcao: " << estado << std::endl;
     }
 }

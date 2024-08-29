@@ -20,12 +20,19 @@
 class Menu : public Ente {
 private:
     int* estado;
+    int opcaoSelecionada;
+    const int numOpcoes;
+    sf::Clock tempo;
+    float deltaTime;
+    sf::Sprite botoes[4];
+    sf::Sprite escolhido[4];
+    sf::Text texto[4];
 public:
     Menu(int* i);
     ~Menu() {};
     void setEstado(int i);
     const int getEstado() const;
-
+    void executar(float deltaTime) {};
     void executar();
 };
 #endif

@@ -13,6 +13,7 @@
  */
 class PhysicsComponent{
 private:
+    // static float gravidade; -> mudar para estático
     float gravidade;
     float alturaPulo;
 public:

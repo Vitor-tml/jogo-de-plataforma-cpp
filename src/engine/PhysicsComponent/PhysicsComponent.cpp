@@ -7,7 +7,6 @@ void PhysicsComponent::aplicaFisica(sf::Sprite& entidade, sf::Vector2f& velocida
 {
     // Aplica a gravidade
     velocidade.y += gravidade * deltaTime;
-
     // Verifica colisão com o chão ou outras plataformas
     if (estaNoChao || entidade.getPosition().y >= 700)
     {

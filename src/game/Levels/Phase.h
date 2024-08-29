@@ -7,33 +7,30 @@
 #include "../Character/Player/Player.h"
 #include "../Character/Character.h"
 #include "../Character/Enemy/Enemy.h"
+#include "../Character/Enemy/Esqueleto.h"
+#include "../Character/Enemy/Arqueiro.h"
 #include "../../lists/ListaEntidades/ListaEntidades.h"
 #include "../Obstacles/Plataforma.h"
 #include "../Obstacles/Espinhos.h"
 #include "../Obstacles/EsferaMagica.h"
 #include "../../engine/Savemanager/SaveManager.h"
+#include "../Projectile/Projectile.h"
 
 class Phase : public Ente {
-private:
+protected:
     Player jogador;
-    Enemy inimigo;
     sf::Clock tempo;
     float deltaTime;
     ListaEntidades listaEntidades;
-
-    CollisionManager gColisao;
-    Plataforma plataforma;
-    Plataforma chao;
-    Plataforma plataforma2;
-    Plataforma plataforma3;
-    Espinhos espinho;
-    EsferaMagica esfera;
     SaveManager saveManager;
+    CollisionManager gColisao;
+
+    
 public:
-    Phase();
+    Phase(sf::Texture& fundo);
     virtual ~Phase() noexcept {};
     virtual void executar();
-    void gerenciarColisoes() {};
+    void gerenciarColisoes(){};
     void criarInimigos() {};
     void criarObstaculos() {};
     
