@@ -16,6 +16,7 @@ public:
     void executar(float deltaTime);                 // Transformar em virtual futuramente
     void danificar(Player* jogador);           // Transformar em virtual futuramente
     void executar() {};
+    void atirar();
     nlohmann::json salvar() const;
 };
 #endif

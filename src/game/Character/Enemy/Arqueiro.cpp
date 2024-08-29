@@ -45,6 +45,10 @@ void Arqueiro::danificar(Player *jogador)
 void Arqueiro::executar(float deltaTime)
 {
     mover(deltaTime);
+    if(nBalas > 0)
+    {
+
+    }
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
@@ -52,4 +56,16 @@ void Arqueiro::executar(float deltaTime)
     atualizarCaixaColisao();
 
     //atirar
+}
+
+void Arqueiro::atirar(int deltaTime)
+{
+    tempoDecorrido += deltaTime* 2;
+
+    // Define a escala do sprite com base na direção
+    if (olhandoDireita) {
+        // adicionar bala aqui
+    } else {
+        // adicionar bala aqui
+    }
 }
