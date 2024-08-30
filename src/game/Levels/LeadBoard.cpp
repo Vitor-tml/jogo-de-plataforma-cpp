@@ -80,6 +80,11 @@ void LeadBoard::carregarPontos()
     }
 }
 
+std::string getNomeJogador(){
+    // Pensar como a gente vai pegar o nome do jogador
+    return "Nome de teste";
+}
+
 void LeadBoard::mostrarTela() {
 
     renderizar();

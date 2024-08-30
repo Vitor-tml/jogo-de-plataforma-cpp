@@ -29,6 +29,7 @@ public:
     /**
      * @brief Retorna uma lista com as cinco melhores pontuações. 
      */
+    std::string getNomeJogador();
     void mostrarTela();
 };
 
