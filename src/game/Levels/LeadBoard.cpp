@@ -65,10 +65,16 @@ void LeadBoard::carregarPontos()
     }
 }
 
-void LeadBoard::mostrarTela() 
-{
-    std::cout << "Top 5 Pontuações:" << std::endl;
-    for (size_t i = 0; i < pontuacoes.size(); ++i) {
-        std::cout << (i + 1) << ". " << pontuacoes[i] << std::endl;
+void LeadBoard::mostrarTela() {
+    for (size_t i = 0; i < pontuacoes.size(); i++) {
+        sf::Text texto;
+        texto.setFont(gRecursos->getFont("fonte"));
+        texto.setString("Rank " + std::to_string(i + 1) + ": " + std::to_string(pontuacoes[i]));
+        texto.setPosition(100.0f, 50.0f + i * 30.0f);
+        texto.setCharacterSize(24);
+        texto.setFillColor(sf::Color::White);
+
+        gGrafico->addDrawable(texto);
     }
+    gGrafico->render();
 }

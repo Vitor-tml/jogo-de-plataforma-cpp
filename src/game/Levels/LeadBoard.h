@@ -1,6 +1,7 @@
 #ifndef LEADBOARD_H
 #define LEADBOARD_H
 
+#include "../../engine/Ente/Ente.h"
 #include "../Character/Player/Player.h"
 #include "../../../lib/json.hpp"
 
@@ -10,7 +11,7 @@
  * @author GustavoPellanda
  */
 
-class LeadBoard {
+class LeadBoard : public Ente {
 private:
     std::vector<int> pontuacoes;
 
