@@ -26,10 +26,11 @@ Game::~Game()
 
 void Game::executar()
 {
-    int estado = 0;
+    int estado = 2;
     Menu menu(&estado);
     PrimeiraFase fase1;
     LeadBoard leadboard;
+    Player jogadorTeste(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     while (janela->isOpen())
     {
         sf::Event evento;
@@ -49,6 +50,7 @@ void Game::executar()
             break;
         case 2:
             leadboard.executar();
+            leadboard.salvarPontos(&jogadorTeste);
             break;
         default:
             break;
