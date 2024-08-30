@@ -9,7 +9,8 @@ PrimeiraFase::PrimeiraFase() :
     bala(0, 400, gRecursos->getTexture("bala"), 0, 0),
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
     legolas(300, 300, gRecursos->getTexture("arqueiro")),
-    espinho(500, 500, gRecursos->getTexture("espinho"))
+    espinho(500, 500, gRecursos->getTexture("espinho")),
+    esfera(500, 500, gRecursos->getTexture("esfera")),
 {
     // Iniciar local?
     //sprite.setOrigin()

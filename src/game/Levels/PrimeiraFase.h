@@ -13,6 +13,7 @@ private:
     Plataforma plataforma3;
     Espinhos espinho;
     Projetctile bala;
+    EsferaMagica esfera;
 public:
     PrimeiraFase();
     ~PrimeiraFase() {};
