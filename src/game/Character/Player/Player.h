@@ -18,7 +18,7 @@
  * @author Vitor-tml
  */
 class Player : public Character{
-private:
+protected:
     int pontos;
 
     const float velocidadeHorizontal = 200.f;
@@ -56,7 +56,7 @@ public:
     /**
      * @brief Atualiza animação e estado do player de acordo com a entrada do usuário, responsável pela movimentação do personagem.
      */
-    void userInput();
+    virtual void userInput();
     /**
      * @brief Retorna sprite atual do player
      * @return Estado atual da animação/player para renderização

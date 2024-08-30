@@ -16,6 +16,7 @@ PrimeiraFase::PrimeiraFase() :
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
     
     listaEntidades.incluir(&jogador);
+    listaEntidades.incluir(&jogador2);
     listaEntidades.incluir(&inimigo);
     listaEntidades.incluir(&plataforma);
     listaEntidades.incluir(&plataforma2);
@@ -31,6 +32,14 @@ PrimeiraFase::PrimeiraFase() :
     gColisao.incluirObstaculo(&espinho); 
     gColisao.incluirInimigos(&inimigo); 
     gColisao.incluirInimigos(&legolas); 
+    
+    gColisao2.incluirObstaculo(&plataforma); 
+    gColisao2.incluirObstaculo(&plataforma2); 
+    gColisao2.incluirObstaculo(&plataforma3); 
+    gColisao2.incluirObstaculo(&chao); 
+    gColisao2.incluirObstaculo(&espinho); 
+    gColisao2.incluirInimigos(&inimigo); 
+    gColisao2.incluirInimigos(&legolas); 
 }
 
 void PrimeiraFase::executar()
@@ -48,6 +57,7 @@ void PrimeiraFase::executar()
     gGrafico->render();
     
     gColisao.tratarColisoes();
+    gColisao2.tratarColisoes();
     saveManager.saveEntidades(listaEntidades, "save.txt");
 
     // Onde colocar o setCentroCamera?

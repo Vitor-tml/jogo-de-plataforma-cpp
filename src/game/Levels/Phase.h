@@ -5,6 +5,7 @@
 #include "../../engine/ResourceManager/ResourceManager.h"
 #include "../../engine/CollisionManager/CollisionManager.h"
 #include "../Character/Player/Player.h"
+#include "../Character/Player/Player2.h"
 #include "../Character/Character.h"
 #include "../Character/Enemy/Enemy.h"
 #include "../Character/Enemy/Esqueleto.h"
@@ -18,11 +19,13 @@
 class Phase : public Ente {
 protected:
     Player jogador;
+    Player2 jogador2;
     sf::Clock tempo;
     float deltaTime;
     ListaEntidades listaEntidades;
     SaveManager saveManager;
     CollisionManager gColisao;
+    CollisionManager gColisao2;
 
     
 public:
