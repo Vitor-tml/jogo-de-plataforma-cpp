@@ -26,7 +26,7 @@ Game::~Game()
 
 void Game::executar()
 {
-    int estado = 0;
+    int estado = 4;
     Menu menu(&estado);
     PrimeiraFase fase1;
     LeadBoard leadboard;

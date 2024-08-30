@@ -19,6 +19,7 @@ public:
     LeadBoard();
     ~LeadBoard();
     void executar();
+    std::string getNomeJogador() const;
     void salvarPontos(Player* jogador);
     /**
      * @brief A ideia do salva pontos é ser chamada uma única vez no final do jogo.
@@ -29,7 +30,6 @@ public:
     /**
      * @brief Retorna uma lista com as cinco melhores pontuações. 
      */
-    std::string getNomeJogador();
     void mostrarTela();
 };
 
