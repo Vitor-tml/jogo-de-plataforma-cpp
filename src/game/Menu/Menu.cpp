@@ -60,7 +60,7 @@ void Menu::executar()
 
     // Verificar a tecla Enter para seleção
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-        setEstado(opcaoSelecionada);
+        setEstado(opcaoSelecionada + 1);
     }
 
     renderizar(0);

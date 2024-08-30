@@ -16,7 +16,7 @@ Game::Game():
     gRecursos->loadTexture("icones",     "../assets/textures/menu.png");
     gRecursos->loadTexture("esfera",      "../assets/textures/esferaMagica.png");
     gRecursos->loadImage("jogador",      "../assets/textures/knight.png");
-    gRecursos->loadFont("fonte",         "../assets/fonts/Thunderbolt.ttf");
+    gRecursos->loadFont("fonte",         "../assets/fonts/Revorioum.ttf");
 }
 
 Game::~Game()
@@ -26,7 +26,7 @@ Game::~Game()
 
 void Game::executar()
 {
-    int estado = 2;
+    int estado = 0;
     Menu menu(&estado);
     PrimeiraFase fase1;
     LeadBoard leadboard;
@@ -48,7 +48,7 @@ void Game::executar()
         case 1:
             fase1.executar();
             break;
-        case 2:
+        case 4:
             leadboard.executar();
             leadboard.salvarPontos(&jogadorTeste);
             break;
