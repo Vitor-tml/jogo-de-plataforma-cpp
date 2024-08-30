@@ -5,15 +5,17 @@
 #include <list>
 #include "../../game/Character/Enemy/Enemy.h"
 #include "../../game/Character/Player/Player.h"
+#include "../../game/Character/Player/Player2.h"
 #include "../../game/Obstacles/Obstacle.h"
 class CollisionManager {
 private:
     std::vector<Enemy*> lInimigos;
     std::list<Obstacle*> lObstaculos;
     Player* jogador;
+    Player2* jogador2;
 public:
-    CollisionManager(): jogador(nullptr)    {};
-    CollisionManager(Player *p): jogador(p) {};
+    CollisionManager(): jogador(nullptr), jogador2(nullptr)    {};
+    CollisionManager(Player *p, Player2 *q): jogador(p), jogador2(q) {};
     ~CollisionManager();
     
     void incluirObstaculo(Obstacle *p);

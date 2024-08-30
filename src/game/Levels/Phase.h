@@ -25,9 +25,6 @@ protected:
     ListaEntidades listaEntidades;
     SaveManager saveManager;
     CollisionManager gColisao;
-    CollisionManager gColisao2;
-
-    
 public:
     Phase(sf::Texture& fundo);
     virtual ~Phase() noexcept {};

@@ -5,8 +5,7 @@ Phase::Phase(sf::Texture& fundo) :
     jogador(gRecursos->getTexture("jogador")),
     jogador2(gRecursos->getTexture("jogador")),
     listaEntidades(),
-    gColisao(&jogador),
-    gColisao2(&jogador2)
+    gColisao(&jogador, &jogador2)
 {
     // Iniciar local?
     //sprite.setOrigin()

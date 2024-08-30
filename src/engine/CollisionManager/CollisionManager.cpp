@@ -52,6 +52,11 @@ void CollisionManager::tratarColisoesJogadorObstaculo()
             // std::cout << "Colisao: jogador/obstaculo" << std::endl;
             obstaculo->obstacular(jogador);
         }
+        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds()))
+        {
+            // std::cout << "Colisao: jogador/obstaculo" << std::endl;
+            obstaculo->obstacular(jogador2);
+        }
     }
 }
 void CollisionManager::tratarColisoesInimigoObstaculo()
