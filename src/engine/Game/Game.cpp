@@ -29,6 +29,7 @@ void Game::executar()
     int estado = 0;
     Menu menu(&estado);
     PrimeiraFase fase1;
+    LeadBoard leadboard;
     while (janela->isOpen())
     {
         sf::Event evento;
@@ -46,10 +47,12 @@ void Game::executar()
         case 1:
             fase1.executar();
             break;
+        case 2:
+            leadboard.executar();
+            break;
         default:
             break;
         }
-        
         std::cout << "Opcao: " << estado << std::endl;
     }
 }
