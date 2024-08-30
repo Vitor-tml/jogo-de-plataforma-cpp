@@ -18,7 +18,7 @@ Player::Player(sf::Texture& textura)
                       sf::IntRect(672, 192, 96, 96)},
                     0.1f),
     animacaoAtual(&parado),
-    pontos(0)
+    pontos(1)
 {   
     // Define animações
     sprite.setTextureRect(sf::IntRect(0, 0, 96, 96));

@@ -12,6 +12,7 @@
 
 class LeadBoard {
 private:
+    std::vector<int> pontuacoes;
 
 public:
     LeadBoard();
@@ -19,11 +20,14 @@ public:
     void executar();
     void salvarPontos(Player* jogador);
     /**
-     * @brief A ideia do salva pontos e ser chamada uma única vez no final do jogo.
+     * @brief A ideia do salva pontos é ser chamada uma única vez no final do jogo.
      * Esse método cria um arquivo com as cinco melhores pontuações. Elas são sobrescritas quando uma nova pontuação mais alta for recebida.
      * Se ela ficar no loop infinito, ele sobrescreverá as cinco pontuações consecutivamente (o que não é o desejado). 
      */
-    int carregarPontos();
+    void carregarPontos();
+    /**
+     * @brief Retorna uma lista com as cinco melhores pontuações. 
+     */
     void mostrarTela();
 };
 
