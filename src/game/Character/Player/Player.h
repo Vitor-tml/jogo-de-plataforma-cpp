@@ -97,6 +97,6 @@ public:
         return temp;  // Retorna o estado antes da decretação
     }
 
-    
+    int getPontos() { return pontos;}
 };
 #endif

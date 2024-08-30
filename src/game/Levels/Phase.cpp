@@ -11,7 +11,6 @@ Phase::Phase(sf::Texture& fundo) :
     //sprite.setOrigin()
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
     listaEntidades.incluir(&jogador);
-    // gGrafico->setCentroCamera(sprite.getGlobalBounds().width/2, sprite.getGlobalBounds().height/2);
 }
 
 void Phase::executar()
@@ -29,7 +28,7 @@ void Phase::executar()
     gGrafico->render();
     
     gColisao.tratarColisoes();
-    saveManager.saveEntidades(listaEntidades, "save.txt");
+    saveManager.saveEntidades(listaEntidades, "save.json");
 
     // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();

@@ -14,9 +14,9 @@ Game::Game():
     gRecursos->loadTexture("bala",       "../assets/textures/bala.png");
     gRecursos->loadTexture("arqueiro",   "../assets/textures/arqueiro.png");
     gRecursos->loadTexture("icones",     "../assets/textures/menu.png");
-
+    gRecursos->loadTexture("esfera",      "../assets/textures/esferaMagica.png");
     gRecursos->loadImage("jogador",      "../assets/textures/knight.png");
-    gRecursos->loadFont("fonte",         "../assets/fonts/Thunderbolt.ttf");
+    gRecursos->loadFont("fonte",         "../assets/fonts/Revorioum.ttf");
 }
 
 Game::~Game()
@@ -29,6 +29,8 @@ void Game::executar()
     int estado = 0;
     Menu menu(&estado);
     PrimeiraFase fase1;
+    LeadBoard leadboard;
+    Player jogadorTeste(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     while (janela->isOpen())
     {
         sf::Event evento;
@@ -46,10 +48,13 @@ void Game::executar()
         case 1:
             fase1.executar();
             break;
+        case 4:
+            leadboard.executar();
+            leadboard.salvarPontos(&jogadorTeste);
+            break;
         default:
             break;
         }
-        
         std::cout << "Opcao: " << estado << std::endl;
     }
 }

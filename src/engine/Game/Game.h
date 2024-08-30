@@ -7,6 +7,7 @@
 #include "../../game/Menu/Menu.h"
 #include "../../game/Levels/Phase.h"
 #include "../../game/Levels/PrimeiraFase.h"
+#include "../../game/Levels/LeadBoard.h"
 
 class Game{
 private:

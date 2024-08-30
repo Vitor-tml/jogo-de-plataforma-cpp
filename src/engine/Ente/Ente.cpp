@@ -3,6 +3,7 @@
 int Ente::cont = 0;
 Renderer* Ente::gGrafico = Renderer::getRenderer();
 ResourceManager* Ente::gRecursos = ResourceManager::getInstance();
+
 Ente::Ente():
     id(++cont)
 {

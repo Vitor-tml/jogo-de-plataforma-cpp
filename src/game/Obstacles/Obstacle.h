@@ -16,6 +16,7 @@ public:
     virtual void obstacular(Entity *p){}; // Depois colocar virtual pura
     
     nlohmann::json salvar() const override {
+        // Implementação temporária para testes
         nlohmann::json j;
         j["id"] = getID();
         j["posX"] = 10;
