@@ -1933,7 +1933,7 @@
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[28]" type="UMLClassView" guid="KoS2amvzd0yxt/s1597W4AAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
-<XPD:ATTR name="FillColor" type="string">$008080FF</XPD:ATTR>
+<XPD:ATTR name="FillColor" type="string">$0080FF80</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">1128</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">980</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">161</XPD:ATTR>
