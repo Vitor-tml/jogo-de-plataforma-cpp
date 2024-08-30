@@ -10,7 +10,7 @@ PrimeiraFase::PrimeiraFase() :
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
     legolas(300, 300, gRecursos->getTexture("arqueiro")),
     espinho(500, 500, gRecursos->getTexture("espinho")),
-    esfera(500, 500, gRecursos->getTexture("esfera")),
+    esfera(500, 500, gRecursos->getTexture("esfera"))
 {
     // Iniciar local?
     //sprite.setOrigin()
@@ -25,11 +25,13 @@ PrimeiraFase::PrimeiraFase() :
     listaEntidades.incluir(&espinho);
     listaEntidades.incluir(&bala);
     listaEntidades.incluir(&legolas);
+    listaEntidades.incluir(&esfera);
     gColisao.incluirObstaculo(&plataforma); 
     gColisao.incluirObstaculo(&plataforma2); 
     gColisao.incluirObstaculo(&plataforma3); 
     gColisao.incluirObstaculo(&chao); 
     gColisao.incluirObstaculo(&espinho); 
+    gColisao.incluirObstaculo(&esfera);
     gColisao.incluirInimigos(&inimigo); 
     gColisao.incluirInimigos(&legolas); 
 }
