@@ -55,6 +55,6 @@ void Game::executar()
         default:
             break;
         }
-        std::cout << "Opcao: " << estado << std::endl;
+        // std::cout << "Opcao: " << estado << std::endl;
     }
 }

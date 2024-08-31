@@ -10,7 +10,6 @@ Phase::Phase(sf::Texture& fundo) :
     // Iniciar local?
     //sprite.setOrigin()
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
-    listaEntidades.incluir(&jogador);
 }
 
 void Phase::executar()
