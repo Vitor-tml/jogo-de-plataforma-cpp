@@ -23,9 +23,8 @@ std::string LeadBoard::getNomeJogador() const
     return "Nome de teste";
 }
 
-void LeadBoard::salvarPontos(Player* jogador)
+void LeadBoard::salvarPontos(Player* jogador) 
 {
-    // Carrega pontuações existentes no arquivo:
     std::ifstream inFile("pontos.json");
     nlohmann::json jsonData;
 
@@ -33,37 +32,37 @@ void LeadBoard::salvarPontos(Player* jogador)
         inFile >> jsonData;
         inFile.close();
     } else {
-        std::cout << "Arquivo não abriu!" << std::endl;
+        std::cout << "Arquivo nao abriu!" << std::endl;
     }
 
-    // Cria uma lista com as pontuações e nomes existentes:
-    std::vector<std::pair<std::string, int>> pontuacoes;
-    for (auto& item : jsonData["pontuacoes"]) {
-        std::string nome = item["nome"];
-        int pontos = item["pontos"];
-        pontuacoes.push_back({nome, pontos});
+    std::vector<nlohmann::json> pontuacoes;
+
+    // Verifica se "pontuacoes" existe e se é um array:
+    if (jsonData.contains("pontuacoes") && jsonData["pontuacoes"].is_array()) {
+        for (auto& pontos : jsonData["pontuacoes"]) {
+            pontuacoes.push_back(pontos);
+        }
     }
 
-    // Adiciona a nova pontuação e nome:
-    pontuacoes.push_back({getNomeJogador(), jogador->getPontos()});
+    // Adiciona a nova pontuação com o nome do jogador:
+    nlohmann::json novaPontuacao = {
+        {"nome", getNomeJogador()},
+        {"pontos", jogador->getPontos()}
+    };
+    pontuacoes.push_back(novaPontuacao);
 
     // Ordena as pontuações em ordem decrescente:
-    std::sort(pontuacoes.begin(), pontuacoes.end(), 
-              [](const std::pair<std::string, int>& a, const std::pair<std::string, int>& b) {
-                  return a.second > b.second;
-              });
+    std::sort(pontuacoes.begin(), pontuacoes.end(), [](const nlohmann::json& a, const nlohmann::json& b) {
+        return a["pontos"] > b["pontos"];
+    });
 
     // Mantém apenas as cinco maiores pontuações:
     if (pontuacoes.size() > 5) {
         pontuacoes.resize(5);
     }
 
-    // Salva as cinco maiores pontuações e nomes de volta no arquivo:
-    jsonData["pontuacoes"].clear();
-    for (const auto& item : pontuacoes) {
-        jsonData["pontuacoes"].push_back({{"nome", item.first}, {"pontos", item.second}});
-    }
-
+    // Salva as pontuações de volta no arquivo:
+    jsonData["pontuacoes"] = pontuacoes;
     std::ofstream outFile("pontos.json");
     if (outFile.is_open()) {
         outFile << jsonData.dump(4);
@@ -72,7 +71,6 @@ void LeadBoard::salvarPontos(Player* jogador)
         std::cerr << "Erro ao abrir o arquivo para salvar os pontos." << std::endl;
     }
 }
-
 
 void LeadBoard::carregarPontos() 
 {
