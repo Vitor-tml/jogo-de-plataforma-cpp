@@ -13,7 +13,7 @@
 
 class LeadBoard : public Ente {
 private:
-    std::vector<int> pontuacoes;
+    std::vector<std::pair<std::string, int>> pontuacoes;
 
 public:
     LeadBoard();

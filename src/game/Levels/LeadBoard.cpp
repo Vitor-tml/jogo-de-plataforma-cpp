@@ -13,7 +13,7 @@ LeadBoard::~LeadBoard() {}
 
 void LeadBoard::executar() 
 {
-    // carregarPontos();
+    carregarPontos();
     mostrarTela();
 }
 
@@ -81,22 +81,22 @@ void LeadBoard::carregarPontos()
         inFile >> jsonData;
         inFile.close();
 
-        // Limpa o vetor atual e preenche com as novas pontuações:
+        // Limpa o vetor atual e preenche com as novas pontuações e nomes:
         pontuacoes.clear();
-        // for (auto& pontos : jsonData["pontuacoes"])  //< Não pode usar auto
-        for (nlohmann::json::iterator it = jsonData["pontuacoes"].begin(); it != jsonData["pontuacoes"].end(); ++it)
-        {
-            int pontos = *it;
-            pontuacoes.push_back(pontos);
+        
+        // Itera sobre cada entrada de pontuação no JSON:
+        for (nlohmann::json::iterator it = jsonData["pontuacoes"].begin(); it != jsonData["pontuacoes"].end(); ++it) {
+            std::string nome = (*it)["nome"];
+            int pontos = (*it)["pontos"];
+            pontuacoes.push_back(std::make_pair(nome, pontos)); // Adiciona o par (nome, pontuação) ao vetor
         }
     }
-    else{
-        std::cout << "Arquivo nao aberto: carregar pontos." << std::endl;
+    else {
+        std::cout << "Arquivo não aberto: carregar pontos." << std::endl;
     }
 }
 
 void LeadBoard::mostrarTela() {
-
     renderizar();
     sf::Text texto[5];
     std::string aux;
@@ -104,11 +104,14 @@ void LeadBoard::mostrarTela() {
         texto[i].setCharacterSize(24);
         texto[i].setFont(gRecursos->getFont("fonte"));
         texto[i].setFillColor(sf::Color::Black);
-        aux = "Rank " + std::to_string(i + 1) + ": " + std::to_string(pontuacoes[i]);
+        
+        aux = "Rank " + std::to_string(i + 1) + ": " + pontuacoes[i].first + " - " + std::to_string(pontuacoes[i].second);
+        
         texto[i].setString(aux);
         texto[i].setPosition(100.0f, 50.0f + i * 30.0f);
         gGrafico->addDrawable(texto[i], 1);
-        std::cout << "Rank: " << std::to_string(i + 1) << " Pontuacao: " << std::to_string(pontuacoes[i]) << std::endl;
+        
+        std::cout << "Rank: " << std::to_string(i + 1) << " Jogador: " << pontuacoes[i].first << " Pontuacao: " << std::to_string(pontuacoes[i].second) << std::endl;
     }
     gGrafico->render();
 }
