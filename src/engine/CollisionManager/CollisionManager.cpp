@@ -62,6 +62,7 @@ void CollisionManager::tratarColisoesJogadorObstaculo()
 void CollisionManager::tratarColisoesInimigoObstaculo()
 {
     for(Enemy* inimigo : lInimigos){
+        inimigo->setNoChao(false);
         for(Obstacle* obstaculo : lObstaculos){
             if(inimigo->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds())){
                 obstaculo->obstacular(inimigo);

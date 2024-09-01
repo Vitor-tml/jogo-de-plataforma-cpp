@@ -6,6 +6,8 @@
 class SegundaFase : public Phase{
 private:
     Plataforma chao;
+    Esqueleto esqueleto;
+    Arqueiro arqueiro;
 public:
     SegundaFase();
     ~SegundaFase() {};

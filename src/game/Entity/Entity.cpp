@@ -96,9 +96,13 @@ void Entity::setPosicao(sf::Vector2f posicao)
 void Entity::verificarLimitesTela() {
     int larguraTela = gGrafico->getTamanho().x;
     int alturaTela = gGrafico->getTamanho().y;
+
+    sf::FloatRect hitBox = caixaColisao.getGlobalBounds();
+    
     // Verifica se a entidade está saindo pela esquerda da tela
     int xx = x;
     int yy = y;
+
     if (sprite.getPosition().x < 0) {
         xx = 0; // Define a coordenada x para 0 para manter a entidade dentro da tela
     }
@@ -111,8 +115,12 @@ void Entity::verificarLimitesTela() {
         yy = 0; // Define a coordenada y para 0 para manter a entidade dentro da tela
     }
     // Verifica se a entidade está saindo pelo fundo da tela
-    if (sprite.getPosition().y + caixaColisao.getSize().y > alturaTela) {
-        yy = alturaTela - caixaColisao.getSize().y; // Reposiciona a entidade dentro da tela
+    if(hitBox.top + hitBox.height > alturaTela)
+    {
+        yy = alturaTela - (hitBox.height);
     }
+    // if (sprite.getPosition().y + caixaColisao.getSize().y/2 > alturaTela) {
+    //     yy = alturaTela - caixaColisao.getSize().y/2; // Reposiciona a entidade dentro da tela
+    // }
     setPosicao(xx, yy);
 }
