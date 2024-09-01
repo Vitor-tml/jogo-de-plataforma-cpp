@@ -1,7 +1,7 @@
 #include "Phase.h"
 
 Phase::Phase(sf::Texture& fundo) :
-    Ente(gRecursos->getTexture("fundo")),
+    Ente(fundo),
     jogador(gRecursos->getTexture("jogador")),
     jogador2(gRecursos->getTexture("jogador")),
     listaEntidades(),
@@ -10,6 +10,9 @@ Phase::Phase(sf::Texture& fundo) :
     // Iniciar local?
     //sprite.setOrigin()
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
+
+    listaEntidades.incluir(&jogador);
+    listaEntidades.incluir(&jogador2);
 }
 
 void Phase::executar()

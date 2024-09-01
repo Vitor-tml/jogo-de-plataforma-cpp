@@ -16,8 +16,7 @@ esfera(500, 500, gRecursos->getTexture("esfera"))
     //sprite.setOrigin()
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
     
-    listaEntidades.incluir(&jogador);
-    listaEntidades.incluir(&jogador2);
+    
     listaEntidades.incluir(&inimigo);
     listaEntidades.incluir(&plataforma);
     listaEntidades.incluir(&plataforma2);
