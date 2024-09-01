@@ -8,12 +8,12 @@ arqueiro(100, 500, gRecursos->getTexture("arqueiro"))
 {
     // sprite.setTextureRect(sf::IntRect(0,0,0,0));
     listaEntidades.incluir(&chao);
-    listaEntidades.incluir(&esqueleto);
-    // listaEntidades.incluir(&arqueiro);
+    // listaEntidades.incluir(&esqueleto);
+    listaEntidades.incluir(&arqueiro);
 
     gColisao.incluirObstaculo(&chao);
-    gColisao.incluirInimigos(&esqueleto);
-    // gColisao.incluirInimigos(&arqueiro);
+    // gColisao.incluirInimigos(&esqueleto);
+    gColisao.incluirInimigos(&arqueiro);
 
 }
 

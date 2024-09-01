@@ -3,6 +3,8 @@
 Arqueiro::Arqueiro(int xx, int yy, sf::Texture& textura):
 Enemy(xx, yy, textura, 0, 0)
 {
+    tempoDecorrido = 0;
+    tempoDecorridoTiro = 0;
     sprite.setTextureRect(sf::IntRect(0, 0, 125, 75));
     sf::FloatRect tamanho = sprite.getGlobalBounds();
     sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
@@ -45,6 +47,7 @@ void Arqueiro::danificar(Player *jogador)
 void Arqueiro::executar(float deltaTime)
 {
     mover(deltaTime);
+    atirar(deltaTime);
     if(nBalas > 0)
     {
 
@@ -52,20 +55,24 @@ void Arqueiro::executar(float deltaTime)
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
-
     atualizarCaixaColisao();
 
     //atirar
 }
 
-void Arqueiro::atirar(int deltaTime)
+void Arqueiro::atirar(float deltaTime)
 {
-    tempoDecorrido += deltaTime* 2;
+    tempoDecorridoTiro += deltaTime;
 
-    // Define a escala do sprite com base na direção
-    if (olhandoDireita) {
-        // adicionar bala aqui
-    } else {
-        // adicionar bala aqui
+    if (tempoDecorridoTiro >= intervaloTiro) {
+        tempoDecorridoTiro = 0.0f;            // Reseta o tempo decorrido
+        if (olhandoDireita) {
+            std::cout << "Direita" << std::endl;
+            // adicionar bala aqui
+        } else {
+            std::cout << "Esquerda" << std::endl;
+            // adicionar bala aqui
+        }
     }
+    // Define a escala do sprite com base na direção
 }
