@@ -21,28 +21,45 @@ limiteEsquerda(posXInicial - distancia)
 Esqueleto::~Esqueleto() {}
 
 void Esqueleto::mover(float deltaTime) {
-    if (indoDireita) {
-        // sprite.move(velocidadeHorizontal * deltaTime, 0.0f);
-        this->setVelocidade(getVelocidade() + sf::Vector2f(velocidadeHorizontal * deltaTime, 0.f));
-        if (x >= limiteDireita) {
-            indoDireita = false;
-        }
-    } else {
-        this->setVelocidade(getVelocidade() + sf::Vector2f(-velocidadeHorizontal * deltaTime, 0.f));
-        // sprite.move(-velocidadeHorizontal * deltaTime, 0.0f);
-        if (x <= limiteEsquerda) {
-            indoDireita = true;
-        }
+
+    sf::Vector2f speed = this->getVelocidade();
+    sf::Vector2f aceleracao(velocidadeHorizontal * deltaTime, 0.0f);
+    sf::FloatRect hitBox = caixaColisao.getGlobalBounds();
+    sf::Vector2 tela = gGrafico->getTamanho();
+
+    if(indoDireita)
+        indoDireita = (x >= limiteDireita || hitBox.left + hitBox.width >= tela.x)? false : true;
+    else
+        indoDireita = (x <= limiteEsquerda || hitBox.left - hitBox.width <= 300)? true : false;
+
+    if(indoDireita){
+        this->setVelocidade(speed + aceleracao);
+    }else{
+        this->setVelocidade(speed - aceleracao);
     }
+    
+    // if (indoDireita) {
+    //     // sprite.move(velocidadeHorizontal * deltaTime, 0.0f);
+    //     this->setVelocidade(getVelocidade() + sf::Vector2f(velocidadeHorizontal * deltaTime, 0.f));
+    //     if (x >= limiteDireita || x >=  gGrafico->getTamanho().x) {
+    //         indoDireita = false;
+    //     }
+    // } else {
+    //     this->setVelocidade(getVelocidade() + sf::Vector2f(-velocidadeHorizontal * deltaTime, 0.f));
+    //     // sprite.move(-velocidadeHorizontal * deltaTime, 0.0f);
+    //     if (x <= limiteEsquerda || x - caixaColisao.getGlobalBounds().width <= 0) {
+    //         indoDireita = true;
+    //     }
+    // }
 }
 
 void Esqueleto::executar(float deltaTime)
 {
+    x = sprite.getPosition().x;
+    y = sprite.getPosition().y;
     this->mover(deltaTime);
     verificarLimitesTela();
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
-    x = sprite.getPosition().x;
-    y = sprite.getPosition().y;
 
     atualizarCaixaColisao();
 }

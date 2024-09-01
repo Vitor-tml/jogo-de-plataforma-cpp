@@ -44,7 +44,8 @@ void CollisionManager::tratarColisoesJogadorObstaculo()
         std::cout << "TratarColisoesJogadorObstaculo: Jogador nulo." << std::endl;
         return;
     }
-    jogador->setNoChao(false);   
+    jogador->setNoChao(false); 
+    jogador2->setNoChao(false);
     for(Obstacle* obstaculo : lObstaculos)
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds()))
