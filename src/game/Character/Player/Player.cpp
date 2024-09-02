@@ -25,7 +25,9 @@ Player::Player(sf::Texture& textura)
     sf::FloatRect tamanho = sprite.getGlobalBounds();
     sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
     sprite.setPosition(x, y);
-    coracao.setTexture(gRecursos->getTexture("coracao"));
+    vida.setFont(gRecursos->getFont("fonte"));
+    vida.setFillColor(sf::Color::White);
+    vida.setCharacterSize(20);
     inicializarCaixaColisao(40, 58); // Tamanho real da sprite
 }
 
@@ -98,17 +100,9 @@ nlohmann::json Player::salvar() const {
 
 void Player::renderizaVida()
 {
-    sf::RenderTexture vidas;
-    sf::FloatRect cTamanho = coracao.getGlobalBounds();    
 
-    vidas.create(cTamanho.width * nVidas, cTamanho.height);
-
-    for(int i = 0; i < nVidas; i++)
-    {
-        coracao.setPosition(cTamanho.width * i, 0);
-        vidas.draw(coracao);
-    }
-    vidas.display();
-    sf::Sprite* coracoes = new sf::Sprite(vidas.getTexture());
-    gGrafico->addDrawable(coracoes, 4);
+    std::string aux = "Player 1: " + std::to_string(nVidas);
+    vida.setString(aux);
+    vida.setPosition(0, 0);
+    gGrafico->addDrawable(vida, 4);
 }

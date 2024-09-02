@@ -34,5 +34,13 @@ class Player2 : public Player{
                 animacaoAtual = &parado;
             }
         }
+        void renderizaVida()
+        {
+
+            std::string aux = "Player 2: " + std::to_string(nVidas);
+            vida.setString(aux);
+            vida.setPosition(0, 25);
+            gGrafico->addDrawable(vida, 4);
+        }
 };
 #endif

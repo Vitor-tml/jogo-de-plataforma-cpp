@@ -65,9 +65,9 @@ void Arqueiro::atirar(float deltaTime)
     if (tempoDecorridoTiro >= intervaloTiro) {
         tempoDecorridoTiro = 0.0f;            // Reseta o tempo decorrido
 
-        std::cout << "antes x: " << bala->getPosicao().x << "antes y: " <<  bala->getPosicao().y  << std::endl;
+        // std::cout << "antes x: " << bala->getPosicao().x << "antes y: " <<  bala->getPosicao().y  << std::endl;
         bala->setPosicao(hitBox.left + hitBox.width/2, hitBox.top + hitBox.height/2);
-        std::cout << "depois x: " << bala->getPosicao().x << "depois y: " <<  bala->getPosicao().y  << std::endl;
+        // std::cout << "depois x: " << bala->getPosicao().x << "depois y: " <<  bala->getPosicao().y  << std::endl;
         
         if (olhandoDireita) {
             bala->setVelocidade(200);

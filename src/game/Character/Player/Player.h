@@ -20,8 +20,7 @@
 class Player : public Character{
 protected:
     int pontos;
-    sf::Sprite coracao;
-    sf::Sprite coracoes;
+    sf::Text vida;
     const float velocidadeHorizontal = 200.f;
     
     /**
@@ -99,6 +98,6 @@ public:
     }
 
     int getPontos() { return pontos;}
-    void renderizaVida();
+    virtual void renderizaVida();
 };
 #endif
