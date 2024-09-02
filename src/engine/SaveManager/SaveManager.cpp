@@ -13,22 +13,23 @@ std::string SaveManager::getTipo(const Entity* entidade) const {
 }
 
 Entity* SaveManager::criarEntidade(const std::string& tipo, const json& dados) const {
-    // if (tipo == "Player") {
-    //     Player* player = new Player();
-    //     player->setVida(dados["health"]);
-    //     player->setPosicao(dados["posX"], dados["posY"]);
-    //     return player;
-    // } 
-    // else if (tipo == "Enemy") {
-    //     Enemy* enemy = new Enemy();
-    //     // Métodos específicos para Enemy
-    //     return enemy;
-    // } 
-    // else if (tipo == "Obstacle") {
-    //     Obstacle* obstacle = new Obstacle();
-    //     // Métodos específicos para Obstacle
-    //     return obstacle;
-    // }
+    // // if (tipo == "Player") {
+    //     sf::Texture& textura = gRecursos->getTexture("playerTexture");
+    // //     Player* player = new Player(textura);
+    // //     player->setVida(dados["health"]);
+    // //     player->setPosicao(dados["posX"], dados["posY"]);
+    // //     return player;
+    // // } 
+    // // else if (tipo == "Enemy") {
+    // //     Enemy* enemy = new Enemy();
+    // //     // Métodos específicos para Enemy
+    // //     return enemy;
+    // // } 
+    // // else if (tipo == "Obstacle") {
+    // //     Obstacle* obstacle = new Obstacle();
+    // //     // Métodos específicos para Obstacle
+    // //     return obstacle;
+    // // }
     
     return nullptr;
 }

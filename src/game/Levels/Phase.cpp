@@ -16,6 +16,7 @@ Phase::Phase(sf::Texture& fundo, Player *p, Player2 *p2) :
 
 void Phase::executar()
 {
+        
     deltaTime = tempo.restart().asSeconds();
 
     renderizar(0);
@@ -29,7 +30,6 @@ void Phase::executar()
     gGrafico->render();
     
     gColisao.tratarColisoes();
-    saveManager.saveEntidades(listaEntidades, "save.json");
 
     // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();
