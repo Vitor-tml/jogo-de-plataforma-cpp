@@ -34,6 +34,8 @@ esfera(500, 500, gRecursos->getTexture("esfera"))
     gColisao.incluirObstaculo(&esfera);
     gColisao.incluirInimigos(&inimigo); 
     gColisao.incluirInimigos(&legolas); 
+
+    legolas.setBala(&bala);
 }
 
 void PrimeiraFase::executar()

@@ -25,7 +25,7 @@ Player::Player(sf::Texture& textura)
     sf::FloatRect tamanho = sprite.getGlobalBounds();
     sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
     sprite.setPosition(x, y);
-
+    coracao.setTexture(gRecursos->getTexture("coracao"));
     inicializarCaixaColisao(40, 58); // Tamanho real da sprite
 }
 
@@ -43,6 +43,7 @@ void Player::executar(float deltaTime)
     // Atualiza animação atual
     animacaoAtual->update(deltaTime);
     sprite.setTextureRect(animacaoAtual->getFrameAtual());
+    renderizaVida();
 }
 
 void Player::userInput()
@@ -93,4 +94,21 @@ nlohmann::json Player::salvar() const {
     j["posY"] = getPosicao().y;
     j["health"] = getVida();
     return j;
+}
+
+void Player::renderizaVida()
+{
+    sf::RenderTexture vidas;
+    sf::FloatRect cTamanho = coracao.getGlobalBounds();    
+
+    vidas.create(cTamanho.width * nVidas, cTamanho.height);
+
+    for(int i = 0; i < nVidas; i++)
+    {
+        coracao.setPosition(cTamanho.width * i, 0);
+        vidas.draw(coracao);
+    }
+    vidas.display();
+    sf::Sprite* coracoes = new sf::Sprite(vidas.getTexture());
+    gGrafico->addDrawable(coracoes, 4);
 }

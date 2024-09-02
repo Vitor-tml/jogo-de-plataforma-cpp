@@ -15,6 +15,7 @@ Game::Game():
     gRecursos->loadTexture("arqueiro",   "../assets/textures/arqueiro.png");
     gRecursos->loadTexture("icones",     "../assets/textures/menu.png");
     gRecursos->loadTexture("esfera",      "../assets/textures/esferaMagica.png");
+    gRecursos->loadTexture("coracao",      "../assets/textures/coracao.png");
     gRecursos->loadTexture("fundo2",      "../assets/textures/fundo2.jpg");
 
     gRecursos->loadImage("jogador",      "../assets/textures/knight.png");
@@ -28,7 +29,7 @@ Game::~Game()
 
 void Game::executar()
 {
-    int estado = 2;
+    int estado = 0;
     Menu menu(&estado);
     PrimeiraFase fase1;
     SegundaFase fase2;
