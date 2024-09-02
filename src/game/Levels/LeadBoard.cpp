@@ -59,7 +59,6 @@ std::string LeadBoard::getNomeJogador() const {
         window.draw(inputText);
         window.display();
     }
-
     return nomeJogador;
 }
 

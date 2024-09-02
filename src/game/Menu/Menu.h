@@ -22,16 +22,19 @@ private:
     int* estado;
     int opcaoSelecionada;
     const int numOpcoes;
+    float tempoUltimaPressao;
+    const float intervaloTroca;
     sf::Clock tempo;
     float deltaTime;
     sf::Sprite botoes[4];
     sf::Sprite escolhido[4];
     sf::Text texto[4];
+
+    float tempoPressaoEnter; // Tempo desde que a tecla Enter foi pressionada
 public:
     Menu(int* i);
     ~Menu() {};
     void setEstado(int i);
-    const int getEstado() const;
     void executar(float deltaTime) {};
     void executar();
 };

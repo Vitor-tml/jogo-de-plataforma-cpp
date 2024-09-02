@@ -29,7 +29,7 @@ Game::~Game()
 
 void Game::executar()
 {
-    int estado = 0;
+    int estado = 5;
     Player jogador(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     Player2 jogador2(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     Menu menu(&estado);
@@ -48,7 +48,6 @@ void Game::executar()
         {
         case 0:
             menu.executar();
-            estado = menu.getEstado();
             break;
         case 1:
             fase1.executar();
@@ -61,6 +60,9 @@ void Game::executar()
             break;
         case 5:
             leadboard.salvarPontos(&jogador);
+            jogador.setVida(20);
+            jogador2.setVida(20);
+            estado = 0;
             break;
         default:
             break;
@@ -69,4 +71,4 @@ void Game::executar()
             estado = 5;
         // std::cout << "Opcao: " << estado << std::endl;
     }
-}
+} 

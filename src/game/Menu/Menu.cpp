@@ -5,8 +5,10 @@ Menu::Menu(int* i):
     Ente(gRecursos->getTexture("menu")),
     numOpcoes(4),
     estado(i),
+    intervaloTroca(0.2f),
     opcaoSelecionada(0) // Inicia a seleção na primeira opção
 {   
+
     int eX = gGrafico->getTamanho().x;
     int eY = gGrafico->getTamanho().y;
     eY = (eY - 130)/numOpcoes ;
@@ -33,6 +35,8 @@ Menu::Menu(int* i):
     texto[1].setString("Segunda Fase");
     texto[2].setString("Terceira Fase");
     texto[3].setString("Rank");
+    tempoUltimaPressao = 0;
+    tempoPressaoEnter = 0;
 }
 
 void Menu::setEstado(int i)
@@ -40,15 +44,17 @@ void Menu::setEstado(int i)
     *estado = i;
 }
 
-const int Menu::getEstado() const { return *estado; }
-
-float tempoUltimaPressao = 0.0f;
-const float intervaloTroca = 0.2f; // 200ms
-
 void Menu::executar()
 {
+    // Limpa buffer de teclas
+    for (int i = 0; i < sf::Keyboard::KeyCount; ++i) {
+            sf::Keyboard::isKeyPressed(static_cast<sf::Keyboard::Key>(i));
+    }
+
     deltaTime = tempo.restart().asSeconds();
     tempoUltimaPressao += deltaTime;
+    tempoPressaoEnter += deltaTime;
+    // std::cout << "Enter: " << tempoPressaoEnter << " Intervalo: " << intervaloTroca << std::endl;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && tempoUltimaPressao > intervaloTroca) {
         opcaoSelecionada = (opcaoSelecionada + 1) % numOpcoes;
@@ -57,10 +63,10 @@ void Menu::executar()
         opcaoSelecionada = (opcaoSelecionada - 1 + numOpcoes) % numOpcoes;
         tempoUltimaPressao = 0.0f;
     }
-
-    // Verificar a tecla Enter para seleção
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+    // Verifica a tecla Enter para seleção
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && tempoPressaoEnter > 1.7f) {
         setEstado(opcaoSelecionada + 1);
+        tempoPressaoEnter = 0.0f; // Reinicia o tempo
     }
 
     renderizar(0);
