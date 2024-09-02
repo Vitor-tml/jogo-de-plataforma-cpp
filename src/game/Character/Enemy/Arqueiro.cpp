@@ -63,14 +63,14 @@ void Arqueiro::executar(float deltaTime)
 void Arqueiro::atirar(float deltaTime)
 {
     tempoDecorridoTiro += deltaTime;
-
+    Projetil* bala;
     if (tempoDecorridoTiro >= intervaloTiro) {
         tempoDecorridoTiro = 0.0f;            // Reseta o tempo decorrido
         if (olhandoDireita) {
-            std::cout << "Direita" << std::endl;
-            // adicionar bala aqui
+            bala = new Projetil(x, y);
         } else {
             std::cout << "Esquerda" << std::endl;
+            bala = new Projetil(x, y);
             // adicionar bala aqui
         }
     }

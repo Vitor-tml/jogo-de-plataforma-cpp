@@ -37,6 +37,17 @@ void CollisionManager::incluirInimigos(Enemy *p)
     lInimigos.push_back(p);
 }
 
+void CollisionManager::incluirProjetil(Projetil *p)
+{
+    if(p == nullptr)
+    {
+        std::cout << "ERRO: Obstaculo nulo sendo inserido" << std::endl;
+        return;
+    }
+
+    lProjetil.push_back(p);
+}
+
 void CollisionManager::tratarColisoesJogadorObstaculo()
 {
     if(jogador == nullptr)
@@ -72,4 +83,45 @@ void CollisionManager::tratarColisoesInimigoObstaculo()
 
     }
 }
-void tratarColisoesJogadorInimigo();
+void CollisionManager::tratarColisoesJogadorInimigo()
+{
+    for(Enemy* inimigo : lInimigos){
+        if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+            inimigo->danificar(jogador);
+        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+            inimigo->danificar(jogador2);
+    }
+}
+
+int CollisionManager::tratarColisoesJogadorProjetil()
+{
+    int aux = -1;
+    for(std::vector<Projetil*>::iterator it = lProjetil.begin(); it != lProjetil.end();)
+    {
+        Projetil* bala = *it;
+
+        if(jogador->getCaixaColisao().getGlobalBounds().intersects(bala->getCaixaColisao().getGlobalBounds()))
+        {
+            std::cout << "Jogador1" << std::endl;
+            bala->danificar(jogador);
+            aux = bala->getID();
+            // Remover a bala da lista após colidir e causar dano ao jogador
+            // delete bala;
+            it = lProjetil.erase(it);
+        }
+        else if(jogador2->getCaixaColisao().getGlobalBounds().intersects(bala->getCaixaColisao().getGlobalBounds()))
+        {
+            std::cout << "Jogador2" << std::endl;
+            bala->danificar(jogador2);
+            aux = bala->getID();
+            // Remover a bala da lista após colidir e causar dano ao segundo jogador
+            // delete bala;
+            it = lProjetil.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+    return aux;
+}

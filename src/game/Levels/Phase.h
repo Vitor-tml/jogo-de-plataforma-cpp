@@ -15,7 +15,7 @@
 #include "../Obstacles/Espinhos.h"
 #include "../Obstacles/EsferaMagica.h"
 #include "../../engine/Savemanager/SaveManager.h"
-#include "../Projectile/Projectile.h"
+#include "../Projetil/Projetil.h"
 
 class Phase : public Ente {
 protected:

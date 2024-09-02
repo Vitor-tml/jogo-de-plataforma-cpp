@@ -2,7 +2,7 @@
 #define _ARQUEIRO_H
 
 #include "Enemy.h"
-
+#include "../../Projetil/Projetil.h"
 class Arqueiro : public Enemy{
 private:
     int nBalas;
