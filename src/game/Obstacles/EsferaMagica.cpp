@@ -25,7 +25,6 @@ void EsferaMagica::obstacular(Player* jogador) {
     velocidadeAtual.y -= elasticidade; // Aplicando a elasticidade como impulso para cima
     jogador->setVelocidade(velocidadeAtual);
     jogador->setNoChao(false); // O jogador foi arremessado para cima, portanto não está mais no chão
-    std::cout << "Chamou" << std::endl;
 }
 
 

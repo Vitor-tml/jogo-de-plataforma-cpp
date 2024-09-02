@@ -13,12 +13,13 @@
 
 class LeadBoard : public Ente {
 private:
-    std::vector<int> pontuacoes;
+    std::vector<std::pair<std::string, int>> pontuacoes;
 
 public:
     LeadBoard();
     ~LeadBoard();
     void executar();
+    std::string getNomeJogador() const;
     void salvarPontos(Player* jogador);
     /**
      * @brief A ideia do salva pontos é ser chamada uma única vez no final do jogo.

@@ -8,6 +8,8 @@
 #include "../../../lib/json.hpp"
 #include <string>
 
+using json = nlohmann::json;
+
 /**
  * @class SaveManager
  * @brief Classe utilizada para salvar e carregar as entidades do jogo.
@@ -24,7 +26,7 @@ private:
     /**
      * @brief Esse método é responsável por identificar qual é o tipo de cada entidade na lista, para que possa ser realizado o salvamento polimórfico.
      */
-    Entity* criarEntidade(const std::string& tipo) const;
+    Entity* criarEntidade(const std::string& tipo, const json& dados) const;
 
 public:
     SaveManager() = default;
@@ -34,9 +36,9 @@ public:
     /**
      * @brief Esse método recebe a lista de entidades e o nome do arquivo em que ela será salva.
      */
-    ListaEntidades loadEntidades(const std::string& filename);
+    ListaEntidades loadEntidades();
     /**
-     * @brief Esse método recebe o nome do arquivo a ser lido e retorna a lista de entidades.
+     * @brief Esse método carrega o arquivo do save.json e retorna a lista de entidades.
      */
 };
 

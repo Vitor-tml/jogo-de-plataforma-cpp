@@ -12,13 +12,27 @@ std::string SaveManager::getTipo(const Entity* entidade) const {
     return "Entidade";
 }
 
-Entity* SaveManager::criarEntidade(const std::string& tipo) const {
-    // Fazer: tenho que olhar como criar cada uma das classes de acordo com os métodos particulares delas
-    // if (tipo == "Enemy") return new Enemy(); 
-    // if (tipo == "Player") return new Player();
-    // if (tipo == "Obstacle") return new Obstacle();
+Entity* SaveManager::criarEntidade(const std::string& tipo, const json& dados) const {
+    // if (tipo == "Player") {
+    //     Player* player = new Player();
+    //     player->setVida(dados["health"]);
+    //     player->setPosicao(dados["posX"], dados["posY"]);
+    //     return player;
+    // } 
+    // else if (tipo == "Enemy") {
+    //     Enemy* enemy = new Enemy();
+    //     // Métodos específicos para Enemy
+    //     return enemy;
+    // } 
+    // else if (tipo == "Obstacle") {
+    //     Obstacle* obstacle = new Obstacle();
+    //     // Métodos específicos para Obstacle
+    //     return obstacle;
+    // }
+    
     return nullptr;
 }
+
 
 void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& filename) {
     json jLista = json::array();
@@ -49,8 +63,9 @@ void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& 
     }
 }
 
-ListaEntidades SaveManager::loadEntidades(const std::string& filename) {
+ListaEntidades SaveManager::loadEntidades() {
     ListaEntidades listaCarregada;
+    const std::string filename = "save.json";
 
     try {
         std::ifstream arquivo(filename);
@@ -66,7 +81,7 @@ ListaEntidades SaveManager::loadEntidades(const std::string& filename) {
 
         for (const auto& jEntidade : jLista) {
             std::string tipo = jEntidade["tipo"];
-            Entity* entidade = criarEntidade(tipo);
+            Entity* entidade = criarEntidade(tipo, jEntidade["dados"]);
             if (entidade) {
                 listaCarregada.incluir(entidade);
             }
@@ -77,3 +92,4 @@ ListaEntidades SaveManager::loadEntidades(const std::string& filename) {
 
     return listaCarregada;
 }
+
