@@ -12,6 +12,7 @@ void CollisionManager::tratarColisoes()
 {
     tratarColisoesJogadorObstaculo();
     tratarColisoesInimigoObstaculo();
+    tratarColisoesJogadorProjetil();
 }
 
 
@@ -93,35 +94,12 @@ void CollisionManager::tratarColisoesJogadorInimigo()
     }
 }
 
-int CollisionManager::tratarColisoesJogadorProjetil()
+void CollisionManager::tratarColisoesJogadorProjetil()
 {
-    int aux = -1;
-    for(std::vector<Projetil*>::iterator it = lProjetil.begin(); it != lProjetil.end();)
-    {
-        Projetil* bala = *it;
-
+    for(Projetil* bala : lProjetil){
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(bala->getCaixaColisao().getGlobalBounds()))
-        {
-            std::cout << "Jogador1" << std::endl;
             bala->danificar(jogador);
-            aux = bala->getID();
-            // Remover a bala da lista após colidir e causar dano ao jogador
-            // delete bala;
-            it = lProjetil.erase(it);
-        }
-        else if(jogador2->getCaixaColisao().getGlobalBounds().intersects(bala->getCaixaColisao().getGlobalBounds()))
-        {
-            std::cout << "Jogador2" << std::endl;
+        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(bala->getCaixaColisao().getGlobalBounds()))
             bala->danificar(jogador2);
-            aux = bala->getID();
-            // Remover a bala da lista após colidir e causar dano ao segundo jogador
-            // delete bala;
-            it = lProjetil.erase(it);
-        }
-        else
-        {
-            ++it;
-        }
-    }
-    return aux;
+    }    
 }

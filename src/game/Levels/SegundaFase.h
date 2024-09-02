@@ -8,6 +8,7 @@ private:
     Plataforma chao;
     Esqueleto esqueleto;
     Arqueiro arqueiro;
+    Projetil *bala;
 public:
     SegundaFase();
     ~SegundaFase() {};

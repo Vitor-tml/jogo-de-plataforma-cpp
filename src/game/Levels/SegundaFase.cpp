@@ -4,16 +4,23 @@ SegundaFase::SegundaFase() :
 Phase(gRecursos->getTexture("fundo2")),
 chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
 esqueleto(gRecursos->getTexture("inimigo"), 1),
-arqueiro(100, 500, gRecursos->getTexture("arqueiro"))
+arqueiro(300, 500, gRecursos->getTexture("arqueiro"))
+// bala(100, 450)
 {
+    bala = new Projetil(100, 450, 0, 0);
     // sprite.setTextureRect(sf::IntRect(0,0,0,0));
     listaEntidades.incluir(&chao);
     // listaEntidades.incluir(&esqueleto);
-    // listaEntidades.incluir(&arqueiro);
+    listaEntidades.incluir(&arqueiro);
+    listaEntidades.incluir(bala);
 
     gColisao.incluirObstaculo(&chao);
     // gColisao.incluirInimigos(&esqueleto);
-    // gColisao.incluirInimigos(&arqueiro);
+    gColisao.incluirInimigos(&arqueiro);
+
+    gColisao.incluirProjetil(bala);
+
+    arqueiro.setBala(bala);
 }
 
 void SegundaFase::executar()
@@ -33,12 +40,7 @@ void SegundaFase::executar()
     gGrafico->render();
     
     gColisao.tratarColisoes();
-    int aux = gColisao.tratarColisoesJogadorProjetil();
-    for (int i = 0; i < listaEntidades.getTamanho(); i++) {
-        if(listaEntidades[i]->getID() == aux)
-            delete listaEntidades[i];
-    }
-    saveManager.saveEntidades(listaEntidades, "save.txt");
+    
 
     // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();

@@ -6,7 +6,7 @@ PrimeiraFase::PrimeiraFase() :
     plataforma(0, 500, gRecursos->getTexture("plataforma")),
     plataforma2(0, 500, gRecursos->getTexture("plataforma")),
     plataforma3(100, 436, gRecursos->getTexture("plataforma")),
-    bala(0, 400, gRecursos->getTexture("bala"), 0, 0),
+    bala(0, 400),
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
     legolas(300, 300, gRecursos->getTexture("arqueiro")),
     espinho(500, 500, gRecursos->getTexture("espinho")),

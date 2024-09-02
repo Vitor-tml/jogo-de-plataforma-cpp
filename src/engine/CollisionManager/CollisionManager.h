@@ -26,7 +26,7 @@ public:
     void incluirProjetil(Projetil *p);
     void tratarColisoesJogadorObstaculo();
     void tratarColisoesJogadorInimigo();
-    int tratarColisoesJogadorProjetil();
+    void tratarColisoesJogadorProjetil();
     void tratarColisoesInimigoObstaculo();
     void tratarColisoes();
     // void tratarColisoesJogadorInimigo();
