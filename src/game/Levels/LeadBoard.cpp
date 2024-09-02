@@ -17,10 +17,50 @@ void LeadBoard::executar()
     mostrarTela();
 }
 
-std::string LeadBoard::getNomeJogador() const
-{
-    // Pensar como a gente vai pegar o nome do jogador
-    return "Nome de teste";
+std::string LeadBoard::getNomeJogador() const {
+    sf::RenderWindow window(sf::VideoMode(400, 200), "Insira seu nome");
+    sf::Font font = gRecursos->getFont("fonte");
+
+    sf::Text prompt;
+    prompt.setFont(font);
+    prompt.setString("Digite seu nome:");
+    prompt.setCharacterSize(24);
+    prompt.setFillColor(sf::Color::Black);
+    prompt.setPosition(20, 20);
+
+    sf::Text inputText;
+    inputText.setFont(font);
+    inputText.setCharacterSize(24);
+    inputText.setFillColor(sf::Color::Black);
+    inputText.setPosition(20, 80);
+
+    std::string nomeJogador;
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            } else if (event.type == sf::Event::TextEntered) {
+                if (event.text.unicode == '\b') {
+                    if (!nomeJogador.empty()) {
+                        nomeJogador.pop_back();
+                    }
+                } else if (event.text.unicode == 13) {
+                    window.close();
+                } else if (event.text.unicode < 128) {
+                    nomeJogador += static_cast<char>(event.text.unicode);
+                }
+                inputText.setString(nomeJogador);
+            }
+        }
+
+        window.clear(sf::Color::White);
+        window.draw(prompt);
+        window.draw(inputText);
+        window.display();
+    }
+
+    return nomeJogador;
 }
 
 void LeadBoard::salvarPontos(Player* jogador) 

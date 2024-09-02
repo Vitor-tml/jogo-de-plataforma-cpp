@@ -28,7 +28,7 @@ Game::~Game()
 
 void Game::executar()
 {
-    int estado = 2;
+    int estado = 0;
     Menu menu(&estado);
     PrimeiraFase fase1;
     SegundaFase fase2;
@@ -55,8 +55,8 @@ void Game::executar()
             fase2.executar();
             break;
         case 4:
-            leadboard.executar();
             leadboard.salvarPontos(&jogadorTeste);
+            leadboard.executar();
             break;
         default:
             break;
