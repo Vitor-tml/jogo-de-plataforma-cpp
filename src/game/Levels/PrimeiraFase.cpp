@@ -17,6 +17,7 @@ esfera(500, 500, gRecursos->getTexture("esfera"))
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
     
     
+    // ========= Entidade
     listaEntidades.incluir(&inimigo);
     listaEntidades.incluir(&plataforma);
     listaEntidades.incluir(&plataforma2);
@@ -26,15 +27,21 @@ esfera(500, 500, gRecursos->getTexture("esfera"))
     listaEntidades.incluir(&bala);
     listaEntidades.incluir(&legolas);
     listaEntidades.incluir(&esfera);
+
+    // ======== Colisao
     gColisao.incluirObstaculo(&plataforma); 
     gColisao.incluirObstaculo(&plataforma2); 
     gColisao.incluirObstaculo(&plataforma3); 
     gColisao.incluirObstaculo(&chao); 
     gColisao.incluirObstaculo(&espinho); 
     gColisao.incluirObstaculo(&esfera);
+
     gColisao.incluirInimigos(&inimigo); 
     gColisao.incluirInimigos(&legolas); 
+    
+    gColisao.incluirProjetil(&bala);
 
+    // ======== Relações
     legolas.setBala(&bala);
 }
 

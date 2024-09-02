@@ -10,13 +10,13 @@ arqueiro(300, 500, gRecursos->getTexture("arqueiro"))
     bala = new Projetil(100, 450, 0, 0);
     // sprite.setTextureRect(sf::IntRect(0,0,0,0));
     listaEntidades.incluir(&chao);
-    // listaEntidades.incluir(&esqueleto);
-    listaEntidades.incluir(&arqueiro);
+    listaEntidades.incluir(&esqueleto);
+    // listaEntidades.incluir(&arqueiro);
     listaEntidades.incluir(bala);
 
     gColisao.incluirObstaculo(&chao);
-    // gColisao.incluirInimigos(&esqueleto);
-    gColisao.incluirInimigos(&arqueiro);
+    gColisao.incluirInimigos(&esqueleto);
+    // gColisao.incluirInimigos(&arqueiro);
 
     gColisao.incluirProjetil(bala);
 

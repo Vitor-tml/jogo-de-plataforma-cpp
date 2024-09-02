@@ -87,10 +87,14 @@ void CollisionManager::tratarColisoesInimigoObstaculo()
 void CollisionManager::tratarColisoesJogadorInimigo()
 {
     for(Enemy* inimigo : lInimigos){
-        if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+        if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds())){
             inimigo->danificar(jogador);
-        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+            std::cout << "Colisao: jogador/inimigo" << std::endl;
+        }
+        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds())){
             inimigo->danificar(jogador2);
+            std::cout << "Colisao: jogador 2/inimigo" << std::endl;
+        }
     }
 }
 
