@@ -12,6 +12,7 @@ void CollisionManager::tratarColisoes()
 {
     tratarColisoesJogadorObstaculo();
     tratarColisoesInimigoObstaculo();
+    tratarColisoesJogadorProjetil();
 }
 
 
@@ -37,6 +38,17 @@ void CollisionManager::incluirInimigos(Enemy *p)
     lInimigos.push_back(p);
 }
 
+void CollisionManager::incluirProjetil(Projetil *p)
+{
+    if(p == nullptr)
+    {
+        std::cout << "ERRO: Obstaculo nulo sendo inserido" << std::endl;
+        return;
+    }
+
+    lProjetil.push_back(p);
+}
+
 void CollisionManager::tratarColisoesJogadorObstaculo()
 {
     if(jogador == nullptr)
@@ -44,7 +56,8 @@ void CollisionManager::tratarColisoesJogadorObstaculo()
         std::cout << "TratarColisoesJogadorObstaculo: Jogador nulo." << std::endl;
         return;
     }
-    jogador->setNoChao(false);   
+    jogador->setNoChao(false); 
+    jogador2->setNoChao(false);
     for(Obstacle* obstaculo : lObstaculos)
     {
         if(jogador->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds()))
@@ -62,6 +75,7 @@ void CollisionManager::tratarColisoesJogadorObstaculo()
 void CollisionManager::tratarColisoesInimigoObstaculo()
 {
     for(Enemy* inimigo : lInimigos){
+        inimigo->setNoChao(false);
         for(Obstacle* obstaculo : lObstaculos){
             if(inimigo->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds())){
                 obstaculo->obstacular(inimigo);
@@ -70,4 +84,22 @@ void CollisionManager::tratarColisoesInimigoObstaculo()
 
     }
 }
-void tratarColisoesJogadorInimigo();
+void CollisionManager::tratarColisoesJogadorInimigo()
+{
+    for(Enemy* inimigo : lInimigos){
+        if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+            inimigo->danificar(jogador);
+        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+            inimigo->danificar(jogador2);
+    }
+}
+
+void CollisionManager::tratarColisoesJogadorProjetil()
+{
+    for(Projetil* bala : lProjetil){
+        if(jogador->getCaixaColisao().getGlobalBounds().intersects(bala->getCaixaColisao().getGlobalBounds()))
+            bala->danificar(jogador);
+        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(bala->getCaixaColisao().getGlobalBounds()))
+            bala->danificar(jogador2);
+    }    
+}

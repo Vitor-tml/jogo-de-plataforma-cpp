@@ -40,20 +40,20 @@ void Plataforma::obstacular(Player *jogador)
     if(menorOverlap == overlapEsquerda){
         // std::cout << "Esquerda" << std::endl;
         jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(overlapEsquerda, 0));
-        jogador->setVelocidade(sf::Vector2f(0, jogador->getVelocidade().y));
+        jogador->setVelocidade(sf::Vector2f(10.f, jogador->getVelocidade().y));
     }else if(menorOverlap == overlapDireita){
         // std::cout << "Direita" << std::endl;
         jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(overlapDireita, 0));
-        jogador->setVelocidade(sf::Vector2f(0, jogador->getVelocidade().y));
+        jogador->setVelocidade(sf::Vector2f(-10.f, jogador->getVelocidade().y));
     }else if(menorOverlap == overlapCima){
         // std::cout << "Cima" << std::endl;
         // jogador->setPosicao(jogador->getPosicao() - sf::Vector2f(0, overlapCima));
-        jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 0));
+        jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, -100.f));
         jogador->setNoChao(true);
     }else if(menorOverlap == overlapBaixo){
         // std::cout << "Baixo" << std::endl;
         jogador->setPosicao(jogador->getPosicao() + sf::Vector2f(0, overlapBaixo));
-        jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 0));
+        jogador->setVelocidade(sf::Vector2f(jogador->getVelocidade().x, 100.f));
         jogador->setNoChao(true);
     }
 }
@@ -82,21 +82,21 @@ void Plataforma::obstacular(Entity *p)
     
     if(menorOverlap == overlapEsquerda){
         // std::cout << "Esquerda" << std::endl;
-        p->setPosicao(p->getPosicao() - sf::Vector2f(overlapEsquerda, 0));
-        p->setVelocidade(sf::Vector2f(0, p->getVelocidade().y));
+        p->setPosicao(p->getPosicao() - sf::Vector2f(overlapEsquerda + 1, 0));
+        p->setVelocidade(sf::Vector2f(-10.f, p->getVelocidade().y));
     }else if(menorOverlap == overlapDireita){
         // std::cout << "Direita" << std::endl;
-        p->setPosicao(p->getPosicao() + sf::Vector2f(overlapDireita, 0));
-        p->setVelocidade(sf::Vector2f(0, p->getVelocidade().y));
+        p->setPosicao(p->getPosicao() + sf::Vector2f(overlapDireita + 1, 0));
+        p->setVelocidade(sf::Vector2f(10.f, p->getVelocidade().y));
     }else if(menorOverlap == overlapCima){
         // std::cout << "Cima" << std::endl;
-        p->setPosicao(p->getPosicao() - sf::Vector2f(0, overlapCima));
-        p->setVelocidade(sf::Vector2f(p->getVelocidade().x, 0));
+        // p->setPosicao(p->getPosicao() - sf::Vector2f(0, overlapCima));
+        p->setVelocidade(sf::Vector2f(p->getVelocidade().x, -10.f));
         p->setNoChao(true);
     }else if(menorOverlap == overlapBaixo){
         // std::cout << "Baixo" << std::endl;
         p->setPosicao(p->getPosicao() + sf::Vector2f(0, overlapBaixo));
-        p->setVelocidade(sf::Vector2f(p->getVelocidade().x, 0));
+        p->setVelocidade(sf::Vector2f(p->getVelocidade().x, 10.f));
         p->setNoChao(true);
     }
 }

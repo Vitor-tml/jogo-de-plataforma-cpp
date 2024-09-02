@@ -7,10 +7,13 @@
 #include "../../game/Character/Player/Player.h"
 #include "../../game/Character/Player/Player2.h"
 #include "../../game/Obstacles/Obstacle.h"
+#include "../../game/Projetil/Projetil.h"
+
 class CollisionManager {
 private:
     std::vector<Enemy*> lInimigos;
     std::list<Obstacle*> lObstaculos;
+    std::vector<Projetil*> lProjetil;
     Player* jogador;
     Player2* jogador2;
 public:
@@ -20,7 +23,10 @@ public:
     
     void incluirObstaculo(Obstacle *p);
     void incluirInimigos(Enemy *p);
+    void incluirProjetil(Projetil *p);
     void tratarColisoesJogadorObstaculo();
+    void tratarColisoesJogadorInimigo();
+    void tratarColisoesJogadorProjetil();
     void tratarColisoesInimigoObstaculo();
     void tratarColisoes();
     // void tratarColisoesJogadorInimigo();

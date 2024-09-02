@@ -47,6 +47,8 @@ void Player::executar(float deltaTime)
 
 void Player::userInput()
 {
+    // std::cout << "Player 1" << std::endl;
+
     // Zera velocidade horizontal para não ter aceleração infinita
     velocidade.x = 0;
 

@@ -9,6 +9,8 @@ class Player2 : public Player{
         Player2(sf::Texture& textura): Player(textura){};
         void userInput()
         {
+            // std::cout << "Player 2" << std::endl;
+
             // Zera velocidade horizontal para não ter aceleração infinita
             velocidade.x = 0;
 

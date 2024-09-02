@@ -1,8 +1,12 @@
 #include "Arqueiro.h"
 
 Arqueiro::Arqueiro(int xx, int yy, sf::Texture& textura):
-Enemy(xx, yy, textura, 0, 0)
+Enemy(xx, yy, textura, 0, 0),
+bala(nullptr)
 {
+    tempoDecorrido = 0;
+    tempoDecorridoTiro = 0;
+    olhandoDireita = 0;
     sprite.setTextureRect(sf::IntRect(0, 0, 125, 75));
     sf::FloatRect tamanho = sprite.getGlobalBounds();
     sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
@@ -45,27 +49,41 @@ void Arqueiro::danificar(Player *jogador)
 void Arqueiro::executar(float deltaTime)
 {
     mover(deltaTime);
-    if(nBalas > 0)
-    {
-
-    }
+    atirar(deltaTime);
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
-
     atualizarCaixaColisao();
 
     //atirar
 }
 
-void Arqueiro::atirar(int deltaTime)
+void Arqueiro::atirar(float deltaTime)
 {
-    tempoDecorrido += deltaTime* 2;
+    tempoDecorridoTiro += deltaTime;
+    sf::FloatRect hitBox = getCaixaColisao().getGlobalBounds();
+    if (tempoDecorridoTiro >= intervaloTiro) {
+        tempoDecorridoTiro = 0.0f;            // Reseta o tempo decorrido
 
-    // Define a escala do sprite com base na direção
-    if (olhandoDireita) {
-        // adicionar bala aqui
-    } else {
-        // adicionar bala aqui
+        std::cout << "antes x: " << bala->getPosicao().x << "antes y: " <<  bala->getPosicao().y  << std::endl;
+        bala->setPosicao(hitBox.left + hitBox.width/2, hitBox.top + hitBox.height/2);
+        std::cout << "depois x: " << bala->getPosicao().x << "depois y: " <<  bala->getPosicao().y  << std::endl;
+        
+        if (olhandoDireita) {
+            bala->setVelocidade(200);
+        } else {
+            bala->setVelocidade(-200);
+        }
     }
+    // Define a escala do sprite com base na direção
+}
+
+void Arqueiro::setBala(Projetil *b)
+{
+    bala = b;
+}
+
+Projetil* Arqueiro::getBala() const
+{
+    return bala;
 }
