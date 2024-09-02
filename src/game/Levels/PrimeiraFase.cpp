@@ -1,7 +1,7 @@
 #include "PrimeiraFase.h"
 
-PrimeiraFase::PrimeiraFase() :
-    Phase(gRecursos->getTexture("fundo")),
+PrimeiraFase::PrimeiraFase(Player* p, Player2 *p2):
+    Phase(gRecursos->getTexture("fundo"), p, p2),
     inimigo(gRecursos->getTexture("inimigo")),
     plataforma(0, 500, gRecursos->getTexture("plataforma")),
     plataforma2(0, 500, gRecursos->getTexture("plataforma")),
@@ -10,7 +10,7 @@ PrimeiraFase::PrimeiraFase() :
     chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
     legolas(300, 300, gRecursos->getTexture("arqueiro")),
     espinho(500, 500, gRecursos->getTexture("espinho")),
-esfera(500, 500, gRecursos->getTexture("esfera"))
+    esfera(500, 500, gRecursos->getTexture("esfera"))
 {
     // Iniciar local?
     //sprite.setOrigin()

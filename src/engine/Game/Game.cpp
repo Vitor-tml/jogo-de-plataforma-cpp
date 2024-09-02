@@ -30,11 +30,12 @@ Game::~Game()
 void Game::executar()
 {
     int estado = 0;
+    Player jogador(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
+    Player2 jogador2(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     Menu menu(&estado);
-    PrimeiraFase fase1;
-    SegundaFase fase2;
+    PrimeiraFase fase1(&jogador, &jogador2);
+    SegundaFase fase2(&jogador, &jogador2);
     LeadBoard leadboard;
-    Player jogadorTeste(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     while (janela->isOpen())
     {
         sf::Event evento;
@@ -57,11 +58,15 @@ void Game::executar()
             break;
         case 4:
             leadboard.executar();
-            leadboard.salvarPontos(&jogadorTeste);
+            break;
+        case 5:
+            leadboard.salvarPontos(&jogador);
             break;
         default:
             break;
         }
+        if(jogador.getVida() <= 0 || jogador2.getVida() <= 0)
+            estado = 5;
         // std::cout << "Opcao: " << estado << std::endl;
     }
 }

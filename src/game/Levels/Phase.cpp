@@ -1,18 +1,17 @@
 #include "Phase.h"
 
-Phase::Phase(sf::Texture& fundo) :
+Phase::Phase(sf::Texture& fundo, Player *p, Player2 *p2) :
     Ente(fundo),
-    jogador(gRecursos->getTexture("jogador")),
-    jogador2(gRecursos->getTexture("jogador")),
     listaEntidades(),
-    gColisao(&jogador, &jogador2)
+    gColisao(jogador, jogador2),
+    jogador(p),
+    jogador2(p2)
 {
     // Iniciar local?
     //sprite.setOrigin()
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
-
-    listaEntidades.incluir(&jogador);
-    listaEntidades.incluir(&jogador2);
+    listaEntidades.incluir(jogador);
+    listaEntidades.incluir(jogador2);
 }
 
 void Phase::executar()
@@ -26,7 +25,7 @@ void Phase::executar()
         listaEntidades[i]->renderizarCaixaColisao();
     }
 
-    gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
+    gGrafico->setCentroCamera(jogador->getPosicao().x, jogador->getPosicao().y); // Jogador controla a própria câmera ou a fase?
     gGrafico->render();
     
     gColisao.tratarColisoes();

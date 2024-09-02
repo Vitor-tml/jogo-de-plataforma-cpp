@@ -15,7 +15,7 @@ private:
     Projetil bala;
     EsferaMagica esfera;
 public:
-    PrimeiraFase();
+    PrimeiraFase(Player* p, Player2 *p2);
     ~PrimeiraFase() {};
     void executar() override;
 };

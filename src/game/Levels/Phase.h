@@ -19,15 +19,15 @@
 
 class Phase : public Ente {
 protected:
-    Player jogador;
-    Player2 jogador2;
+    Player* jogador;
+    Player2* jogador2;
     sf::Clock tempo;
     float deltaTime;
     ListaEntidades listaEntidades;
     SaveManager saveManager;
     CollisionManager gColisao;
 public:
-    Phase(sf::Texture& fundo);
+    Phase(sf::Texture& fundo, Player* p, Player2* p2);
     virtual ~Phase() noexcept {};
     virtual void executar();
     void gerenciarColisoes(){};

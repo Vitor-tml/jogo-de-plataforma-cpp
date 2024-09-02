@@ -1,7 +1,7 @@
 #include "SegundaFase.h"
 
-SegundaFase::SegundaFase() :
-Phase(gRecursos->getTexture("fundo2")),
+SegundaFase::SegundaFase(Player* p, Player2 *p2) :
+Phase(gRecursos->getTexture("fundo2"), p, p2),
 chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
 esqueleto(gRecursos->getTexture("inimigo"), 1),
 arqueiro(300, 500, gRecursos->getTexture("arqueiro"))

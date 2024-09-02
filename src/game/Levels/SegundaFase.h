@@ -10,7 +10,7 @@ private:
     Arqueiro arqueiro;
     Projetil *bala;
 public:
-    SegundaFase();
+    SegundaFase(Player* p, Player2 *p2);
     ~SegundaFase() {};
     void executar() override;
 };
