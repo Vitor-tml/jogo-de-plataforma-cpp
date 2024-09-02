@@ -29,7 +29,7 @@ Game::~Game()
 
 void Game::executar()
 {
-    int estado = 5;
+    int estado = 0  ;
     Player jogador(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     Player2 jogador2(gRecursos->getTexture("jogador")); // Criei para testar o LeadBoard
     Menu menu(&estado);
