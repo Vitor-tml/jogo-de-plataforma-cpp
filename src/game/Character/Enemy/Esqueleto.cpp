@@ -64,9 +64,14 @@ void Esqueleto::executar(float deltaTime)
     atualizarCaixaColisao();
 }
 
+
 void Esqueleto::danificar(Player* jogador)
 {
-    jogador->setVida(jogador->getVida() - nivelMaldade);
+    // Verifica se o tempo entre danos já passou
+    if (relogioDano.getElapsedTime().asSeconds() >= tempoEntreDanos) {
+        jogador->setVida(jogador->getVida() - nivelMaldade);
+        relogioDano.restart(); // Reinicia o relógio após infligir dano
+    }
 }
 
 nlohmann::json Esqueleto::salvar() const{

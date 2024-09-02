@@ -14,6 +14,8 @@ private:
     const float distancia;                // Distância total do movimento
     const float limiteDireita;
     const float limiteEsquerda;
+    sf::Clock relogioDano; // Relógio para controlar o tempo entre danos
+    const float tempoEntreDanos = 1.0f; // Tempo em segundos entre danos
 public:
     Esqueleto(sf::Texture& textura, int maldade = 1, int offX = 0, int offY = 0);
     ~Esqueleto();
