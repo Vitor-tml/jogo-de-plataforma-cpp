@@ -17,6 +17,15 @@ Player::Player(sf::Texture& textura)
                       sf::IntRect(576, 192, 96, 96),
                       sf::IntRect(672, 192, 96, 96)},
                     0.1f),
+    rolando(textura, {sf::IntRect(0, 480, 96, 96), 
+                      sf::IntRect(96, 480, 96, 96), 
+                      sf::IntRect(192, 480, 96, 96), 
+                      sf::IntRect(288, 480, 96, 96),
+                      sf::IntRect(384, 480, 96, 96),
+                      sf::IntRect(480, 480, 96, 96),
+                      sf::IntRect(576, 480, 96, 96),
+                      sf::IntRect(672, 480, 96, 96)},
+                    0.1f),
     animacaoAtual(&parado),
     pontos(100)
 {   
@@ -41,6 +50,16 @@ void Player::executar(float deltaTime)
     y = sprite.getPosition().y;
 
     atualizarCaixaColisao();
+
+    if (ataque)
+    {
+        tempoAtaque += deltaTime;
+        if (tempoAtaque >= duracaoAtaque)
+        {
+            ataque = false; // Sai do estado de ataque
+            animacaoAtual = &parado; // Retorna à animação padrão
+        }
+    }
 
     // Atualiza animação atual
     animacaoAtual->update(deltaTime);
@@ -69,8 +88,11 @@ void Player::userInput()
         velocidade.y += -fisica.getPulo();
         estaNoChao = false;
     }
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+        atacar();
+    }
 
-    if(velocidade.x == 0)
+    if(velocidade.x == 0 && !ataque)
     {
         animacaoAtual = &parado;
     }
@@ -105,4 +127,17 @@ void Player::renderizaVida()
     vida.setString(aux);
     vida.setPosition(0, 0);
     gGrafico->addDrawable(vida, 4);
+}
+
+void Player::atacar()
+{
+    animacaoAtual = &rolando;
+    ataque = true;
+    tempoAtaque = 0.f; // Reinicia o tempo do ataque
+    sf::Vector2f speed = getVelocidade();
+    setVelocidade(sf::Vector2f(speed.x * 2, speed.y));
+}
+
+bool Player::getAtaque() const {
+    return ataque;
 }

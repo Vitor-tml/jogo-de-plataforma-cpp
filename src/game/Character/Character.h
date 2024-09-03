@@ -19,6 +19,8 @@ class Entity;
 class Character : public Entity {
 protected:
     int nVidas; ///< Número de vidas do personagem.
+    const float tempoInvulnerabilidade = 1.0f; // Tempo em segundos
+    sf::Clock relogioDano; // Relógio para controlar o tempo entre danos
 public:
     /**
      * @brief Construtor da classe Character.
@@ -46,6 +48,23 @@ public:
      */
     virtual nlohmann::json salvar() const = 0;
     const int getVida() const { return nVidas; }
+
+    void operator--() 
+    {
+        if (nVidas > 0 && relogioDano.getElapsedTime().asSeconds() >= tempoInvulnerabilidade) {
+            --nVidas;
+            relogioDano.restart(); // Reinicia o relógio após receber dano
+        }
+    }
+
+    // Pós-decremento (a--)
+    void operator--(int) 
+    {
+        if (nVidas > 0 && relogioDano.getElapsedTime().asSeconds() >= tempoInvulnerabilidade) {
+            --nVidas;
+            relogioDano.restart(); // Reinicia o relógio após receber dano
+        }
+    }
 };
 
 #endif

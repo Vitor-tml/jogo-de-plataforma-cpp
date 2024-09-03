@@ -23,16 +23,17 @@ protected:
     sf::Text vida;
     const float velocidadeHorizontal = 200.f;
     
-    const float tempoInvulnerabilidade = 1.0f; // Tempo em segundos
-    sf::Clock relogioDano; // Relógio para controlar o tempo entre danos
-
-
+   
+    float tempoAtaque; // Tempo atual do ataque
+    const float duracaoAtaque = 0.5f; // Duração do ataque em segundos
+    bool ataque;
     /**
      * @brief Componente que controlam o estado atual da sprite do player, gerando a animação.
      * @see Animation
      */
     Animation parado; // 0 0
     Animation andando;// 0 68
+    Animation rolando;// 0 68
     Animation *animacaoAtual;
     /**
      * @brief Muda o estado atual da animação do player
@@ -85,26 +86,9 @@ public:
      */
     
     // Pre-decremento (--a)
-    Player& operator--() {
-    if (nVidas > 0 && relogioDano.getElapsedTime().asSeconds() >= tempoInvulnerabilidade) {
-        std::cout << "--Decremento " << std::endl;
-        --nVidas;
-        relogioDano.restart(); // Reinicia o relógio após receber dano
-    }
-    return *this;
-}
-
-// Pós-decremento (a--)
-Player operator--(int) {
-    Player temp = *this;  // Salva o estado atual
-    if (nVidas > 0 && relogioDano.getElapsedTime().asSeconds() >= tempoInvulnerabilidade) {
-        std::cout << "Decremento --" << std::endl;
-        --nVidas;
-        relogioDano.restart(); // Reinicia o relógio após receber dano
-    }
-    return temp;  // Retorna o estado antes da decretação
-}
-
+    
+    void atacar();
+    bool getAtaque()const;
     int getPontos() { return pontos;}
     virtual void renderizaVida();
 };

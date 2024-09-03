@@ -29,7 +29,11 @@ class Player2 : public Player{
                 estaNoChao = false;
             }
 
-            if(velocidade.x == 0)
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::F)){
+                atacar();
+            }
+
+            if(velocidade.x == 0 && !ataque)
             {
                 animacaoAtual = &parado;
             }
