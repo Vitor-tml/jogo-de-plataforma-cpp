@@ -1,14 +1,14 @@
-#include "EsferaMagica.h"
+ #include "EsferaMagica.h"
 
 EsferaMagica::EsferaMagica(int xx, int yy, sf::Texture &textura, int offsetX, int offsetY) :
     Obstacle(xx, yy, textura, offsetX, offsetY), 
     elasticidade(100)
 {
     sprite.setTexture(textura);
-    sprite.setTextureRect(sf::IntRect(0, (824-206), 192, 206));
+    sprite.setTextureRect(sf::IntRect(30, 460, 100, 100));
     sprite.setScale(sf::Vector2f(0.5,0.5));
     sf::FloatRect tamanho = sprite.getGlobalBounds();
-    sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height));
+    // sprite.setOrigin(sf::Vector2f(50, 50));
     sprite.setPosition(x, y);
     inicializarCaixaColisao();
 }

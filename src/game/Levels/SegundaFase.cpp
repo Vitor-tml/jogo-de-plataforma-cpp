@@ -4,19 +4,22 @@ SegundaFase::SegundaFase(Player* p, Player2 *p2) :
 Phase(gRecursos->getTexture("fundo2"), p, p2),
 chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
 esqueleto(gRecursos->getTexture("inimigo"), 1),
-arqueiro(300, 500, gRecursos->getTexture("arqueiro"))
+arqueiro(300, 500, gRecursos->getTexture("arqueiro")),
+esfera(300, 400, gRecursos->getTexture("esfera"))
 // bala(100, 450)
 {
     bala = new Projetil(100, 450, 0, 0);
     // sprite.setTextureRect(sf::IntRect(0,0,0,0));
     listaEntidades.incluir(&chao);
     listaEntidades.incluir(&esqueleto);
-    // listaEntidades.incluir(&arqueiro);
+    listaEntidades.incluir(&arqueiro);
+    listaEntidades.incluir(&esfera);
     listaEntidades.incluir(bala);
 
     gColisao.incluirObstaculo(&chao);
+    gColisao.incluirObstaculo(&esfera);
     gColisao.incluirInimigos(&esqueleto);
-    // gColisao.incluirInimigos(&arqueiro);
+    gColisao.incluirInimigos(&arqueiro);
 
     gColisao.incluirProjetil(bala);
 

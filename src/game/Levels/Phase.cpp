@@ -20,17 +20,18 @@ void Phase::executar()
 
     renderizar(0);
     for (int i = 0; i < listaEntidades.getTamanho(); i++) {
+        if(listaEntidades[i] != nullptr && listaEntidades[i]->getExecutar()){
         listaEntidades[i]->executar(deltaTime);
         listaEntidades[i]->renderizar(i + 1);
         listaEntidades[i]->renderizarCaixaColisao();
+        }
     }
-
-    gGrafico->setCentroCamera(jogador->getPosicao().x, jogador->getPosicao().y); // Jogador controla a própria câmera ou a fase?
+    gerenciarColisoes();
     gGrafico->render();
-    
-    gColisao.tratarColisoes();
-    saveManager.saveEntidades(listaEntidades, "save.json");
-
-    // Onde colocar o setCentroCamera?
     gGrafico->clearDrawables();
+}
+
+void Phase::gerenciarColisoes()
+{
+    gColisao.tratarColisoes();
 }

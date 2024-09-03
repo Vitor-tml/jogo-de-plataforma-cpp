@@ -29,10 +29,7 @@ protected:
 public:
     Phase(sf::Texture& fundo, Player* p, Player2* p2);
     virtual ~Phase() noexcept {};
-    virtual void executar();
-    void gerenciarColisoes(){};
-    void criarInimigos() {};
-    void criarObstaculos() {};
-    
+    void executar();
+    void gerenciarColisoes();    
 };
 #endif

@@ -50,6 +50,7 @@ void Arqueiro::executar(float deltaTime)
 {
     mover(deltaTime);
     atirar(deltaTime);
+    std::cout << "Executando" << std::endl;
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;

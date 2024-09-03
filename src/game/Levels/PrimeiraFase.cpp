@@ -2,67 +2,69 @@
 
 PrimeiraFase::PrimeiraFase(Player* p, Player2 *p2):
     Phase(gRecursos->getTexture("fundo"), p, p2),
-    inimigo(gRecursos->getTexture("inimigo")),
-    plataforma(0, 500, gRecursos->getTexture("plataforma")),
-    plataforma2(0, 500, gRecursos->getTexture("plataforma")),
-    plataforma3(100, 436, gRecursos->getTexture("plataforma")),
-    bala(0, 400),
-    chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
-    legolas(300, 300, gRecursos->getTexture("arqueiro")),
-    espinho(500, 500, gRecursos->getTexture("espinho")),
-    esfera(500, 500, gRecursos->getTexture("esfera"))
+    chao(0, -190, gRecursos->getTexture("chao"), 0, 726)
 {
     // Iniciar local?
     //sprite.setOrigin()
     sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
     
-    
-    // ========= Entidade
-    listaEntidades.incluir(&inimigo);
-    listaEntidades.incluir(&plataforma);
-    listaEntidades.incluir(&plataforma2);
-    listaEntidades.incluir(&plataforma3);
     listaEntidades.incluir(&chao);
-    listaEntidades.incluir(&espinho);
-    listaEntidades.incluir(&bala);
-    listaEntidades.incluir(&legolas);
-    listaEntidades.incluir(&esfera);
-
-    // ======== Colisao
-    gColisao.incluirObstaculo(&plataforma); 
-    gColisao.incluirObstaculo(&plataforma2); 
-    gColisao.incluirObstaculo(&plataforma3); 
     gColisao.incluirObstaculo(&chao); 
-    gColisao.incluirObstaculo(&espinho); 
-    gColisao.incluirObstaculo(&esfera);
 
-    gColisao.incluirInimigos(&inimigo); 
-    gColisao.incluirInimigos(&legolas); 
-    
-    gColisao.incluirProjetil(&bala);
-
-    // ======== Relações
-    legolas.setBala(&bala);
+    criarPlataformas();
+    criarArqueiros();
+    criarEsqueletos();
 }
 
-void PrimeiraFase::executar()
+void PrimeiraFase::criarPlataformas()
 {
-    deltaTime = tempo.restart().asSeconds();
-
-    renderizar(0);
-    for (int i = 0; i < listaEntidades.getTamanho(); i++) {
-        listaEntidades[i]->executar(deltaTime);
-        listaEntidades[i]->renderizar(i + 1);
-        listaEntidades[i]->renderizarCaixaColisao();
+    const int nPlataformas = 6;
+    plataformas.clear();
+    plataformas.reserve(nPlataformas);
+    for(int i = 0; i < nPlataformas; i++)
+    {
+        Plataforma *novaPlataforma = new Plataforma(60 + 32 * i, 440, gRecursos->getTexture("plataforma"));
+        novaPlataforma->setExecutar(true);
+        plataformas.push_back(novaPlataforma);
+        listaEntidades.incluir(novaPlataforma);
+        gColisao.incluirObstaculo(novaPlataforma);
     }
+}
 
-    //gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
-    gGrafico->render();
-    
-    gColisao.tratarColisoes();
-    
-    saveManager.saveEntidades(listaEntidades, "save.txt");
+void PrimeiraFase::criarEsqueletos()
+{
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nEsqueletos = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    for(int i = 0; i < nEsqueletos; i++)
+    {
+        Esqueleto *novoEsqueleto = new Esqueleto(gRecursos->getTexture("inimigo"));
+        novoEsqueleto->setPosicao(32 * i, 300);
+        novoEsqueleto->setExecutar(true);
+        esqueletos.push_back(novoEsqueleto);
+        listaEntidades.incluir(novoEsqueleto);
+        gColisao.incluirInimigos(novoEsqueleto);
+    }
+}
 
-    // Onde colocar o setCentroCamera?
-    gGrafico->clearDrawables();
+void PrimeiraFase::criarArqueiros()
+{
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nArqueiros = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    for(int i = 0; i < nArqueiros; i++)
+    {
+        Arqueiro *novoArqueiro = new Arqueiro(300, 500, gRecursos->getTexture("arqueiro"));
+        Projetil *novaBala = new Projetil(0, 0);
+        novoArqueiro->setExecutar(true);
+        novaBala->setExecutar(true);
+        novoArqueiro->setBala(novaBala);
+        arqueiros.push_back(novoArqueiro);
+        listaEntidades.incluir(novoArqueiro);
+        gColisao.incluirInimigos(novoArqueiro);
+        gColisao.incluirProjetil(novaBala);
+        std::cout << "Incluindo arqueiro" << std::endl;     
+    }
 }

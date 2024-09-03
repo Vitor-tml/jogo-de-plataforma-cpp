@@ -7,7 +7,7 @@ ResourceManager* Ente::gRecursos = ResourceManager::getInstance();
 Ente::Ente():
     id(++cont)
 {
-    std::cout << "Construtora sem parametro (ente). Adicionando placeHolder na sprite" << std::endl;
+    // std::cout << "Construtora sem parametro (ente). Adicionando placeHolder na sprite" << std::endl;
     sf::Texture placeHolder;
     placeHolder.create(64, 64);
     sprite.setTexture(placeHolder);
@@ -15,7 +15,7 @@ Ente::Ente():
 Ente::Ente(sf::Texture& figura, float offSetx, float OffSety):
     id(++cont)
 {
-    std::cout << "Construtora com parametro(ente)" << std::endl;
+    // std::cout << "Construtora com parametro(ente)" << std::endl;
     sprite.setTexture(figura);
 }
 Ente::~Ente()
