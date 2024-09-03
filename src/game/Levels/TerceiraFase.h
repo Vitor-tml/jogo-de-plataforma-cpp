@@ -6,7 +6,8 @@
 
 class TerceiraFase : public Phase {
 private:
-    void criarEntidadeDoTipo(const std::string& tipo, const json& dados);
+    void criarEntidades(const std::string& tipo, const json& dados);
+    Plataforma chao;
 
 public:
     TerceiraFase(Player* p, Player2* p2);
