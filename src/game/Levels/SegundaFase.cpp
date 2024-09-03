@@ -29,7 +29,7 @@ void SegundaFase::executar()
 
     renderizar();
     for (int i = 0; i < listaEntidades.getTamanho(); i++) {
-        if(listaEntidades[i] != nullptr){
+        if(listaEntidades[i] != nullptr && listaEntidades[i]->getExecutar()){
         listaEntidades[i]->executar(deltaTime);
         listaEntidades[i]->renderizar(i + 1);
         listaEntidades[i]->renderizarCaixaColisao();

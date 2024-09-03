@@ -100,7 +100,8 @@ void CollisionManager::tratarColisoesJogadorInimigo()
                 // Verifica se o inimigo foi derrotado
                 if (inimigo->getVida() <= 0) {
                     // std::cout << "Inimigo derrotado" << std::endl;
-                    jogador++;
+                    jogador->operator++();
+                    inimigo->setExecutar(false);
                     it = lInimigos.erase(it); // Remove o inimigo e atualiza o iterador
                     continue; // Pula para a próxima iteração sem incrementar o iterador
                 }
@@ -114,8 +115,9 @@ void CollisionManager::tratarColisoesJogadorInimigo()
             if (jogador2->getAtaque()) {
                 inimigo->operator--();
                 if (inimigo->getVida() <= 0) {
+                    inimigo->setExecutar(false);
                     it = lInimigos.erase(it);
-                    jogador2++;
+                    jogador2->operator++();
                     continue;
                 }
             } else {
@@ -125,6 +127,8 @@ void CollisionManager::tratarColisoesJogadorInimigo()
 
         ++it; // Incrementa o iterador apenas se não foi removido
     }
+    std::cout << "1 - Esta no chao: " << jogador->getNoChao()  << std::endl;
+    std::cout << "2 - Esta no chao: " << jogador2->getNoChao() << std::endl;
 }
 
 

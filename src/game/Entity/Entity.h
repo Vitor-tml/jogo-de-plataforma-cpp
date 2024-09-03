@@ -24,7 +24,7 @@ protected:
     sf::Vector2f velocidade;
     PhysicsComponent fisica;
     bool estaNoChao;
-
+    bool ativo;
 public:
     /**
      * @brief Construtor padrão da classe Entity.
@@ -72,6 +72,8 @@ public:
 
     int getID() const { return id; }
     void verificarLimitesTela();
+    int getExecutar() const { return ativo;}
+    void setExecutar(bool r) { ativo = r;}
 };
 
 #endif

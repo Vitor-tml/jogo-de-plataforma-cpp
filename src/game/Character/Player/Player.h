@@ -92,6 +92,6 @@ public:
     int getPontos() { return pontos;}
     virtual void renderizaVida();
 
-    void operator++() { ++pontos;}
+    void operator++() {pontos = pontos + 1;}
 };
 #endif

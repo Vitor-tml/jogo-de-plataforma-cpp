@@ -60,7 +60,7 @@ void Esqueleto::executar(float deltaTime)
     this->mover(deltaTime);
     verificarLimitesTela();
     fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
-    std::cout << "Vida esqueleto: " << getVida() << std::endl;
+    // std::cout << "Vida esqueleto: " << getVida() << std::endl;
     atualizarCaixaColisao();
 }
 

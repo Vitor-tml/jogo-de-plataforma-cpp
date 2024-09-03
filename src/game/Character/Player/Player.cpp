@@ -38,6 +38,7 @@ Player::Player(sf::Texture& textura)
     vida.setFillColor(sf::Color::White);
     vida.setCharacterSize(20);
     inicializarCaixaColisao(40, 58); // Tamanho real da sprite
+    setExecutar(true);
 }
 
 void Player::executar(float deltaTime)
