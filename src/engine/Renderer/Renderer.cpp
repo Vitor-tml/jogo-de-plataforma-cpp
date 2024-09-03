@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
+namespace Gerenciador{
 Renderer* Renderer::singleton = nullptr;
 int Renderer::camadaJanela = 0;
 Renderer::Renderer(int largura, int altura, const std::string &titulo)
@@ -89,4 +90,5 @@ void Renderer::close()
 bool Renderer::pollEvent(sf::Event &evento)
 {
     return janela.pollEvent(evento);
+}
 }

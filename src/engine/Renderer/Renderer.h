@@ -20,6 +20,7 @@
  * @author Vitor-tml
 */
 // namespace Gerenciadores{
+namespace Gerenciador{
 class Renderer {
 private:
     static int camadaJanela;
@@ -93,4 +94,5 @@ public:
     sf::Vector2u getTamanho() const { return janela.getSize();}
 };
 // }
+}
 #endif

@@ -1,7 +1,7 @@
 #include "Ente.h"
 #include <iostream>
 int Ente::cont = 0;
-Renderer* Ente::gGrafico = Renderer::getRenderer();
+Gerenciador::Renderer* Ente::gGrafico = Gerenciador::Renderer::getRenderer();
 ResourceManager* Ente::gRecursos = ResourceManager::getInstance();
 
 Ente::Ente():
