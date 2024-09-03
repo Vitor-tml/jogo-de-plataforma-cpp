@@ -60,15 +60,42 @@ void TerceiraFase::criarEntidadeDoTipo(const std::string& tipo, const json& dado
             int vida = dados["vida"];
             jogador->setVida(vida);
         }
-
-        listaEntidades.incluir(jogador);;
+        listaEntidades.incluir(jogador);
     }
-    else if (tipo == "Enemy") {
-        Enemy* inimigo = new Enemy(gRecursos->getTexture("enemy"));
-        listaEntidades.incluir(inimigo);
+    else if (tipo == "Arqueiro") {
+        if (dados.contains("posX") && dados.contains("posY")) {
+            int posX = dados["posX"];
+            int posY = dados["posY"];
+            Arqueiro* arqueiro = new Arqueiro(posX, posY, gRecursos->getTexture("arqueiro"));
+            listaEntidades.incluir(arqueiro);
+        }
     }
-    else if (tipo == "Obstacle") {
-        Obstacle* obstaculo = new Obstacle(gRecursos->getTexture("obstacle"));
-        listaEntidades.incluir(obstaculo);
+    else if (tipo == "Esqueleto") {
+        if (dados.contains("posX") && dados.contains("posY")) {
+            int posX = dados["posX"];
+            int posY = dados["posY"];
+            int maldade = 1;  // Valor padrão para maldade
+            if (dados.contains("maldade")) {
+                maldade = dados["maldade"];
+            }
+            Esqueleto* esqueleto = new Esqueleto(gRecursos->getTexture("esqueleto"), maldade, posX, posY);
+            listaEntidades.incluir(esqueleto);
+        }
+    }
+    else if (tipo == "EsferaMagica") {
+        if (dados.contains("posX") && dados.contains("posY")) {
+            int posX = dados["posX"];
+            int posY = dados["posY"];
+            EsferaMagica* esfera = new EsferaMagica(posX, posY, gRecursos->getTexture("esfera_magica"));
+            listaEntidades.incluir(esfera);
+        }
+    }
+    else if (tipo == "Espinhos") {
+        if (dados.contains("posX") && dados.contains("posY")) {
+            int posX = dados["posX"];
+            int posY = dados["posY"];
+            Espinhos* espinhos = new Espinhos(posX, posY, gRecursos->getTexture("espinhos"));
+            listaEntidades.incluir(espinhos);
+        }
     }
 }

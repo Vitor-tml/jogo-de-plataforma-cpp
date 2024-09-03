@@ -3,8 +3,12 @@
 
 #include "../../lists/ListaEntidades/ListaEntidades.h"
 #include "../../game/Character/Enemy/Enemy.h"
+#include "../../game/Character/Enemy/Arqueiro.h"
+#include "../../game/Character/Enemy/Esqueleto.h"
 #include "../../game/Character/Player/Player.h"
 #include "../../game/Obstacles/Obstacle.h"
+#include "../../game/Obstacles/EsferaMagica.h"
+#include "../../game/Obstacles/Espinhos.h"
 #include "../ResourceManager/ResourceManager.h"
 #include "../../../lib/json.hpp"
 #include <string>

@@ -6,11 +6,16 @@
 using json = nlohmann::json;
 
 std::string SaveManager::getTipo(const Entity* entidade) const {
+    if (dynamic_cast<const Arqueiro*>(entidade)) return "Arqueiro";
+    if (dynamic_cast<const Esqueleto*>(entidade)) return "Esqueleto";
+    if (dynamic_cast<const EsferaMagica*>(entidade)) return "EsferaMagica";
+    if (dynamic_cast<const Espinhos*>(entidade)) return "Espinhos";
     if (dynamic_cast<const Enemy*>(entidade)) return "Enemy";
     if (dynamic_cast<const Player*>(entidade)) return "Player";
     if (dynamic_cast<const Obstacle*>(entidade)) return "Obstacle";
     return "Entidade";
 }
+
 
 
 void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& filename) {
@@ -68,7 +73,6 @@ ListaEntidades SaveManager::loadEntidades() {
         std::cerr << "Erro ao carregar entidades: " << e.what() << std::endl;
     }
 
-    std::cout << "Número total de entidades carregadas: " << listaCarregada.getTamanho() << std::endl;
     return listaCarregada;
 }
 
