@@ -27,7 +27,6 @@ private:
     /**
      * @brief Esse método é responsável por identificar qual é o tipo de cada entidade na lista, para que possa ser realizado o salvamento polimórfico.
      */
-    Entity* criarEntidade(const std::string& tipo, const json& dados) const;
 
 public:
     SaveManager() = default;

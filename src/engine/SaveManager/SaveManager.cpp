@@ -12,28 +12,6 @@ std::string SaveManager::getTipo(const Entity* entidade) const {
     return "Entidade";
 }
 
-Entity* SaveManager::criarEntidade(const std::string& tipo, const json& dados) const {
-    // // if (tipo == "Player") {
-    //     sf::Texture& textura = gRecursos->getTexture("playerTexture");
-    // //     Player* player = new Player(textura);
-    // //     player->setVida(dados["health"]);
-    // //     player->setPosicao(dados["posX"], dados["posY"]);
-    // //     return player;
-    // // } 
-    // // else if (tipo == "Enemy") {
-    // //     Enemy* enemy = new Enemy();
-    // //     // Métodos específicos para Enemy
-    // //     return enemy;
-    // // } 
-    // // else if (tipo == "Obstacle") {
-    // //     Obstacle* obstacle = new Obstacle();
-    // //     // Métodos específicos para Obstacle
-    // //     return obstacle;
-    // // }
-    
-    return nullptr;
-}
-
 
 void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& filename) {
     json jLista = json::array();
@@ -53,6 +31,7 @@ void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& 
         }
         
         arquivo << jLista.dump(4); // Salva o JSON no arquivo
+        std::cout << filename << std::endl;
         if (!arquivo) {
             throw std::ios_base::failure("Erro ao escrever no arquivo.");
         }
@@ -80,17 +59,17 @@ ListaEntidades SaveManager::loadEntidades() {
             throw std::ios_base::failure("Erro ao ler o arquivo.");
         }
 
+        std::cout << "Entidades carregadas:" << std::endl;
         for (const auto& jEntidade : jLista) {
             std::string tipo = jEntidade["tipo"];
-            Entity* entidade = criarEntidade(tipo, jEntidade["dados"]);
-            if (entidade) {
-                listaCarregada.incluir(entidade);
-            }
+            std::cout << tipo << std::endl;
         }
     } catch (const std::ios_base::failure& e) {
         std::cerr << "Erro ao carregar entidades: " << e.what() << std::endl;
     }
 
+    std::cout << "Número total de entidades carregadas: " << listaCarregada.getTamanho() << std::endl;
     return listaCarregada;
 }
+
 
