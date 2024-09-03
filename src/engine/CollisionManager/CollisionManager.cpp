@@ -85,24 +85,48 @@ void CollisionManager::tratarColisoesInimigoObstaculo()
 
     }
 }
+
 void CollisionManager::tratarColisoesJogadorInimigo()
 {
-    for(Enemy* inimigo : lInimigos){
-        if(jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds())){
-            if(jogador->getAtaque())
+    std::vector<Enemy*>::iterator it = lInimigos.begin();
+    while (it != lInimigos.end())
+    {
+        Enemy* inimigo = *it;
+
+        if (jogador->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+        {
+            if (jogador->getAtaque()) {
                 inimigo->operator--();
-            else
+                // Verifica se o inimigo foi derrotado
+                if (inimigo->getVida() <= 0) {
+                    // std::cout << "Inimigo derrotado" << std::endl;
+                    jogador++;
+                    it = lInimigos.erase(it); // Remove o inimigo e atualiza o iterador
+                    continue; // Pula para a próxima iteração sem incrementar o iterador
+                }
+            } else {
                 inimigo->danificar(jogador);
+            }
         }
-        if(jogador2->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds())){
-            if(jogador2->getAtaque())
+
+        if (jogador2->getCaixaColisao().getGlobalBounds().intersects(inimigo->getCaixaColisao().getGlobalBounds()))
+        {
+            if (jogador2->getAtaque()) {
                 inimigo->operator--();
-            else
+                if (inimigo->getVida() <= 0) {
+                    it = lInimigos.erase(it);
+                    jogador2++;
+                    continue;
+                }
+            } else {
                 inimigo->danificar(jogador2);
-            // std::cout << "Colisao: jogador 2/inimigo" << std::endl;
+            }
         }
+
+        ++it; // Incrementa o iterador apenas se não foi removido
     }
 }
+
 
 void CollisionManager::tratarColisoesJogadorProjetil()
 {

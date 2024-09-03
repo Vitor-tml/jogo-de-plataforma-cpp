@@ -91,5 +91,7 @@ public:
     bool getAtaque()const;
     int getPontos() { return pontos;}
     virtual void renderizaVida();
+
+    void operator++() { ++pontos;}
 };
 #endif
