@@ -3,7 +3,7 @@
 #include <iostream>
 
 Enemy::Enemy(int xx, int yy, sf::Texture& textura, int offX, int offY) :
-Character(xx, yy, offX, offY, 20,  textura),
+Character(xx, yy, offX, offY, 2,  textura),
 nivelMaldade(1)
 {
 }

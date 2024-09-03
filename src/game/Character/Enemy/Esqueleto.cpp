@@ -11,7 +11,7 @@ limiteDireita(posXInicial + distancia),
 limiteEsquerda(posXInicial - distancia)
 {
     sprite.setTexture(textura);
-    sprite.setTextureRect(sf::IntRect(0, 0, 96, 144));
+    sprite.setTextureRect(sf::IntRect(5, 0, 42, 72));
     sf::FloatRect tamanho = sprite.getGlobalBounds();
     sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
     sprite.setPosition(x, y);
