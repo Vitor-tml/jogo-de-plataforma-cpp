@@ -16,6 +16,7 @@ Phase::Phase(sf::Texture& fundo, Player *p, Player2 *p2) :
 
 void Phase::executar()
 {
+        
     deltaTime = tempo.restart().asSeconds();
 
     renderizar(0);

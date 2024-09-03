@@ -6,32 +6,16 @@
 using json = nlohmann::json;
 
 std::string SaveManager::getTipo(const Entity* entidade) const {
+    if (dynamic_cast<const Arqueiro*>(entidade)) return "Arqueiro";
+    if (dynamic_cast<const Esqueleto*>(entidade)) return "Esqueleto";
+    if (dynamic_cast<const EsferaMagica*>(entidade)) return "EsferaMagica";
+    if (dynamic_cast<const Espinhos*>(entidade)) return "Espinhos";
     if (dynamic_cast<const Enemy*>(entidade)) return "Enemy";
     if (dynamic_cast<const Player*>(entidade)) return "Player";
     if (dynamic_cast<const Obstacle*>(entidade)) return "Obstacle";
     return "Entidade";
 }
 
-Entity* SaveManager::criarEntidade(const std::string& tipo, const json& dados) const {
-    // if (tipo == "Player") {
-    //     Player* player = new Player();
-    //     player->setVida(dados["health"]);
-    //     player->setPosicao(dados["posX"], dados["posY"]);
-    //     return player;
-    // } 
-    // else if (tipo == "Enemy") {
-    //     Enemy* enemy = new Enemy();
-    //     // Métodos específicos para Enemy
-    //     return enemy;
-    // } 
-    // else if (tipo == "Obstacle") {
-    //     Obstacle* obstacle = new Obstacle();
-    //     // Métodos específicos para Obstacle
-    //     return obstacle;
-    // }
-    
-    return nullptr;
-}
 
 
 void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& filename) {
@@ -52,6 +36,7 @@ void SaveManager::saveEntidades(const ListaEntidades& lista, const std::string& 
         }
         
         arquivo << jLista.dump(4); // Salva o JSON no arquivo
+        std::cout << filename << std::endl;
         if (!arquivo) {
             throw std::ios_base::failure("Erro ao escrever no arquivo.");
         }
@@ -79,12 +64,10 @@ ListaEntidades SaveManager::loadEntidades() {
             throw std::ios_base::failure("Erro ao ler o arquivo.");
         }
 
+        std::cout << "Entidades carregadas:" << std::endl;
         for (const auto& jEntidade : jLista) {
             std::string tipo = jEntidade["tipo"];
-            Entity* entidade = criarEntidade(tipo, jEntidade["dados"]);
-            if (entidade) {
-                listaCarregada.incluir(entidade);
-            }
+            std::cout << tipo << std::endl;
         }
     } catch (const std::ios_base::failure& e) {
         std::cerr << "Erro ao carregar entidades: " << e.what() << std::endl;
@@ -92,4 +75,5 @@ ListaEntidades SaveManager::loadEntidades() {
 
     return listaCarregada;
 }
+
 

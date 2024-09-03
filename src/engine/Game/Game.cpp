@@ -35,6 +35,7 @@ void Game::executar()
     Menu menu(&estado);
     PrimeiraFase fase1(&jogador, &jogador2);
     SegundaFase fase2(&jogador, &jogador2);
+    TerceiraFase fase3(&jogador, &jogador2);
     LeadBoard leadboard;
     while (janela->isOpen())
     {
@@ -54,6 +55,9 @@ void Game::executar()
             break;
         case 2:
             fase2.executar();
+            break;
+        case 3:
+            fase3.executar();
             break;
         case 4:
             leadboard.executar();

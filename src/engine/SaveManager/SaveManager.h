@@ -3,8 +3,13 @@
 
 #include "../../lists/ListaEntidades/ListaEntidades.h"
 #include "../../game/Character/Enemy/Enemy.h"
+#include "../../game/Character/Enemy/Arqueiro.h"
+#include "../../game/Character/Enemy/Esqueleto.h"
 #include "../../game/Character/Player/Player.h"
 #include "../../game/Obstacles/Obstacle.h"
+#include "../../game/Obstacles/EsferaMagica.h"
+#include "../../game/Obstacles/Espinhos.h"
+#include "../ResourceManager/ResourceManager.h"
 #include "../../../lib/json.hpp"
 #include <string>
 
@@ -26,7 +31,6 @@ private:
     /**
      * @brief Esse método é responsável por identificar qual é o tipo de cada entidade na lista, para que possa ser realizado o salvamento polimórfico.
      */
-    Entity* criarEntidade(const std::string& tipo, const json& dados) const;
 
 public:
     SaveManager() = default;
