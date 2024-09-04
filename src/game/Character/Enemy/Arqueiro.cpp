@@ -12,6 +12,7 @@ bala(nullptr)
     sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite
     sprite.setPosition(x, y);
     inicializarCaixaColisao();
+    velocidade = sf::Vector2f(0, 0);
 }
 
 
@@ -48,15 +49,13 @@ void Arqueiro::danificar(Player *jogador)
 
 void Arqueiro::executar(float deltaTime)
 {
-    mover(deltaTime);
-    atirar(deltaTime);
-    std::cout << "Executando" << std::endl;
-    fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
     x = sprite.getPosition().x;
     y = sprite.getPosition().y;
-    atualizarCaixaColisao();
-
-    //atirar
+    mover(deltaTime);
+    atirar(deltaTime);
+    verificarLimitesTela();
+    fisica.aplicaFisica(sprite, velocidade, deltaTime, estaNoChao);
+    atualizarCaixaColisao();    
 }
 
 void Arqueiro::atirar(float deltaTime)

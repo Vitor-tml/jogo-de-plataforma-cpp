@@ -8,7 +8,7 @@ private:
     Plataforma chao;
     Esqueleto esqueleto;
     Arqueiro arqueiro;
-    Projetil *bala;
+    Projetil bala;
     EsferaMagica esfera;
 public:
     SegundaFase(Player* p, Player2 *p2);

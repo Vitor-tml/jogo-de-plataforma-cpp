@@ -32,8 +32,8 @@ void EditorScene::atualizar()
 
 void EditorScene::renderizar()
 {
-    Renderer::getRenderer()->addDrawable(texto);
-    Renderer::getRenderer()->render();
+    Gerenciador::Renderer::getRenderer()->addDrawable(texto);
+    Gerenciador::Renderer::getRenderer()->render();
 }
 
 void EditorScene::processarEventos(const sf::Event& evento)

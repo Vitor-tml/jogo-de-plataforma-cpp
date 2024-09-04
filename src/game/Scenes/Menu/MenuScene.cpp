@@ -29,7 +29,7 @@ void MenuScene::atualizar()
 
 void MenuScene::renderizar()
 {
-    Renderer* renderizador = Renderer::getRenderer();
+    Gerenciador::Renderer* renderizador = Gerenciador::Renderer::getRenderer();
     renderizador->clearDrawables();
     renderizador->addDrawable(fundo, 0);
     renderizador->addDrawable(texto, 1);

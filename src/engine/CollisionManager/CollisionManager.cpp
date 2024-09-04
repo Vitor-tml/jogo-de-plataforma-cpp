@@ -79,6 +79,7 @@ void CollisionManager::tratarColisoesInimigoObstaculo()
         inimigo->setNoChao(false);
         for(Obstacle* obstaculo : lObstaculos){
             if(inimigo->getCaixaColisao().getGlobalBounds().intersects(obstaculo->getCaixaColisao().getGlobalBounds())){
+                inimigo->setNoChao(true);
                 obstaculo->obstacular(inimigo);
             }
         }
@@ -127,8 +128,8 @@ void CollisionManager::tratarColisoesJogadorInimigo()
 
         ++it; // Incrementa o iterador apenas se não foi removido
     }
-    std::cout << "1 - Esta no chao: " << jogador->getNoChao()  << std::endl;
-    std::cout << "2 - Esta no chao: " << jogador2->getNoChao() << std::endl;
+    // std::cout << "1 - Esta no chao: " << jogador->getNoChao()  << std::endl;
+    // std::cout << "2 - Esta no chao: " << jogador2->getNoChao() << std::endl;
 }
 
 

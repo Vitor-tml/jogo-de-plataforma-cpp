@@ -5,25 +5,26 @@ Phase(gRecursos->getTexture("fundo2"), p, p2),
 chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
 esqueleto(gRecursos->getTexture("inimigo"), 1),
 arqueiro(300, 500, gRecursos->getTexture("arqueiro")),
-esfera(300, 400, gRecursos->getTexture("esfera"))
-// bala(100, 450)
+esfera(300, 400, gRecursos->getTexture("esfera")),
+bala(100, 450)
 {
-    bala = new Projetil(100, 450, 0, 0);
+    // bala = new Projetil(100, 450, 0, 0);
     // sprite.setTextureRect(sf::IntRect(0,0,0,0));
     listaEntidades.incluir(&chao);
     listaEntidades.incluir(&esqueleto);
     listaEntidades.incluir(&arqueiro);
     listaEntidades.incluir(&esfera);
-    listaEntidades.incluir(bala);
+    listaEntidades.incluir(&bala);
 
     gColisao.incluirObstaculo(&chao);
     gColisao.incluirObstaculo(&esfera);
     gColisao.incluirInimigos(&esqueleto);
     gColisao.incluirInimigos(&arqueiro);
 
-    gColisao.incluirProjetil(bala);
+    gColisao.incluirProjetil(&bala);
 
-    arqueiro.setBala(bala);
+    arqueiro.setBala(&bala);
+    
 }
 
 void SegundaFase::executar()
@@ -34,8 +35,8 @@ void SegundaFase::executar()
     for (int i = 0; i < listaEntidades.getTamanho(); i++) {
         if(listaEntidades[i] != nullptr && listaEntidades[i]->getExecutar()){
         listaEntidades[i]->executar(deltaTime);
-        listaEntidades[i]->renderizar(i + 1);
-        listaEntidades[i]->renderizarCaixaColisao();
+        listaEntidades[i]->renderizar(2);
+        // listaEntidades[i]->renderizarCaixaColisao();
         }
     }
 

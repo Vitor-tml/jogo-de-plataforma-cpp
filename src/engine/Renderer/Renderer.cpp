@@ -3,7 +3,7 @@
 #include <iostream>
 
 namespace Gerenciador{
-Renderer* Renderer::singleton = nullptr;
+Gerenciador::Renderer* Renderer::singleton = nullptr;
 int Renderer::camadaJanela = 0;
 Renderer::Renderer(int largura, int altura, const std::string &titulo)
     : janela(sf::VideoMode(largura, altura), titulo),

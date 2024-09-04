@@ -54,9 +54,11 @@ void PrimeiraFase::criarArqueiros()
     const int nMin = 3;
     const int nMax = 6;
     int nArqueiros = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    int aux = gGrafico->getTamanho().x;
+    aux = aux/nArqueiros;
     for(int i = 0; i < nArqueiros; i++)
     {
-        Arqueiro *novoArqueiro = new Arqueiro(300, 500, gRecursos->getTexture("arqueiro"));
+        Arqueiro *novoArqueiro = new Arqueiro(aux * i, 500, gRecursos->getTexture("arqueiro"));
         Projetil *novaBala = new Projetil(0, 0);
         novoArqueiro->setExecutar(true);
         novaBala->setExecutar(true);

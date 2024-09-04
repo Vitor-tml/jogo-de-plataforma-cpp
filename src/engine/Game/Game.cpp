@@ -1,7 +1,7 @@
 #include "Game.h"
 
 Game::Game():
-    janela(Renderer::getRenderer(800, 600, "Cavaleiro Vagante.")),
+    janela(Gerenciador::Renderer::getRenderer(800, 600, "Cavaleiro Vagante.")),
     gRecursos(ResourceManager::getInstance())
 {
     gRecursos->loadTexture("jogador",    "../assets/textures/knight.png");

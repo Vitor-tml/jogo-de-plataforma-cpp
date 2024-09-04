@@ -13,7 +13,7 @@
 
 class Game{
 private:
-    Renderer* janela;
+    Gerenciador::Renderer* janela;
     ResourceManager* gRecursos;
     
 public:

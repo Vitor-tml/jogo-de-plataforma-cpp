@@ -13,7 +13,7 @@ void TestScene::inicializar()
 }
 void TestScene::renderizar()
 {
-    Renderer* gGrafico = Renderer::getRenderer();
+   Gerenciador::Renderer* gGrafico = Gerenciador::Renderer::getRenderer();
 
     gGrafico->clearDrawables();
     gGrafico->addDrawable(fundo, 0);

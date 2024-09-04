@@ -24,7 +24,7 @@ void Phase::executar()
         if(listaEntidades[i] != nullptr && listaEntidades[i]->getExecutar()){
         listaEntidades[i]->executar(deltaTime);
         listaEntidades[i]->renderizar(i + 1);
-        listaEntidades[i]->renderizarCaixaColisao();
+        // listaEntidades[i]->renderizarCaixaColisao();
         }
     }
     gerenciarColisoes();
