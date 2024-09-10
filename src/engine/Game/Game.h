@@ -8,7 +8,7 @@
 #include "../../game/Levels/Phase.h"
 #include "../../game/Levels/PrimeiraFase.h"
 #include "../../game/Levels/SegundaFase.h"
-#include "../../game/Levels/TerceiraFase.h"
+// #include "../../game/Levels/TerceiraFase.h"
 #include "../../game/Levels/LeadBoard.h"
 
 class Game{

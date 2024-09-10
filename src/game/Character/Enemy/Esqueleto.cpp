@@ -1,7 +1,7 @@
 #include "Esqueleto.h"
 
-Esqueleto::Esqueleto(sf::Texture& textura, int maldade, int offX, int offY) :
-Enemy(100, 100, textura, offX, offY),
+Esqueleto::Esqueleto( int maldade, int offX, int offY) :
+Enemy(100, 100, gRecursos->getTexture("esqueleto"), offX, offY),
 velocidadeHorizontal(100.f),
 distancia(200.f),
 indoDireita(true),
@@ -10,7 +10,6 @@ posXInicial(sprite.getPosition().x),
 limiteDireita(posXInicial + distancia),
 limiteEsquerda(posXInicial - distancia)
 {
-    sprite.setTexture(textura);
     sprite.setTextureRect(sf::IntRect(5, 0, 42, 72));
     sf::FloatRect tamanho = sprite.getGlobalBounds();
     sprite.setOrigin(sf::Vector2f(tamanho.width/2, tamanho.height)); // Centro da sprite

@@ -13,7 +13,7 @@ private:
     const float intervaloTroca = 2.0f;
     const float intervaloTiro = 2.5f;
 public:
-    Arqueiro(int xx, int yy, sf::Texture& textura);
+    Arqueiro(int xx, int yy);
     ~Arqueiro(){};
     void mover(float deltaTime);
     void executar(float deltaTime);                 // Transformar em virtual futuramente

@@ -12,7 +12,7 @@ private:
     std::vector<Esqueleto*> esqueletos;
     std::vector<Arqueiro*> arqueiros;
     std::vector<Plataforma*> plataformas;
-    std::vector<Projetil*> balas;
+std::vector<Projetil*> balas;
 public:
     PrimeiraFase(Player* p, Player2 *p2);
     ~PrimeiraFase() {};

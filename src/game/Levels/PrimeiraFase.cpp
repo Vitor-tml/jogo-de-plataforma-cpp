@@ -18,7 +18,10 @@ PrimeiraFase::PrimeiraFase(Player* p, Player2 *p2):
 
 void PrimeiraFase::criarPlataformas()
 {
-    const int nPlataformas = 6;
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nPlataformas = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
     plataformas.clear();
     plataformas.reserve(nPlataformas);
     for(int i = 0; i < nPlataformas; i++)
@@ -39,7 +42,7 @@ void PrimeiraFase::criarEsqueletos()
     int nEsqueletos = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
     for(int i = 0; i < nEsqueletos; i++)
     {
-        Esqueleto *novoEsqueleto = new Esqueleto(gRecursos->getTexture("inimigo"));
+        Esqueleto *novoEsqueleto = new Esqueleto();
         novoEsqueleto->setPosicao(32 * i, 300);
         novoEsqueleto->setExecutar(true);
         esqueletos.push_back(novoEsqueleto);
@@ -58,7 +61,7 @@ void PrimeiraFase::criarArqueiros()
     aux = aux/nArqueiros;
     for(int i = 0; i < nArqueiros; i++)
     {
-        Arqueiro *novoArqueiro = new Arqueiro(aux * i, 500, gRecursos->getTexture("arqueiro"));
+        Arqueiro *novoArqueiro = new Arqueiro(aux * i, 500);
         Projetil *novaBala = new Projetil(0, 0);
         novoArqueiro->setExecutar(true);
         novaBala->setExecutar(true);

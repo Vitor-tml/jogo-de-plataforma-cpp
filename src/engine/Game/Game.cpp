@@ -8,7 +8,7 @@ Game::Game():
     gRecursos->loadTexture("fundo",      "../assets/textures/background.png");
     gRecursos->loadTexture("plataforma", "../assets/textures/plataforma.png");
     gRecursos->loadTexture("menu",       "../assets/textures/fundomenu.png");
-    gRecursos->loadTexture("inimigo",    "../assets/textures/skeleton.png");
+    gRecursos->loadTexture("esqueleto",    "../assets/textures/skeleton.png");
     gRecursos->loadTexture("chao",       "../assets/textures/chao.png");
     gRecursos->loadTexture("espinho",    "../assets/textures/espinho.png");
     gRecursos->loadTexture("bala",       "../assets/textures/bala.png");
@@ -35,7 +35,7 @@ void Game::executar()
     Menu menu(&estado);
     PrimeiraFase fase1(&jogador, &jogador2);
     SegundaFase fase2(&jogador, &jogador2);
-    TerceiraFase fase3(&jogador, &jogador2);
+    // TerceiraFase fase3(&jogador, &jogador2);
     LeadBoard leadboard;
     while (janela->isOpen())
     {
@@ -56,9 +56,9 @@ void Game::executar()
         case 2:
             fase2.executar();
             break;
-        case 3:
-            fase3.executar();
-            break;
+        // case 3:
+        //     fase3.executar();
+        //     break;
         case 4:
             leadboard.executar();
             break;

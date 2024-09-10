@@ -2,6 +2,7 @@
 #define _ESQUELETO_H
 
 #include "Enemy.h"
+#include "../../../engine/ResourceManager/ResourceManager.h"
 #include "../../../lib/json.hpp"
 
 class Esqueleto : public Enemy{
@@ -17,7 +18,7 @@ private:
     sf::Clock relogioDano; // Relógio para controlar o tempo entre danos
     const float tempoEntreDanos = 1.0f; // Tempo em segundos entre danos
 public:
-    Esqueleto(sf::Texture& textura, int maldade = 1, int offX = 0, int offY = 0);
+    Esqueleto(int maldade = 1, int offX = 0, int offY = 0);
     ~Esqueleto();
     void mover(float deltaTime);
     void executar(float deltaTime);                 // Transformar em virtual futuramente

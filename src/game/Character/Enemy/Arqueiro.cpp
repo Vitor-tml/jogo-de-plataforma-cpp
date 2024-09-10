@@ -1,7 +1,7 @@
 #include "Arqueiro.h"
 
-Arqueiro::Arqueiro(int xx, int yy, sf::Texture& textura):
-Enemy(xx, yy, textura, 0, 0),
+Arqueiro::Arqueiro(int xx, int yy):
+Enemy(xx, yy, gRecursos->getTexture("arqueiro"), 0, 0),
 bala(nullptr)
 {
     tempoDecorrido = 0;
