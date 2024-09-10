@@ -13,11 +13,13 @@ private:
     std::vector<Arqueiro*> arqueiros;
     std::vector<Plataforma*> plataformas;
     std::vector<Projetil*> balas;
+    std::vector<EsferaMagica*> esferas;
 public:
     PrimeiraFase(Player* p, Player2 *p2);
     ~PrimeiraFase() {};
     void criarEsqueletos();
     void criarArqueiros();
     void criarPlataformas();
+    void criaEsferas();
 };
 #endif

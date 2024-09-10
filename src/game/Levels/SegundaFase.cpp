@@ -1,51 +1,94 @@
 #include "SegundaFase.h"
 
-SegundaFase::SegundaFase(Player* p, Player2 *p2) :
-Phase(gRecursos->getTexture("fundo2"), p, p2),
-chao(0, -190, gRecursos->getTexture("chao"), 0, 726),
-esqueleto(gRecursos->getTexture("inimigo"), 1),
-arqueiro(300, 500, gRecursos->getTexture("arqueiro")),
-esfera(300, 400, gRecursos->getTexture("esfera")),
-bala(100, 450)
+SegundaFase::SegundaFase(Player* p, Player2 *p2):
+    Phase(gRecursos->getTexture("fundo"), p, p2),
+    chao(0, -190, gRecursos->getTexture("chao"), 0, 726)
 {
-    // bala = new Projetil(100, 450, 0, 0);
-    // sprite.setTextureRect(sf::IntRect(0,0,0,0));
-    listaEntidades.incluir(&chao);
-    listaEntidades.incluir(&esqueleto);
-    listaEntidades.incluir(&arqueiro);
-    listaEntidades.incluir(&esfera);
-    listaEntidades.incluir(&bala);
-
-    gColisao.incluirObstaculo(&chao);
-    gColisao.incluirObstaculo(&esfera);
-    gColisao.incluirInimigos(&esqueleto);
-    gColisao.incluirInimigos(&arqueiro);
-
-    gColisao.incluirProjetil(&bala);
-
-    arqueiro.setBala(&bala);
+    // Iniciar local?
+    //sprite.setOrigin()
+    sprite.setTextureRect(sf::IntRect(0, 200, 900, 600));
     
+    listaEntidades.incluir(&chao);
+    gColisao.incluirObstaculo(&chao); 
+
+    criarPlataformas();
+    criarArqueiros();
+    criarEsqueletos();
+    criaEspinhos();
 }
 
-void SegundaFase::executar()
+void SegundaFase::criarPlataformas()
 {
-    deltaTime = tempo.restart().asSeconds();
-
-    renderizar();
-    for (int i = 0; i < listaEntidades.getTamanho(); i++) {
-        if(listaEntidades[i] != nullptr && listaEntidades[i]->getExecutar()){
-        listaEntidades[i]->executar(deltaTime);
-        listaEntidades[i]->renderizar(2);
-        // listaEntidades[i]->renderizarCaixaColisao();
-        }
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nPlataformas = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    plataformas.clear();
+    plataformas.reserve(nPlataformas);
+    for(int i = 0; i < nPlataformas; i++)
+    {
+        Plataforma *novaPlataforma = new Plataforma(60 + 32 * i, 440, gRecursos->getTexture("plataforma"));
+        novaPlataforma->setExecutar(true);
+        plataformas.push_back(novaPlataforma);
+        listaEntidades.incluir(novaPlataforma);
+        gColisao.incluirObstaculo(novaPlataforma);
     }
+}
 
-    //gGrafico->setCentroCamera(jogador.getPosicao().x, jogador.getPosicao().y); // Jogador controla a própria câmera ou a fase?
-    gGrafico->render();
-    
-    gColisao.tratarColisoes();
-    
+void SegundaFase::criarEsqueletos()
+{
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nEsqueletos = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    for(int i = 0; i < nEsqueletos; i++)
+    {
+        Esqueleto *novoEsqueleto = new Esqueleto(gRecursos->getTexture("inimigo"));
+        novoEsqueleto->setPosicao(32 * i, 300);
+        novoEsqueleto->setExecutar(true);
+        esqueletos.push_back(novoEsqueleto);
+        listaEntidades.incluir(novoEsqueleto);
+        gColisao.incluirInimigos(novoEsqueleto);
+    }
+}
 
-    // Onde colocar o setCentroCamera?
-    gGrafico->clearDrawables();
+void SegundaFase::criarArqueiros()
+{
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nArqueiros = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    int aux = gGrafico->getTamanho().x;
+    aux = aux/nArqueiros;
+    for(int i = 0; i < nArqueiros; i++)
+    {
+        Arqueiro *novoArqueiro = new Arqueiro(aux * i, 500, gRecursos->getTexture("arqueiro"));
+        Projetil *novaBala = new Projetil(0, 0);
+        novoArqueiro->setExecutar(true);
+        novaBala->setExecutar(true);
+        novoArqueiro->setBala(novaBala);
+        arqueiros.push_back(novoArqueiro);
+        listaEntidades.incluir(novoArqueiro);
+        gColisao.incluirInimigos(novoArqueiro);
+        gColisao.incluirProjetil(novaBala);
+        std::cout << "Incluindo arqueiro" << std::endl;     
+    }
+}
+
+void SegundaFase::criaEspinhos()
+{
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nPlataformas = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    plataformas.clear();
+    plataformas.reserve(nPlataformas);
+    for(int i = 0; i < nPlataformas; i++)
+    {
+        Espinhos *novaPlataforma = new Espinhos(300 + 32 * i, 500, gRecursos->getTexture("espinho"));
+        novaPlataforma->setExecutar(true);
+        espinhos.push_back(novaPlataforma);
+        listaEntidades.incluir(novaPlataforma);
+        gColisao.incluirObstaculo(novaPlataforma);
+    }
 }

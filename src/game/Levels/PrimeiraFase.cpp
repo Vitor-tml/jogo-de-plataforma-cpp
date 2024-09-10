@@ -14,11 +14,15 @@ PrimeiraFase::PrimeiraFase(Player* p, Player2 *p2):
     criarPlataformas();
     criarArqueiros();
     criarEsqueletos();
+    criaEsferas();
 }
 
 void PrimeiraFase::criarPlataformas()
 {
-    const int nPlataformas = 6;
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nPlataformas = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
     plataformas.clear();
     plataformas.reserve(nPlataformas);
     for(int i = 0; i < nPlataformas; i++)
@@ -68,5 +72,23 @@ void PrimeiraFase::criarArqueiros()
         gColisao.incluirInimigos(novoArqueiro);
         gColisao.incluirProjetil(novaBala);
         std::cout << "Incluindo arqueiro" << std::endl;     
+    }
+}
+
+void PrimeiraFase::criaEsferas()
+{
+    std::srand(static_cast<unsigned>(std::time(nullptr))); // Inicializa o gerador com a semente baseada no tempo
+    const int nMin = 3;
+    const int nMax = 6;
+    int nPlataformas = nMin +  std::rand() % (nMax - nMin); // Gera um número aleatório
+    plataformas.clear();
+    plataformas.reserve(nPlataformas);
+    for(int i = 0; i < nPlataformas; i++)
+    {
+        EsferaMagica *novaPlataforma = new EsferaMagica(300 + 32 * i, 440, gRecursos->getTexture("esfera"));
+        novaPlataforma->setExecutar(true);
+        esferas.push_back(novaPlataforma);
+        listaEntidades.incluir(novaPlataforma);
+        gColisao.incluirObstaculo(novaPlataforma);
     }
 }

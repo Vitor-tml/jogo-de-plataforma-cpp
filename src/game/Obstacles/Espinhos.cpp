@@ -8,6 +8,6 @@ Espinhos::Espinhos(int xx, int yy, sf::Texture &textura, int offsetX, int offset
 
 void Espinhos::obstacular(Player *jogador)
 {
-    // std::cout << "Espinhos" << std::endl;
+    std::cout << "Espinhos" << std::endl;
     jogador->operator--();
 }
